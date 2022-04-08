@@ -12,6 +12,7 @@ namespace Modules
         public List<ParamForSend> buffer;
         private int sendInterval;
         private Timer timer;
+
         private bool active;
         public bool Active
         {

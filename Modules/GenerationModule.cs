@@ -11,7 +11,7 @@ namespace Modules
     {
         List<Param> allParams;
         private bool active = false;
-
+        public bool Logging = true;
         public bool Active
         {
             get { return active; }

@@ -44,9 +44,14 @@ namespace Modules
                         generationModule.Start();
                         registrationModule.Start();
                     }
+                }
+                if (Console.ReadKey().Key == ConsoleKey.L)
+                {
+                    generationModule.Logging = !generationModule.Logging;
 
                 }
             }
+
         }
     }
 }
