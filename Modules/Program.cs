@@ -30,6 +30,7 @@ namespace Modules
                 {
                     if (generationModule.Active && registrationModule.Active)
                     {
+
                         Console.BackgroundColor = ConsoleColor.Red;
                         Console.WriteLine("Работа модулей остановлена");
                         Console.BackgroundColor = ConsoleColor.Black;

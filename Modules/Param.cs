@@ -56,7 +56,7 @@ namespace Modules
                 value = Math.Round(random.NextDouble() * (maxValue - minValue) + minValue, 3);
 
             SendToBuffer();
-            Console.WriteLine($"{name}:{value}");
+            Console.WriteLine(name + ":" + value);
         }
 
         private void SendToBuffer()

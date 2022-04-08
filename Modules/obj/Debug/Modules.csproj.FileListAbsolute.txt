@@ -21,3 +21,19 @@ C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\obj\Debug\Modules.csproj.Assemb
 C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\obj\Debug\Modules.csproj.CoreCompileInputs.cache
 C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\obj\Debug\Modules.exe
 C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\obj\Debug\Modules.pdb
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\Modules.exe.config
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\obj\Debug\Modules.exe
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\obj\Debug\Modules.pdb
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\obj\Debug\Modules.csprojResolveAssemblyReference.cache
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\Modules.exe
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\Modules.pdb
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\mscorlib.dll
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\System.Net.Http.dll
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\System.Net.Http.xml
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\ru\mscorlib.resources.dll
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\ru\System.Net.Http.resources.dll
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\normidna.nlp
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\normnfc.nlp
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\normnfd.nlp
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\normnfkc.nlp
+G:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\normnfkd.nlp
