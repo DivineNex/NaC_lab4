@@ -31,8 +31,7 @@ namespace Modules
 
                 if (Console.ReadKey().Key == ConsoleKey.S)
                    
-                {
-                    Console.Write("\b");
+                {  
                     if (generationModule.Active && registrationModule.Active)
                     {
                         Console.BackgroundColor = ConsoleColor.Red;
@@ -40,7 +39,6 @@ namespace Modules
                         Console.BackgroundColor = ConsoleColor.Black;
                         generationModule.Stop();
                         registrationModule.Stop();
-                        continue;
                     }
                     else
                     {   
@@ -48,8 +46,7 @@ namespace Modules
                         Console.WriteLine("Работа модулей возобновлена");
                         Console.BackgroundColor = ConsoleColor.Black;
                         generationModule.Start();
-                        registrationModule.Start();
-                        continue;
+                        registrationModule.Start();   
                     }
                 }
                 if (Console.ReadKey().Key == ConsoleKey.L)
