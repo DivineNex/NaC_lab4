@@ -57,7 +57,11 @@ namespace Modules
 
             SendToBuffer();
 
-            Console.WriteLine($"{name}:{value}");
+            if (GenerationModule)
+            {
+
+            }
+            Console.WriteLine(name+":"+value);
         }
 
         private void SendToBuffer()

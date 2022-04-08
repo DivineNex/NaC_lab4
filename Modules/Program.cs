@@ -49,7 +49,6 @@ namespace Modules
                 if (Console.ReadKey().Key == ConsoleKey.L)
                 {
                     generationModule.Logging = !generationModule.Logging;
-
                 }
             }
 
