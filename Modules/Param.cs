@@ -57,10 +57,10 @@ namespace Modules
 
             SendToBuffer();
 
-            if (GenerationModule)
-            {
+            //if (GenerationModule)
+            //{
 
-            }
+            //}
             Console.WriteLine(name+":"+value);
         }
 
