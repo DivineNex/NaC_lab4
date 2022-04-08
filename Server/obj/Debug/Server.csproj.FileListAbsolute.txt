@@ -1,0 +1,8 @@
+C:\GitHub\NaC_lab4\Server\bin\Debug\Server.exe.config
+C:\GitHub\NaC_lab4\Server\bin\Debug\Server.exe
+C:\GitHub\NaC_lab4\Server\bin\Debug\Server.pdb
+C:\GitHub\NaC_lab4\Server\obj\Debug\Server.csproj.AssemblyReference.cache
+C:\GitHub\NaC_lab4\Server\obj\Debug\Server.csproj.SuggestedBindingRedirects.cache
+C:\GitHub\NaC_lab4\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+C:\GitHub\NaC_lab4\Server\obj\Debug\Server.exe
+C:\GitHub\NaC_lab4\Server\obj\Debug\Server.pdb
