@@ -9,6 +9,7 @@ namespace Modules
 {
     internal class Param
     {
+        public GenerationModule generationModule;
         public readonly string name;
         Timer timer;
         Random random;
@@ -57,11 +58,9 @@ namespace Modules
 
             SendToBuffer();
 
-            if (GenerationModule)
-            {
+            if (generationModule.Logging == true)
+                Console.WriteLine(name + ":" + value);
 
-            }
-            Console.WriteLine(name+":"+value);
         }
 
         private void SendToBuffer()
