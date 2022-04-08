@@ -30,28 +30,51 @@ namespace Modules
                 {
                     if (generationModule.Active && registrationModule.Active)
                     {
-
+                        //Console.WriteLine("\b");
                         Console.BackgroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Работа модулей остановлена");
+                        Console.WriteLine("Работа модулей остановлена.");
                         Console.BackgroundColor = ConsoleColor.Black;
                         generationModule.Stop();
                         registrationModule.Stop();
+                        continue;
                     }
                     else
                     {
+                       // Console.WriteLine("\b");
                         Console.BackgroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Работа модулей возобновлена");
+                        Console.WriteLine("Работа модулей возобновлена.");
                         Console.BackgroundColor = ConsoleColor.Black;
                         generationModule.Start();
                         registrationModule.Start();
+                        continue;
                     }
                 }
-                if (Console.ReadKey().Key == ConsoleKey.L)
+                else if (Console.ReadKey().Key == ConsoleKey.L)
                 {
-                    generationModule.Logging = !generationModule.Logging;
+                    if (generationModule.Logging == true)
+                    {
+                        
+                        //Console.WriteLine("\b");
+                        Console.BackgroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Логирование остановлено.");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        generationModule.Logging = false;
+                        continue;
+                    }
+                    else
+                    {
+                        
+                        //Console.WriteLine("\b");
+                        Console.BackgroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Логирование возобновлено.");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        generationModule.Logging = true;
+                        continue;
+                    }
                 }
             }
-
         }
+
     }
 }
+
