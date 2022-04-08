@@ -1,0 +1,8 @@
+C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\bin\Debug\Modules.exe.config
+C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\bin\Debug\Modules.exe
+C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\bin\Debug\Modules.pdb
+C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\obj\Debug\Modules.csproj.AssemblyReference.cache
+C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\obj\Debug\Modules.csproj.SuggestedBindingRedirects.cache
+C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\obj\Debug\Modules.csproj.CoreCompileInputs.cache
+C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\obj\Debug\Modules.exe
+C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\obj\Debug\Modules.pdb
