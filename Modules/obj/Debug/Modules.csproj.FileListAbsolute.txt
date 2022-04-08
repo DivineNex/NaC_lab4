@@ -6,3 +6,6 @@ C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\o
 C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\obj\Debug\Modules.csproj.CoreCompileInputs.cache
 C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\obj\Debug\Modules.exe
 C:\Users\NexBlood\Desktop\Всё\Учеба\СиТ\4 Л.р\Lab4Project\Modules\obj\Debug\Modules.pdb
+C:\GitHub\NaC_lab4\Modules\obj\Debug\Modules.csproj.AssemblyReference.cache
+C:\GitHub\NaC_lab4\Modules\obj\Debug\Modules.csproj.SuggestedBindingRedirects.cache
+C:\GitHub\NaC_lab4\Modules\obj\Debug\Modules.csproj.CoreCompileInputs.cache
