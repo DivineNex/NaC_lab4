@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Modules
-{
+{       
     internal class GenerationModule
     {
         List<Param> allParams;
@@ -75,6 +75,7 @@ namespace Modules
                         Convert.ToDouble(paramConfigs[3]),  //maxValue
                         Convert.ToBoolean(paramConfigs[4]), //isInteger
                         registrationModuleBuffer);          //буфер модуля регистрации
+                    newParam.generationModule = this;
                     allParams.Add(newParam);
                     line = sr.ReadLine();
                 }
