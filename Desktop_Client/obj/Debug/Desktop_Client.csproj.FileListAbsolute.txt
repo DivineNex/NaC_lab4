@@ -1,0 +1,10 @@
+C:\GitHub\NaC_lab4\Desktop_Client\bin\Debug\Desktop_Client.exe.config
+C:\GitHub\NaC_lab4\Desktop_Client\bin\Debug\Desktop_Client.exe
+C:\GitHub\NaC_lab4\Desktop_Client\bin\Debug\Desktop_Client.pdb
+C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.AssemblyReference.cache
+C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.SuggestedBindingRedirects.cache
+C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.Properties.Resources.resources
+C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.GenerateResource.cache
+C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.CoreCompileInputs.cache
+C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.exe
+C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.pdb

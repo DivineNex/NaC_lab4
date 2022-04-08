@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,53 +10,94 @@ namespace Modules
 {
     internal class Program
     {
-        
+        private static RegistrationModule registrationModule;
+        private static GenerationModule generationModule;
+
         static void Main(string[] args)
         {
             /*
-             * КЛАВИШИ И КОМАНДЫ УПРАВЛЕНИЯ:
-             * 'L' - остановить/возобновить логирование
-             * 'S' - остановить/возобновить работу модулей
+             * КОМАНДЫ УПРАВЛЕНИЯ:
+             * connect - подключения модуля регистрации к серверу
+             * disconnect - отключение модуля регистрации от сервера
+             * start - запуск модулей
+             * stop - остановка модулей
+             * start logging - начало сессии логирования
+             * stop loggin - конец сессии логирования
              */
-            
-            RegistrationModule registrationModule = new RegistrationModule();
-            GenerationModule generationModule = new GenerationModule(registrationModule.buffer);
-            
-            generationModule.LoadAndParseParams();
-            registrationModule.SetSendInterval(generationModule.minInterval);
-            generationModule.Start();
-            registrationModule.Start();
-            
+
+            Init();
 
             while (true)
-            {  
+            {
+                string line = Console.ReadLine();
 
-                if (Console.ReadKey().Key == ConsoleKey.S)
-                   
-                {  
-                    if (generationModule.Active && registrationModule.Active)
-                    {
-                        Console.BackgroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Работа модулей остановлена");
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        generationModule.Stop();
-                        registrationModule.Stop();
-                    }
-                    else
-                    {   
-                        Console.BackgroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Работа модулей возобновлена");
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        generationModule.Start();
-                        registrationModule.Start();   
-                    }
-                }
-                if (Console.ReadKey().Key == ConsoleKey.L)
-                {
-                    generationModule.Logging = !generationModule.Logging;
-                }
+                if (line == "connect")
+                    Connect();
+                else if (line == "disconnect")
+                    Disconnect();
+                else if (line == "start")
+                    StartModules();
+                else if (line == "stop")
+                    StopModules();
             }
+        }
 
+        private static void Init()
+        {
+            registrationModule = new RegistrationModule();
+            generationModule = new GenerationModule(registrationModule.buffer);
+
+            generationModule.LoadAndParseParams();
+            registrationModule.SetSendInterval(generationModule.minInterval);
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("Инициализация прошла успешно");
+            Console.BackgroundColor = ConsoleColor.Black;
+        }
+
+        private static void Connect()
+        {
+            registrationModule.ConnectToServer();
+        }
+
+        private static void Disconnect()
+        {
+            registrationModule.DisconnectFromServer();
+        }
+
+        private static void StartModules()
+        {
+            if (generationModule.Active == false && registrationModule.Active == false)
+            {
+                generationModule.Start();
+                registrationModule.Start();
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Модули запущены");
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Модули уже запущены");
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
+        }
+
+        private static void StopModules()
+        {
+            if (generationModule.Active == true && registrationModule.Active == true)
+            {
+                generationModule.Stop();
+                registrationModule.Stop();
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Модули остановлены");
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
+            else
+            {
+                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("Модули уже остановлены");
+                Console.BackgroundColor = ConsoleColor.Black;
+            }
         }
     }
 }

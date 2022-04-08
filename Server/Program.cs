@@ -7,12 +7,24 @@ namespace Server
 {
     class Program
     {
-        static int port = 8000;
+        private static IPEndPoint ipPoint;
+        private static Socket listenSocket;
+        static int port = 55555;
+        static Socket handler;
         static void Main(string[] args)
         {
-            IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+            Init();
+            Start();
+        }
 
-            Socket listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        private static void Init()
+        {
+            ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+            listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        }
+
+        private static void Start()
+        {
             try
             {
                 listenSocket.Bind(ipPoint);
@@ -21,40 +33,44 @@ namespace Server
 
                 Console.WriteLine("Сервер запущен. Ожидание подключений...");
 
+                handler = listenSocket.Accept();
+
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine($"Клиент {handler.RemoteEndPoint} подключен");
+                Console.BackgroundColor = ConsoleColor.Black;
+
                 while (true)
                 {
-                    Socket handler = listenSocket.Accept();
-                    
-                    Console.WriteLine($"Клиент {handler.RemoteEndPoint} подключен");
-
-                    StringBuilder builder = new StringBuilder();
-                    int bytes = 0;
-                    byte[] data = new byte[256];
-
-                    do
-                    {
-                        bytes = handler.Receive(data);
-                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-                    }
-                    while (handler.Available > 0);
-
-                    string recievedMessage = builder.ToString();
-
-                    Console.WriteLine($"");
-
-                    // отправляем ответ
-                    string message = "lol";
-                    data = Encoding.Unicode.GetBytes(message);
-                    handler.Send(data);
-                    // закрываем сокет
-                    handler.Shutdown(SocketShutdown.Both);
-                    handler.Close();
+                    GetData();
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private static void GetData()
+        {
+            StringBuilder builder = new StringBuilder();
+            int bytes = 0;
+            byte[] data = new byte[256];
+
+            do
+            {
+                bytes = handler.Receive(data);
+                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+            }
+            while (handler.Available > 0);
+
+            string recievedMessage = builder.ToString();
+            string[] receivedParams = recievedMessage.Split('/');
+            Console.WriteLine();
+            for (int i = 0; i < receivedParams.Length; i++)
+            {
+                Console.Write($"{receivedParams[i]}\t");
+            }
+            Console.WriteLine();
         }
     }
 }

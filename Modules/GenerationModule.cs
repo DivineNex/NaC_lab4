@@ -66,7 +66,7 @@ namespace Modules
                 }
                 else
                 {
-                    if (Convert.ToInt32(paramConfigs[2]) < minInterval)
+                    if (Convert.ToInt32(paramConfigs[1]) < minInterval)
                         minInterval = Convert.ToInt32(paramConfigs[1]);
 
                     Param newParam = new Param(paramConfigs[0],                    //name
@@ -81,8 +81,6 @@ namespace Modules
                 }
 
             }
-
-            //Задать минимальный интервал там же в цикле!
         }
     }
 }

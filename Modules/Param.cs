@@ -16,6 +16,7 @@ namespace Modules
         private double maxValue;
         List<ParamForSend> bufferForSend;
         bool isInteger;
+        public GenerationModule generationModule;
 
         private double value;
         public double Value
@@ -57,11 +58,8 @@ namespace Modules
 
             SendToBuffer();
 
-            //if (GenerationModule)
-            //{
-
-            //}
-            Console.WriteLine(name+":"+value);
+            //Улучшится при новой системе логирования
+            //Console.WriteLine(name+":"+value);
         }
 
         private void SendToBuffer()
