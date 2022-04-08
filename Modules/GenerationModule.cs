@@ -41,9 +41,10 @@ namespace Modules
             foreach (var param in allParams)
             {
                 param.Active = false;
+                
             }
         }
-
+        // Метод для подгрузки настроек параметров из текстового документа
         public void LoadAndParseParams()
         {
             StreamReader sr = new StreamReader(@"..\\..\\params.txt");

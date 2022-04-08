@@ -14,3 +14,10 @@ C:\GitHub\NaC_lab4\Modules\bin\Debug\Modules.exe
 C:\GitHub\NaC_lab4\Modules\bin\Debug\Modules.pdb
 C:\GitHub\NaC_lab4\Modules\obj\Debug\Modules.exe
 C:\GitHub\NaC_lab4\Modules\obj\Debug\Modules.pdb
+C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\bin\Debug\Modules.exe.config
+C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\bin\Debug\Modules.exe
+C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\bin\Debug\Modules.pdb
+C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\obj\Debug\Modules.csproj.AssemblyReference.cache
+C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\obj\Debug\Modules.csproj.CoreCompileInputs.cache
+C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\obj\Debug\Modules.exe
+C:\Users\79135\Documents\GitHub\NaC_lab4\Modules\obj\Debug\Modules.pdb
