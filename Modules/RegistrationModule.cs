@@ -13,18 +13,10 @@ namespace Modules
     internal class RegistrationModule
     {
         private int port = 55555; // порт сервера
-        private string address = "172.31.223.67"; // адрес сервера
+        private string address = "127.0.0.1"; // адрес сервера
         private Socket socket;
         private IPEndPoint ipPoint;
         private bool connected = false;
-
-        //ТЕСТ, УДАЛИТЬ ПОТОМ
-        Stopwatch sw = new Stopwatch();
-        TimeSpan ts = new TimeSpan();
-
-        public List<ParamForSend> buffer;
-        private int sendInterval;
-        private Timer timer;
 
         private bool active;
         public bool Active
@@ -32,37 +24,14 @@ namespace Modules
             get { return active; }
         }
 
-        public RegistrationModule()
-        {
-            buffer = new List<ParamForSend>();
-            timer = new Timer();
-            timer.Enabled = false;
-            timer.Elapsed += Timer_Elapsed;
-        }
-
-        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            //SendDataToServer(buffer);
-            
-            buffer.Clear();
-        }
-
         public void Start()
         {
             active = true;
-            timer.Enabled = true;
         }
 
         public void Stop()
         {
             active = false;
-            timer.Enabled = false;
-        }
-
-        public void SetSendInterval(int interval)
-        {
-            sendInterval = interval;
-            timer.Interval = sendInterval;
         }
 
         public void ConnectToServer()
@@ -108,22 +77,6 @@ namespace Modules
                 Console.WriteLine("Нет подключения к серверу, чтобы его разорвать");
                 Console.BackgroundColor = ConsoleColor.Black;
             }
-        }
-
-        private void SendDataToServer(List<ParamForSend> buffer)
-        {
-            string stringData = "";
-
-            for (int i = 0; i < buffer.Count; i++)
-            {
-                //Параметры разделяются слэшем, а имя и значение параметра разделяется символом |
-                if (i != buffer.Count - 1)
-                    stringData += $"{buffer[i].name}|{buffer[i].value}/";
-                else
-                    stringData += $"{buffer[i].name}|{buffer[i].value}";
-            }
-            byte[] data = Encoding.Unicode.GetBytes(stringData);
-            socket.Send(data);
         }
 
         public void SendParam(ParamForSend param)

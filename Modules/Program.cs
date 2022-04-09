@@ -45,10 +45,9 @@ namespace Modules
         private static void Init()
         {
             registrationModule = new RegistrationModule();
-            generationModule = new GenerationModule(registrationModule.buffer);
+            generationModule = new GenerationModule();
 
             generationModule.LoadAndParseParams();
-            registrationModule.SetSendInterval(generationModule.minInterval);
 
             foreach (var par in generationModule.allParams)
             {
