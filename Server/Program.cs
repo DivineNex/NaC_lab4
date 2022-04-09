@@ -19,7 +19,7 @@ namespace Server
 
         private static void Init()
         {
-            ipPoint = new IPEndPoint(IPAddress.Parse("172.31.223.67"), port);
+            ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
@@ -65,12 +65,10 @@ namespace Server
 
             string recievedMessage = builder.ToString();
             string[] receivedParams = recievedMessage.Split('/');
-            //Console.WriteLine($"Получил данные по {receivedParams.Length} параметрам");
             for (int i = 0; i < receivedParams.Length; i++)
             {
                 Console.Write($"{receivedParams[i]}\t");
             }
-            //Console.WriteLine(recievedMessage);
             Console.WriteLine();
         }
     }

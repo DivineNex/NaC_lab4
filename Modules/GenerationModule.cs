@@ -19,13 +19,9 @@ namespace Modules
             get { return active; }
         }
 
-        public int minInterval = Int32.MaxValue;
-        private List<ParamForSend> registrationModuleBuffer;
-
-        public GenerationModule(List<ParamForSend> rmBuffer)
+        public GenerationModule()
         {
             allParams = new List<Param>();
-            registrationModuleBuffer = rmBuffer;
         }
 
         public void Start()
@@ -68,15 +64,11 @@ namespace Modules
                 }
                 else
                 {
-                    if (Convert.ToInt32(paramConfigs[1]) < minInterval)
-                        minInterval = Convert.ToInt32(paramConfigs[1]);
-
                     Param newParam = new Param(paramConfigs[0],                    //name
                         Convert.ToInt32(paramConfigs[1]),   //interval
                         Convert.ToDouble(paramConfigs[2]),  //minValue
                         Convert.ToDouble(paramConfigs[3]),  //maxValue
-                        Convert.ToBoolean(paramConfigs[4]), //isInteger
-                        registrationModuleBuffer);          //буфер модуля регистрации
+                        Convert.ToBoolean(paramConfigs[4]));          //буфер модуля регистрации
                     newParam.gm = this;
                     allParams.Add(newParam);
                     line = sr.ReadLine();
