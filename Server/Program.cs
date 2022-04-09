@@ -19,7 +19,7 @@ namespace Server
 
         private static void Init()
         {
-            ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
+            ipPoint = new IPEndPoint(IPAddress.Parse("172.31.223.67"), port);
             listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 

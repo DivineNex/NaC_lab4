@@ -13,7 +13,7 @@ namespace Modules
     internal class RegistrationModule
     {
         private int port = 55555; // порт сервера
-        private string address = "127.0.0.1"; // адрес сервера
+        private string address = "172.31.223.67"; // адрес сервера
         private Socket socket;
         private IPEndPoint ipPoint;
         private bool connected = false;
