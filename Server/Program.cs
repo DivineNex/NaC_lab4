@@ -64,12 +64,13 @@ namespace Server
             while (handler.Available > 0);
 
             string recievedMessage = builder.ToString();
-            string[] receivedParams = recievedMessage.Split('/');
-            Console.WriteLine();
-            for (int i = 0; i < receivedParams.Length; i++)
-            {
-                Console.Write($"{receivedParams[i]}\t");
-            }
+            //string[] receivedParams = recievedMessage.Split('/');
+            //Console.WriteLine($"Получил данные по {receivedParams.Length} параметрам");
+            //for (int i = 0; i < receivedParams.Length; i++)
+            //{
+            //    Console.Write($"{receivedParams[i]}\t");
+            //}
+            Console.WriteLine(recievedMessage);
             Console.WriteLine();
         }
     }

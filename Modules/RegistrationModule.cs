@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -16,6 +17,10 @@ namespace Modules
         private Socket socket;
         private IPEndPoint ipPoint;
         private bool connected = false;
+
+        //ТЕСТ, УДАЛИТЬ ПОТОМ
+        Stopwatch sw = new Stopwatch();
+        TimeSpan ts = new TimeSpan();
 
         public List<ParamForSend> buffer;
         private int sendInterval;
@@ -37,7 +42,7 @@ namespace Modules
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            SendDataToServer(buffer);
+            //SendDataToServer(buffer);
             
             buffer.Clear();
         }
@@ -107,22 +112,31 @@ namespace Modules
 
         private void SendDataToServer(List<ParamForSend> buffer)
         {
-            if (buffer.Count > 0)
-            {
-                string stringData = "";
+            string stringData = "";
 
-                for (int i = 0; i < buffer.Count; i++)
-                {
-                    //Параметры разделяются слэшем, а имя и значение параметра разделяется символом |
-                    if (i != buffer.Count - 1)
-                        stringData += $"{buffer[i].name}|{buffer[i].value}/";
-                    else
-                        stringData += $"{buffer[i].name}|{buffer[i].value}";
-                }
-                byte[] data = Encoding.Unicode.GetBytes(stringData);
-                Console.WriteLine($"Отправил данные по {buffer.Count} параметрам!");
-                socket.Send(data);
+            for (int i = 0; i < buffer.Count; i++)
+            {
+                //Параметры разделяются слэшем, а имя и значение параметра разделяется символом |
+                if (i != buffer.Count - 1)
+                    stringData += $"{buffer[i].name}|{buffer[i].value}/";
+                else
+                    stringData += $"{buffer[i].name}|{buffer[i].value}";
             }
+            byte[] data = Encoding.Unicode.GetBytes(stringData);
+            Console.WriteLine($"Отправил данные по {buffer.Count} параметрам!");
+            //socket.Send(data);
+
+            //sw.Stop();
+            //ts = sw.Elapsed;
+            //string elapsedTime = String.Format("{0:00}с {1:00}мс", ts.Seconds, ts.Milliseconds);
+            //Console.WriteLine("С посл. отпр. прошло: " + elapsedTime);
+            //sw.Restart();
+        }
+
+        //ТЕСТОВЫЙ МЕТОД
+        public void SendParam(ParamForSend param)
+        {
+            string sendString = $"{param.name}|{param.value}";
         }
     }
 }

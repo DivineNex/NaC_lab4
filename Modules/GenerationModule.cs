@@ -9,7 +9,9 @@ namespace Modules
 {       
     internal class GenerationModule
     {
-        List<Param> allParams;
+        //тестом сделал public, но не должен быть
+        public List<Param> allParams;
+
         private bool active = false;
         public bool Logging = true;
         public bool Active
@@ -75,7 +77,7 @@ namespace Modules
                         Convert.ToDouble(paramConfigs[3]),  //maxValue
                         Convert.ToBoolean(paramConfigs[4]), //isInteger
                         registrationModuleBuffer);          //буфер модуля регистрации
-                    newParam.generationModule = this;
+                    newParam.gm = this;
                     allParams.Add(newParam);
                     line = sr.ReadLine();
                 }

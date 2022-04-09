@@ -49,6 +49,12 @@ namespace Modules
 
             generationModule.LoadAndParseParams();
             registrationModule.SetSendInterval(generationModule.minInterval);
+
+            foreach (var par in generationModule.allParams)
+            {
+                par.rm = registrationModule;
+            }
+
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Инициализация прошла успешно");
             Console.BackgroundColor = ConsoleColor.Black;
