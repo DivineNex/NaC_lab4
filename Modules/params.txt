@@ -1,6 +1,6 @@
 name interval minValue maxValue isInteger. "// " to comment param
 ------------------------
 drill_temp 1000 20 100 true
-// pressure 5000 30 50 false
+pressure 2000 30 50 false
 // depth 2000 0 100 false
 // o2_count 500 30 100 true

@@ -63,8 +63,8 @@ namespace Modules
 
             //SendToBuffer();
 
-            ////Улучшится при новой системе логирования
-            //Console.WriteLine("Сгенерирован: " + name + ":" + value);
+            //Улучшится при новой системе логирования
+            Console.WriteLine("Сгенерирован: " + name + ":" + value);
             ////Console.WriteLine("Всего в буфере: " + bufferForSend.Count);
 
             ////УДАЛИТЬ ПОТОМ
@@ -77,7 +77,7 @@ namespace Modules
 
 
             //ТЕСТ
-            Console.WriteLine($"{name}:{value}");
+            //Console.WriteLine($"{name}:{value}");
 
             ParamForSend paramForSend = new ParamForSend();
             paramForSend.name = name;

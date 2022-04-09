@@ -123,20 +123,14 @@ namespace Modules
                     stringData += $"{buffer[i].name}|{buffer[i].value}";
             }
             byte[] data = Encoding.Unicode.GetBytes(stringData);
-            Console.WriteLine($"Отправил данные по {buffer.Count} параметрам!");
-            //socket.Send(data);
-
-            //sw.Stop();
-            //ts = sw.Elapsed;
-            //string elapsedTime = String.Format("{0:00}с {1:00}мс", ts.Seconds, ts.Milliseconds);
-            //Console.WriteLine("С посл. отпр. прошло: " + elapsedTime);
-            //sw.Restart();
+            socket.Send(data);
         }
 
-        //ТЕСТОВЫЙ МЕТОД
         public void SendParam(ParamForSend param)
         {
             string sendString = $"{param.name}|{param.value}";
+            byte[] data = Encoding.Unicode.GetBytes(sendString);
+            socket.Send(data);
         }
     }
 }
