@@ -8,3 +8,13 @@ C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.GenerateResour
 C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.CoreCompileInputs.cache
 C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.exe
 C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.pdb
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\bin\Debug\Desktop_Client.exe.config
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\bin\Debug\Desktop_Client.exe
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\bin\Debug\Desktop_Client.pdb
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.AssemblyReference.cache
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.Form1.resources
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.Properties.Resources.resources
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.GenerateResource.cache
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.CoreCompileInputs.cache
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.exe
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.pdb
