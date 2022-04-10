@@ -58,16 +58,14 @@ namespace Server
 
                     Client newClient = new Client();
                     newClient.ip_port = handler.RemoteEndPoint.ToString();
+                    newClient.socket = handler;
 
-                    Thread newThread = new Thread(() => SocketThread(handler, newClient));
+                    Thread newThread = new Thread(() => SocketThread(handler, ref newClient));
                     newThread.Start();
 
                     newClient.socketThread = newThread;
 
-                    //ТРЕБУЕТСЯ ПОЛНАЯ СИСТЕМА ТИПИЗАЦИИ КЛИЕНТОВ
-                    //newClient.type = eClientType.Reg_module;
-
-                    clients.Add(newClient);
+                    //clients.Add(newClient);
                 }
                 catch (Exception ex)
                 {
@@ -76,7 +74,7 @@ namespace Server
             }
         }
 
-        private static void SocketThread(Socket handler, Client client)
+        private static void SocketThread(Socket handler, ref Client client)
         {
             while (true)
             {
@@ -100,6 +98,7 @@ namespace Server
                     while (handler.Available > 0);
 
                     string recievedMessage = builder.ToString();
+                    bool isInitMessage = false;
 
                     //Для разделения мультимессенджинга
                     string[] splittedRecievedMessage = recievedMessage.Split('&');
@@ -107,9 +106,23 @@ namespace Server
                     {
                         if (splittedRecievedMessage[i] != "")
                         {
-                            parser.ParseMessage(splittedRecievedMessage[i], client);
+                            parser.ParseMessage(splittedRecievedMessage[i], ref client, out isInitMessage);
+                            clients.Add(client);
                         }
                     }
+
+                    if (!isInitMessage)
+                    {
+                        for (int i = 0; i < clients.Count; i++)
+                        {
+                            if (clients[i].Type != eClientType.Reg_module)
+                            {
+                                SendMessageToClient(recievedMessage, clients[i]);
+                            }
+                        }
+                    }
+
+                    isInitMessage = false;
                 }
                 catch
                 {
@@ -121,25 +134,12 @@ namespace Server
                     break;
                 }
             }
+        }
 
-            //Старая система получения сообщений. Пока пусть тут будет
-
-            //while (client.connected)
-            //{
-            //    StringBuilder builder = new StringBuilder();
-            //    int bytes = 0;
-            //    byte[] data = new byte[256];
-
-            //    do
-            //    {
-            //        bytes = handler.Receive(data);
-            //        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-            //    }
-            //    while (handler.Available > 0);
-
-            //    string recievedMessage = builder.ToString();
-            //    Console.WriteLine(recievedMessage);
-            //}
+        private static void SendMessageToClient(string message, Client client)
+        {
+            byte[] data = Encoding.Unicode.GetBytes(message);
+            client.socket.Send(data);
         }
     }
 }

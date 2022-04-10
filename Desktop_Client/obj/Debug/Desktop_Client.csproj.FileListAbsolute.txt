@@ -18,3 +18,5 @@ C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client
 C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.CoreCompileInputs.cache
 C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.exe
 C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.pdb
+C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.MainForm.resources
+C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ConnectionForm.resources
