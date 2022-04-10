@@ -100,7 +100,16 @@ namespace Server
                     while (handler.Available > 0);
 
                     string recievedMessage = builder.ToString();
-                    parser.ParseMessage(recievedMessage, client);
+
+                    //Для разделения мультимессенджинга
+                    string[] splittedRecievedMessage = recievedMessage.Split('&');
+                    for (int i = 0; i < splittedRecievedMessage.Length; i++)
+                    {
+                        if (splittedRecievedMessage[i] != "")
+                        {
+                            parser.ParseMessage(splittedRecievedMessage[i], client);
+                        }
+                    }
                 }
                 catch
                 {

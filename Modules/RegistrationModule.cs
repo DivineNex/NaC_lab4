@@ -91,14 +91,14 @@ namespace Modules
 
         public void SendParam(string param)
         {
-            string paramMessage = "param//" + param;
+            string paramMessage = "&param//" + param;
             byte[] data = Encoding.Unicode.GetBytes(paramMessage);
             socket.Send(data);
         }
 
         private void SendInitMessage()
         {
-            string message = "init//reg";
+            string message = "&init//reg";
             byte[] data = Encoding.Unicode.GetBytes(message);
             socket.Send(data);
         }

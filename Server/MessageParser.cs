@@ -32,7 +32,7 @@ namespace Server
                     Console.BackgroundColor = ConsoleColor.Black;
                     break;
                 case "param":
-                    Console.WriteLine(DateTime.Now.ToShortTimeString() + " " + client.ip_port + " " + client.type + " " + parsedMessage[1]);
+                    Console.WriteLine(DateTime.Now.ToString("HH:mm:ss") + " " + client.ip_port + " " + client.type + " " + parsedMessage[1]);
                     break;
             }
         }

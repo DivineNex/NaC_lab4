@@ -57,8 +57,7 @@ namespace Modules
                 value = Math.Round(random.NextDouble() * (maxValue - minValue) + minValue, 3);
 
             //Улучшится при новой системе логирования
-            //ПРИСУТСТВИЕ ЭТОЙ СТРОКИ КАКИМ-ТО ОБРАЗОМ ФИКСИТ БАГ #2, АХАХАХАХАХАХ
-            Console.WriteLine("Сгенерирован: " + name + " = " + value);
+            //Console.WriteLine("Сгенерирован: " + name + " = " + value);
 
             SendToServer($"{this.name} = {this.value}");
         }
