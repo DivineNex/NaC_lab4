@@ -56,8 +56,8 @@ namespace Modules
 
             while (line != null)
             {
-                paramConfigs = line.Split(' ');
-                if (paramConfigs[0] == "//")
+                paramConfigs = line.Split('/');
+                if (paramConfigs[0] == "&&")
                 {
                     line = sr.ReadLine();
                     continue;

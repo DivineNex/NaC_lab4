@@ -81,7 +81,6 @@ namespace Modules
 
         public void SendParam(string param)
         {
-            //string sendString = $"{param.name}|{param.value}";
             byte[] data = Encoding.Unicode.GetBytes(param);
             socket.Send(data);
         }
