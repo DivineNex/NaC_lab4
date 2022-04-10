@@ -9,7 +9,6 @@ namespace Modules
 {       
     internal class GenerationModule
     {
-        //тестом сделал public, но не должен быть
         public List<Param> allParams;
 
         private bool active = false;
@@ -42,6 +41,7 @@ namespace Modules
                 
             }
         }
+
         // Метод для подгрузки настроек параметров из текстового документа
         public void LoadAndParseParams()
         {
@@ -64,11 +64,11 @@ namespace Modules
                 }
                 else
                 {
-                    Param newParam = new Param(paramConfigs[0],                    //name
-                        Convert.ToInt32(paramConfigs[1]),   //interval
-                        Convert.ToDouble(paramConfigs[2]),  //minValue
-                        Convert.ToDouble(paramConfigs[3]),  //maxValue
-                        Convert.ToBoolean(paramConfigs[4]));          //буфер модуля регистрации
+                    Param newParam = new Param(paramConfigs[0],         //name
+                        Convert.ToInt32(paramConfigs[1]),               //interval
+                        Convert.ToDouble(paramConfigs[2]),              //minValue
+                        Convert.ToDouble(paramConfigs[3]),              //maxValue
+                        Convert.ToBoolean(paramConfigs[4]));            //буфер модуля регистрации
                     newParam.gm = this;
                     allParams.Add(newParam);
                     line = sr.ReadLine();

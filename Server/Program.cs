@@ -2,15 +2,19 @@
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
+using System.Collections.Generic;
 
 namespace Server
 {
     class Program
     {
+        private static Thread listeningThread;
+        private static List<Thread> clientThreads;
         private static IPEndPoint ipPoint;
         private static Socket listenSocket;
         static int port = 55555;
-        static Socket handler;
+
         static void Main(string[] args)
         {
             Init();
@@ -21,57 +25,62 @@ namespace Server
         {
             ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            clientThreads = new List<Thread>();
         }
 
         private static void Start()
         {
-            try
+            listeningThread = new Thread(() => ListeningThread());
+            listeningThread.Start();
+            Console.ReadKey();
+        }
+
+        private static void SocketThread(Socket handler)
+        {
+            while (true)
             {
-                listenSocket.Bind(ipPoint);
+                StringBuilder builder = new StringBuilder();
+                int bytes = 0;
+                byte[] data = new byte[256];
 
-                listenSocket.Listen(10);
-
-                Console.WriteLine("Сервер запущен. Ожидание подключений...");
-
-                handler = listenSocket.Accept();
-
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine($"Клиент {handler.RemoteEndPoint} подключен");
-                Console.BackgroundColor = ConsoleColor.Black;
-
-                //Создать отдельный поток для этого handler'а 
-
-                while (true)
+                do
                 {
-                    GetData();
+                    bytes = handler.Receive(data);
+                    builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                while (handler.Available > 0);
+
+                string recievedMessage = builder.ToString();
+                Console.WriteLine(recievedMessage);
             }
         }
 
-        private static void GetData()
+        private static void ListeningThread()
         {
-            StringBuilder builder = new StringBuilder();
-            int bytes = 0;
-            byte[] data = new byte[256];
+            listenSocket.Bind(ipPoint);
+            Console.WriteLine("Сервер запущен. Ожидание подключений...");
 
-            do
+            while (true)
             {
-                bytes = handler.Receive(data);
-                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-            }
-            while (handler.Available > 0);
+                try
+                {
+                    listenSocket.Listen(10);
 
-            string recievedMessage = builder.ToString();
-            string[] receivedParams = recievedMessage.Split('/');
-            for (int i = 0; i < receivedParams.Length; i++)
-            {
-                Console.Write($"{receivedParams[i]}\t");
+                    Socket handler = listenSocket.Accept();
+
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine($"Клиент {handler.RemoteEndPoint} подключен");
+                    Console.BackgroundColor = ConsoleColor.Black;
+
+                    Thread newThread = new Thread(() => SocketThread(handler));
+                    newThread.Start();
+                    clientThreads.Add(newThread);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
-            Console.WriteLine();
         }
     }
 }
