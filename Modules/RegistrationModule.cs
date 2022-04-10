@@ -36,25 +36,35 @@ namespace Modules
 
         public void ConnectToServer()
         {
-            try
+            if (!connected)
             {
-                Console.BackgroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("Подключение...");
-                Console.BackgroundColor = ConsoleColor.Black;
-                ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
-                socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                try
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine("Подключение...");
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
+                    socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-                // подключаемся к удаленному хосту
-                socket.Connect(ipPoint);
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine("Соединение с сервером установлено");
-                Console.BackgroundColor = ConsoleColor.Black;
-                connected = true;
+                    // подключаемся к удаленному хосту
+                    socket.Connect(ipPoint);
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("Соединение с сервером установлено");
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    connected = true;
+                    SendInitMessage();
+                }
+                catch (Exception ex)
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine(ex.Message);
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }
             }
-            catch (Exception ex)
+            else
             {
                 Console.BackgroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("Вы уже подключены к серверу");
                 Console.BackgroundColor = ConsoleColor.Black;
             }
         }
@@ -81,7 +91,15 @@ namespace Modules
 
         public void SendParam(string param)
         {
-            byte[] data = Encoding.Unicode.GetBytes(param);
+            string paramMessage = "param//" + param;
+            byte[] data = Encoding.Unicode.GetBytes(paramMessage);
+            socket.Send(data);
+        }
+
+        private void SendInitMessage()
+        {
+            string message = "init//reg";
+            byte[] data = Encoding.Unicode.GetBytes(message);
             socket.Send(data);
         }
     }

@@ -14,6 +14,7 @@ namespace Server
         private static IPEndPoint ipPoint;
         private static Socket listenSocket;
         static int port = 55555;
+        private static MessageParser parser;
 
         static void Main(string[] args)
         {
@@ -26,6 +27,7 @@ namespace Server
             ipPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
             listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             clients = new List<Client>();
+            parser = new MessageParser();
         }
 
         private static void Start()
@@ -38,7 +40,9 @@ namespace Server
         private static void ListeningThread()
         {
             listenSocket.Bind(ipPoint);
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Сервер запущен. Ожидание подключений...");
+            Console.BackgroundColor = ConsoleColor.Black;
 
             while (true)
             {
@@ -96,7 +100,7 @@ namespace Server
                     while (handler.Available > 0);
 
                     string recievedMessage = builder.ToString();
-                    Console.WriteLine(recievedMessage);
+                    parser.ParseMessage(recievedMessage, client);
                 }
                 catch
                 {
