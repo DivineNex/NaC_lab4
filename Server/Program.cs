@@ -39,6 +39,8 @@ namespace Server
                 Console.WriteLine($"Клиент {handler.RemoteEndPoint} подключен");
                 Console.BackgroundColor = ConsoleColor.Black;
 
+                //Создать отдельный поток для этого handler'а 
+
                 while (true)
                 {
                     GetData();

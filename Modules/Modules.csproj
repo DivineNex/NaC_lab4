@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="GenerationModule.cs" />
     <Compile Include="Param.cs" />
-    <Compile Include="ParamForSend.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationModule.cs" />

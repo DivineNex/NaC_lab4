@@ -59,12 +59,10 @@ namespace Modules
             //Улучшится при новой системе логирования
             Console.WriteLine("Сгенерирован: " + name + ":" + value);
 
-            ParamForSend paramForSend = new ParamForSend() { name = this.name, value = this.value };
-
-            SendToServer(paramForSend);
+            SendToServer($"{this.name}:{this.value}");
         }
 
-        private void SendToServer(ParamForSend param)
+        private void SendToServer(string param)
         {
             rm.SendParam(param);
         }
