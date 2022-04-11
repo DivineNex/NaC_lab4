@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="eClientType.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="eMessageType.cs" />
     <Compile Include="MessageParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

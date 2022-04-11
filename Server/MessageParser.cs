@@ -8,11 +8,9 @@ namespace Server
 {
     internal class MessageParser
     {
-        public void ParseMessage(string message, ref Client client, out bool isInitMessage, out bool isInitParams)
+        public void ParseMessage(string message, ref Client client, out eMessageType messageType)
         {
             string[] parsedMessage = message.Split(new string[] { "//" }, StringSplitOptions.None);
-            isInitMessage = false;
-            isInitParams = false;
 
             switch (parsedMessage[0])
             {
@@ -29,17 +27,20 @@ namespace Server
                             client.Type = eClientType.Web_client;
                             break;
                     }
-                    isInitMessage = true;
+                    messageType = eMessageType.initMessage;
                     Console.BackgroundColor = ConsoleColor.DarkGray;
                     Console.WriteLine($"Клиент {client.ip_port} является типом {client.Type}");
                     Console.BackgroundColor = ConsoleColor.Black;
                     break;
                 case "param":
                     Console.WriteLine(DateTime.Now.ToString("HH:mm:ss") + " " + client.ip_port + " " + client.Type + " " + parsedMessage[1]);
-                    isInitMessage = false;
+                    messageType = eMessageType.paramsMessage;
                     break;
                 case "init_params":
-                    isInitParams = true;
+                    messageType = eMessageType.initParamsMessage;
+                    break;
+                default:
+                    messageType = eMessageType.not_assigned;
                     break;
             }
         }

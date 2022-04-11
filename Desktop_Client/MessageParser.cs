@@ -19,7 +19,13 @@ namespace Desktop_Client
             {
                 case "param":
                     mainForm.AddLog(DateTime.Now.ToString("HH:mm:ss") + " " + parsedMessage[1]);
-
+                    break;
+                case "init_params":
+                    mainForm.AllGettingParamsNames.Clear();
+                    for (int i = 1; i < parsedMessage.Length; i++)
+                    {
+                        mainForm.AllGettingParamsNames.Add(parsedMessage[i]);
+                    }
                     break;
             }
         }

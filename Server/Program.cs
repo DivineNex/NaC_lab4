@@ -65,8 +65,6 @@ namespace Server
                     newThread.Start();
 
                     newClient.socketThread = newThread;
-
-                    //clients.Add(newClient);
                 }
                 catch (Exception ex)
                 {
@@ -99,8 +97,7 @@ namespace Server
                     while (handler.Available > 0);
 
                     string recievedMessage = builder.ToString();
-                    bool isInitMessage = false;
-                    bool isInitParamsMessage = false;
+                    eMessageType messageType;
 
                     //Для разделения мультимессенджинга
                     string[] splittedRecievedMessage = recievedMessage.Split('&');
@@ -108,40 +105,10 @@ namespace Server
                     {
                         if (splittedRecievedMessage[i] != "")
                         {
-                            parser.ParseMessage(splittedRecievedMessage[i], ref client, out isInitMessage, out isInitParamsMessage);
-
-                            if (isInitMessage)
-                            {
-                                clients.Add(client);
-                            }
-                            else
-                            {
-                                if (isInitParamsMessage)
-                                {
-                                    for (int j = 0; j < splittedRecievedMessage.Length; j++)
-                                    {
-                                        if (splittedRecievedMessage[j] != "" && splittedRecievedMessage[j] != "init//reg" && splittedRecievedMessage[j] != "init//desktop" && splittedRecievedMessage[j] != "init//web")
-                                        {
-                                            allGeneratingParams += splittedRecievedMessage[j];
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    for (int j = 0; j < clients.Count; j++)
-                                    {
-                                        if (clients[j].Type != eClientType.Reg_module)
-                                        {
-                                            SendMessageToClient("&" + splittedRecievedMessage[i], clients[j]);
-                                        }
-                                    }
-                                }
-                            }
-                                
+                            parser.ParseMessage(splittedRecievedMessage[i], ref client, out messageType);
+                            HandleMessage(splittedRecievedMessage[i], splittedRecievedMessage, messageType, client);                                
                         }
                     }
-
-                    isInitMessage = false;
                 }
                 catch
                 {
@@ -159,6 +126,42 @@ namespace Server
         {
             byte[] data = Encoding.Unicode.GetBytes(message);
             client.socket.Send(data);
+        }
+
+        private static void HandleMessage(string messagePart, string[] allMessage, eMessageType messageType, Client client)
+        {
+            switch (messageType)
+            {
+                case eMessageType.not_assigned:
+                    break;
+                case eMessageType.initMessage:
+                    clients.Add(client);
+                    if (client.Type != eClientType.Reg_module)
+                    {
+                        SendMessageToClient(allGeneratingParams, client);
+                    }
+                    break;
+                case eMessageType.initParamsMessage:
+                    for (int j = 0; j < allMessage.Length; j++)
+                    {
+                        if (allMessage[j] != "" && allMessage[j] != "init//reg" && allMessage[j] != "init//desktop" && allMessage[j] != "init//web")
+                        {
+                            allGeneratingParams += allMessage[j];
+                        }
+                    }
+                    break;
+                case eMessageType.paramsMessage:
+                    for (int j = 0; j < clients.Count; j++)
+                    {
+                        if (clients[j].Type != eClientType.Reg_module)
+                        {
+                            SendMessageToClient("&" + messagePart, clients[j]);
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

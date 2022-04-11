@@ -13,6 +13,8 @@ namespace Desktop_Client
 {
     public partial class MainForm : Form
     {
+        public List<string> AllGettingParamsNames;
+
         public ConnectionManager connectionManager;
 
         public MainForm()
@@ -28,6 +30,7 @@ namespace Desktop_Client
         private void Init()
         {
             connectionManager = new ConnectionManager(this);
+            AllGettingParamsNames = new List<string>();
         }
 
         private void button1_Click(object sender, EventArgs e)
