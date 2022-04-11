@@ -15,14 +15,18 @@ namespace Desktop_Client
         MainForm mainForm;
         public string serverIP;
         public int serverPort;
-        private Socket serverSocket;
+        public Socket serverSocket;
         private IPEndPoint ipPoint;
-        private bool connected = false;
+        public bool connected = false;
         private Thread serverSocketThread;
+        private MessageParser messageParser;
+        public bool manualDisconnection = false;
+        private bool formClosingDisconnection = false;
 
         public ConnectionManager(MainForm mainForm)
         {
             this.mainForm = mainForm;
+            messageParser = new MessageParser(mainForm);
         }
 
         public void ConnectToServer()
@@ -37,12 +41,14 @@ namespace Desktop_Client
 
                     // подключаемся к удаленному хосту
                     serverSocket.Connect(ipPoint);
-                    mainForm.AddLog("Соединение с сервером установлено");
-                    mainForm.SetConnectionStatus(true);
-                    connected = true;
+                    mainForm.AddLog($"Соединение с сервером {serverSocket.RemoteEndPoint} установлено");
                     serverSocketThread = new Thread(() => SocketThread());
                     serverSocketThread.Start();
                     SendInitMessage();
+
+                    connected = true;
+                    mainForm.SetConnectionStatus(true);
+                    manualDisconnection = false;
                 }
                 catch (Exception ex)
                 {
@@ -53,8 +59,30 @@ namespace Desktop_Client
             {
                 mainForm.AddLog("Подключение уже установлено");
             }
-
         }
+
+        public void DisconnectFromServer(bool formClosing)
+        {
+            formClosingDisconnection = formClosing;
+
+            if (formClosing)
+            {
+                serverSocket.Shutdown(SocketShutdown.Both);
+                serverSocket.Close();
+                connected = false;
+            }
+            else
+            {
+                mainForm.AddLog($"Соединение с сервером {serverSocket.RemoteEndPoint} разорвано");
+                serverSocket.Shutdown(SocketShutdown.Both);
+                serverSocket.Close();
+
+                connected = false;
+                manualDisconnection = true;
+                mainForm.SetConnectionStatus(false);
+            }
+        }
+
         private void SendInitMessage()
         {
             string message = "&init//desktop";
@@ -87,15 +115,24 @@ namespace Desktop_Client
 
                     string recievedMessage = builder.ToString();
 
-                    mainForm.AddLog(recievedMessage);
+                    //Для разделения мультимессенджинга
+                    string[] splittedRecievedMessage = recievedMessage.Split('&');
+                    for (int i = 0; i < splittedRecievedMessage.Length; i++)
+                    {
+                        if (splittedRecievedMessage[i] != "")
+                        {
+                            messageParser.ParseMessage(splittedRecievedMessage[i]);
+                        }
+                    }
                 }
                 catch
                 {
-                    //ДВЕ ЭТИХ СТРОЧКИ ВЫДАЮТ ОШИБКУ ПРО ПОТОКИ, ПОФИКСИТЬ
-
-                    //mainForm.AddLog("Сервер отключен");
-                    //mainForm.SetConnectionStatus(false);
-
+                    //Если отключение не по собственному желанию, то вывести лог о том, что сервер упал
+                    if (!manualDisconnection && !formClosingDisconnection)
+                        mainForm.AddLog($"Соединение с сервером {serverSocket.RemoteEndPoint} потеряно");
+                    if (!formClosingDisconnection)
+                        mainForm.SetConnectionStatus(false);
+                    connected = false;
                     serverSocket.Close();
                     break;
                 }

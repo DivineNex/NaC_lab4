@@ -107,18 +107,22 @@ namespace Server
                         if (splittedRecievedMessage[i] != "")
                         {
                             parser.ParseMessage(splittedRecievedMessage[i], ref client, out isInitMessage);
-                            clients.Add(client);
-                        }
-                    }
 
-                    if (!isInitMessage)
-                    {
-                        for (int i = 0; i < clients.Count; i++)
-                        {
-                            if (clients[i].Type != eClientType.Reg_module)
+                            if (isInitMessage)
                             {
-                                SendMessageToClient(recievedMessage, clients[i]);
+                                clients.Add(client);
                             }
+                            else
+                            {
+                                for (int j = 0; j < clients.Count; j++)
+                                {
+                                    if (clients[j].Type != eClientType.Reg_module)
+                                    {
+                                        SendMessageToClient("&" + splittedRecievedMessage[i], clients[j]);
+                                    }
+                                }
+                            }
+                                
                         }
                     }
 

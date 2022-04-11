@@ -35,6 +35,7 @@ namespace Server
                     break;
                 case "param":
                     Console.WriteLine(DateTime.Now.ToString("HH:mm:ss") + " " + client.ip_port + " " + client.Type + " " + parsedMessage[1]);
+                    isInitMessage = false;
                     break;
             }
         }
