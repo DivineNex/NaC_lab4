@@ -13,7 +13,8 @@ namespace Desktop_Client
 {
     public partial class MainForm : Form
     {
-        public List<string> AllGettingParamsNames;
+        public List<string> allGettingParamsNames;
+        private List<Param> allParams;
 
         public ConnectionManager connectionManager;
 
@@ -30,7 +31,7 @@ namespace Desktop_Client
         private void Init()
         {
             connectionManager = new ConnectionManager(this);
-            AllGettingParamsNames = new List<string>();
+            allGettingParamsNames = new List<string>();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -112,6 +113,17 @@ namespace Desktop_Client
             if (connectionManager.connected)
             {
                 connectionManager.DisconnectFromServer();
+            }
+        }
+
+        public void InitializeParamsArray()
+        {
+            allParams = new List<Param>();
+
+            foreach (var paramName in allGettingParamsNames)
+            {
+                Param newParam = new Param() { name = paramName, value = "0" };
+                allParams.Add(newParam);
             }
         }
     }

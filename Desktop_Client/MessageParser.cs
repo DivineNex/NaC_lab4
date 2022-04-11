@@ -21,11 +21,12 @@ namespace Desktop_Client
                     mainForm.AddLog(DateTime.Now.ToString("HH:mm:ss") + " " + parsedMessage[1]);
                     break;
                 case "init_params":
-                    mainForm.AllGettingParamsNames.Clear();
+                    mainForm.allGettingParamsNames.Clear();
                     for (int i = 1; i < parsedMessage.Length; i++)
                     {
-                        mainForm.AllGettingParamsNames.Add(parsedMessage[i]);
+                        mainForm.allGettingParamsNames.Add(parsedMessage[i]);
                     }
+                    mainForm.InitializeParamsArray();
                     break;
             }
         }
