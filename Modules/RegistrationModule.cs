@@ -16,16 +16,15 @@ namespace Modules
         private string address = "127.0.0.1"; // адрес сервера
         private Socket socket;
         private IPEndPoint ipPoint;
+        public string allGeneratingParams = "";
         private bool connected = false;
+        public GenerationModule gm;
+        private bool manualDisconnection = false;
 
         public bool Connected
         {
             get { return connected; }
         }
-
-
-        public GenerationModule gm;
-        private bool manualDisconnection = false;
 
         private bool active;
         public bool Active
@@ -67,6 +66,7 @@ namespace Modules
                     Console.BackgroundColor = ConsoleColor.Black;
                     connected = true;
                     SendInitMessage();
+                    SendInitParamsMessage();
                     manualDisconnection = false;
                 }
                 catch (Exception ex)
@@ -132,6 +132,21 @@ namespace Modules
         private void SendInitMessage()
         {
             string message = "&init//reg";
+            byte[] data = Encoding.Unicode.GetBytes(message);
+            socket.Send(data);
+        }
+
+        private void SendInitParamsMessage()
+        {
+            if (allGeneratingParams == "")
+            {
+                foreach (var param in gm.allParams)
+                {
+                    allGeneratingParams += "//" + param.name;
+                }
+            }
+
+            string message = "&init_params" + allGeneratingParams;
             byte[] data = Encoding.Unicode.GetBytes(message);
             socket.Send(data);
         }

@@ -8,10 +8,11 @@ namespace Server
 {
     internal class MessageParser
     {
-        public void ParseMessage(string message, ref Client client, out bool isInitMessage)
+        public void ParseMessage(string message, ref Client client, out bool isInitMessage, out bool isInitParams)
         {
             string[] parsedMessage = message.Split(new string[] { "//" }, StringSplitOptions.None);
             isInitMessage = false;
+            isInitParams = false;
 
             switch (parsedMessage[0])
             {
@@ -36,6 +37,9 @@ namespace Server
                 case "param":
                     Console.WriteLine(DateTime.Now.ToString("HH:mm:ss") + " " + client.ip_port + " " + client.Type + " " + parsedMessage[1]);
                     isInitMessage = false;
+                    break;
+                case "init_params":
+                    isInitParams = true;
                     break;
             }
         }

@@ -15,6 +15,7 @@ namespace Server
         private static Socket listenSocket;
         static int port = 55555;
         private static MessageParser parser;
+        private static string allGeneratingParams;
 
         static void Main(string[] args)
         {
@@ -99,6 +100,7 @@ namespace Server
 
                     string recievedMessage = builder.ToString();
                     bool isInitMessage = false;
+                    bool isInitParamsMessage = false;
 
                     //Для разделения мультимессенджинга
                     string[] splittedRecievedMessage = recievedMessage.Split('&');
@@ -106,7 +108,7 @@ namespace Server
                     {
                         if (splittedRecievedMessage[i] != "")
                         {
-                            parser.ParseMessage(splittedRecievedMessage[i], ref client, out isInitMessage);
+                            parser.ParseMessage(splittedRecievedMessage[i], ref client, out isInitMessage, out isInitParamsMessage);
 
                             if (isInitMessage)
                             {
@@ -114,11 +116,24 @@ namespace Server
                             }
                             else
                             {
-                                for (int j = 0; j < clients.Count; j++)
+                                if (isInitParamsMessage)
                                 {
-                                    if (clients[j].Type != eClientType.Reg_module)
+                                    for (int j = 0; j < splittedRecievedMessage.Length; j++)
                                     {
-                                        SendMessageToClient("&" + splittedRecievedMessage[i], clients[j]);
+                                        if (splittedRecievedMessage[j] != "" && splittedRecievedMessage[j] != "init//reg" && splittedRecievedMessage[j] != "init//desktop" && splittedRecievedMessage[j] != "init//web")
+                                        {
+                                            allGeneratingParams += splittedRecievedMessage[j];
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    for (int j = 0; j < clients.Count; j++)
+                                    {
+                                        if (clients[j].Type != eClientType.Reg_module)
+                                        {
+                                            SendMessageToClient("&" + splittedRecievedMessage[i], clients[j]);
+                                        }
                                     }
                                 }
                             }
