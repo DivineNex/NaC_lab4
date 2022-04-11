@@ -39,13 +39,19 @@ namespace Modules
                     StartModules();
                 else if (line == "stop")
                     StopModules();
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine($"{line} не является командой");
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }  
             }
         }
 
         private static void Init()
         {
-            registrationModule = new RegistrationModule();
             generationModule = new GenerationModule();
+            registrationModule = new RegistrationModule(generationModule);
 
             generationModule.LoadAndParseParams();
 
@@ -73,11 +79,20 @@ namespace Modules
         {
             if (generationModule.Active == false && registrationModule.Active == false)
             {
-                generationModule.Start();
-                registrationModule.Start();
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine("Модули запущены");
-                Console.BackgroundColor = ConsoleColor.Black;
+                if (registrationModule.Connected)
+                {
+                    generationModule.Start();
+                    registrationModule.Start();
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("Модули запущены");
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }
+                else
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Сперва подключитесь к серверу");
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }
             }
             else
             {

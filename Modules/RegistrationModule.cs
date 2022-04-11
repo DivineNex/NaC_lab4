@@ -18,10 +18,24 @@ namespace Modules
         private IPEndPoint ipPoint;
         private bool connected = false;
 
+        public bool Connected
+        {
+            get { return connected; }
+        }
+
+
+        public GenerationModule gm;
+        private bool manualDisconnection = false;
+
         private bool active;
         public bool Active
         {
             get { return active; }
+        }
+
+        public RegistrationModule(GenerationModule generationModule)
+        {
+            gm = generationModule;
         }
 
         public void Start()
@@ -53,6 +67,7 @@ namespace Modules
                     Console.BackgroundColor = ConsoleColor.Black;
                     connected = true;
                     SendInitMessage();
+                    manualDisconnection = false;
                 }
                 catch (Exception ex)
                 {
@@ -80,6 +95,7 @@ namespace Modules
                 Console.WriteLine("Соединение с сервером разорвано");
                 Console.BackgroundColor = ConsoleColor.Black;
                 connected = false;
+                manualDisconnection = true;
             }
             else
             {
@@ -93,7 +109,24 @@ namespace Modules
         {
             string paramMessage = "&param//" + param;
             byte[] data = Encoding.Unicode.GetBytes(paramMessage);
-            socket.Send(data);
+            try
+            {
+                socket.Send(data);
+            }
+            catch
+            {
+                if (!manualDisconnection)
+                {
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("Отправка данных не удалась, соединение с сервером потеряно");
+                    Console.BackgroundColor = ConsoleColor.Black;
+                }
+
+                socket.Close();
+                connected = false;
+                gm.Stop();
+                Stop();
+            }
         }
 
         private void SendInitMessage()
