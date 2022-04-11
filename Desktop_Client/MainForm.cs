@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Threading;
 
 namespace Desktop_Client
 {
@@ -122,8 +123,43 @@ namespace Desktop_Client
 
             foreach (var paramName in allGettingParamsNames)
             {
-                Param newParam = new Param() { name = paramName, value = "0" };
+                Param newParam = new Param() { name = paramName };
+                newParam.UpdateValue(0);
                 allParams.Add(newParam);
+            }
+        }
+
+        public void SetParamValue(string paramName, double value)
+        {
+            foreach (var par in allParams)
+            {
+                if (par.name == paramName)
+                {
+                    par.UpdateValue(value);
+                    break;
+                }
+            }
+            UpdateTable();
+        }
+
+        private void UpdateTable()
+        {
+            Action action = () =>
+            {
+                textBox1.Clear();
+                foreach (var par in allParams)
+                {
+                    textBox1.Text += $"\r\n{par.name}\t{par.Value}";
+                }
+            };
+
+            if (textBox1.InvokeRequired)
+            {
+                textBox1.Invoke(action);
+            }
+            else
+            {
+                action();
             }
         }
     }

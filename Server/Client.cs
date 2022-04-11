@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    internal struct Client
+    internal class Client
     {
         public Socket socket;
         public string ip_port;

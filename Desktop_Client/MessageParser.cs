@@ -19,6 +19,9 @@ namespace Desktop_Client
             {
                 case "param":
                     mainForm.AddLog(DateTime.Now.ToString("HH:mm:ss") + " " + parsedMessage[1]);
+                    string[] parsedParamMessage = parsedMessage[1].Split(new string[] { " = " }, StringSplitOptions.None);
+
+                    mainForm.SetParamValue(parsedParamMessage[0], Convert.ToDouble(parsedParamMessage[1]));
                     break;
                 case "init_params":
                     mainForm.allGettingParamsNames.Clear();

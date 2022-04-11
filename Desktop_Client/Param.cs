@@ -6,9 +6,19 @@ using System.Threading.Tasks;
 
 namespace Desktop_Client
 {
-    internal struct Param
+    internal class Param
     {
         public string name;
-        public string value;
+        private double value;
+
+        public double Value
+        {
+            get { return value; }
+        }
+
+        public void UpdateValue (double newValue)
+        {
+            value = newValue;
+        }
     }
 }
