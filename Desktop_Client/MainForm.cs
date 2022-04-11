@@ -38,7 +38,7 @@ namespace Desktop_Client
             }
             else
             {
-                connectionManager.DisconnectFromServer(false);
+                connectionManager.DisconnectFromServer();
             }
         }
 
@@ -108,7 +108,7 @@ namespace Desktop_Client
         {
             if (connectionManager.connected)
             {
-                connectionManager.DisconnectFromServer(true);
+                connectionManager.DisconnectFromServer();
             }
         }
     }

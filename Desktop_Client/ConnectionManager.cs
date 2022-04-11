@@ -21,7 +21,6 @@ namespace Desktop_Client
         private Thread serverSocketThread;
         private MessageParser messageParser;
         public bool manualDisconnection = false;
-        private bool formClosingDisconnection = false;
 
         public ConnectionManager(MainForm mainForm)
         {
@@ -61,18 +60,8 @@ namespace Desktop_Client
             }
         }
 
-        public void DisconnectFromServer(bool formClosing)
+        public void DisconnectFromServer()
         {
-            formClosingDisconnection = formClosing;
-
-            if (formClosing)
-            {
-                serverSocket.Shutdown(SocketShutdown.Both);
-                serverSocket.Close();
-                connected = false;
-            }
-            else
-            {
                 mainForm.AddLog($"Соединение с сервером {serverSocket.RemoteEndPoint} разорвано");
                 serverSocket.Shutdown(SocketShutdown.Both);
                 serverSocket.Close();
@@ -80,7 +69,6 @@ namespace Desktop_Client
                 connected = false;
                 manualDisconnection = true;
                 mainForm.SetConnectionStatus(false);
-            }
         }
 
         private void SendInitMessage()
@@ -127,11 +115,14 @@ namespace Desktop_Client
                 }
                 catch
                 {
-                    //Если отключение не по собственному желанию, то вывести лог о том, что сервер упал
-                    if (!manualDisconnection && !formClosingDisconnection)
-                        mainForm.AddLog($"Соединение с сервером {serverSocket.RemoteEndPoint} потеряно");
-                    if (!formClosingDisconnection)
+                    try
+                    {
+                        if (!manualDisconnection)
+                            mainForm.AddLog($"Соединение с сервером {serverSocket.RemoteEndPoint} потеряно");
                         mainForm.SetConnectionStatus(false);
+                    }
+                    catch { }
+
                     connected = false;
                     serverSocket.Close();
                     break;
