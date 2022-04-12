@@ -16,6 +16,7 @@ namespace Desktop_Client
     {
         public List<string> allGettingParamsNames;
         private List<Param> allParams;
+        private ChartManager chartManager;
 
         public ConnectionManager connectionManager;
 
@@ -33,6 +34,7 @@ namespace Desktop_Client
         {
             connectionManager = new ConnectionManager(this);
             allGettingParamsNames = new List<string>();
+            chartManager = new ChartManager(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -136,6 +138,7 @@ namespace Desktop_Client
                 if (par.name == paramName)
                 {
                     par.UpdateValue(value);
+                    //chartManager.UpdateChart(par.name);
                     break;
                 }
             }
@@ -160,6 +163,19 @@ namespace Desktop_Client
             else
             {
                 action();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            //TEST
+            foreach (var par in allParams)
+            {
+                if (par.name == "Глубина")
+                {
+                    chartManager.CreateChart(par, eChartTypes.horizontal);
+                }
             }
         }
     }
