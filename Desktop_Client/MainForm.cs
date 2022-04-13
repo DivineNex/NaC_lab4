@@ -18,6 +18,12 @@ namespace Desktop_Client
         private List<Param> allParams;
         private ChartManager chartManager;
 
+        public TabPage tabPage
+        {
+            get { return tabPage1; }
+        }
+
+
         public ConnectionManager connectionManager;
 
         public MainForm()
@@ -168,15 +174,7 @@ namespace Desktop_Client
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            //TEST
-            foreach (var par in allParams)
-            {
-                if (par.name == "Глубина")
-                {
-                    chartManager.CreateChart(par, eChartTypes.horizontal);
-                }
-            }
+            chartManager.CreateChart(null, eChartOrientation.vertical);
         }
     }
 }

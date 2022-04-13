@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Desktop_Client
 {
-    enum eChartTypes
+    enum eChartOrientation
     {
         vertical,
         horizontal
