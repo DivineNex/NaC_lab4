@@ -15,8 +15,14 @@ namespace Desktop_Client
     public partial class MainForm : Form
     {
         public static List<string> allGettingParamsNames;
-        private List<Param> allParams;
         private ChartManager chartManager;
+        private List<Param> allParams;
+
+        public List<Param> AllParams
+        {
+            get { return allParams; }
+        }
+
 
         public TabPage tabPage
         {

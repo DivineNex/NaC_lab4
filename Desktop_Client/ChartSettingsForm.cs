@@ -14,6 +14,11 @@ namespace Desktop_Client
     {
         private ClientChart chart;
 
+        public Panel SeriesPanel
+        {
+            get { return panel1; }
+        }
+
         public ChartSettingsForm(ClientChart chart)
         {
             InitializeComponent();
@@ -101,6 +106,11 @@ namespace Desktop_Client
         {
             SeriesCreationForm seriesCreationForm = new SeriesCreationForm(chart);
             seriesCreationForm.ShowDialog();
+        }
+
+        public void UpdateSeriesPanels()
+        {
+            //
         }
     }
 }

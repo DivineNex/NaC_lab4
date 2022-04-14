@@ -91,8 +91,8 @@ namespace Desktop_Client
             buttonSettings.Size = new Size(30, 30);
             buttonClose.Size = new Size(30, 30);
 
-            buttonSettings.Location = new Point(Width - 35, 5);
-            buttonClose.Location = new Point(Width - 65, 5);
+            buttonSettings.Location = new Point(Width - 65, 5);
+            buttonClose.Location = new Point(Width - 35, 5);
 
             buttonSettings.BackColor = BUTTON_BACK_COLOR;
             buttonClose.BackColor = BUTTON_BACK_COLOR;
@@ -144,11 +144,15 @@ namespace Desktop_Client
 
         public void CreateSerie(string paramName)
         {
-            //Получить параметр по имени и передать в создание серии
-                //Временная заглушка
-                Param param = new Param();
-            ChartSerie newSerie = new ChartSerie(param);
-            series.Add(newSerie);
+            foreach (Param prm in chartManager.MainForm.AllParams)
+            {
+                if (prm.name == paramName)
+                {
+                    ChartSerie newSerie = new ChartSerie(prm, this, settingsForm);
+                    series.Add(newSerie);
+                    return;
+                }
+            }
         }
     }
 }

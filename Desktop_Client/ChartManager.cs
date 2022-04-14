@@ -11,8 +11,13 @@ namespace Desktop_Client
 {
     public class ChartManager : Control
     {
-        private MainForm mainForm;
         public List<ClientChart> allCharts;
+        private MainForm mainForm;
+
+        public MainForm MainForm
+        {
+            get { return mainForm; }
+        }
 
         public ChartManager(MainForm mainForm)
         {

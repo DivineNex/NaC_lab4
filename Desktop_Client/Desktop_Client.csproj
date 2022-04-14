@@ -63,6 +63,9 @@
     <Compile Include="ChartSettingsForm.Designer.cs">
       <DependentUpon>ChartSettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChartSettingsSeriePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ClientChart.cs">
       <SubType>Component</SubType>
     </Compile>
