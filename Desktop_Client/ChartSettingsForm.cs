@@ -12,26 +12,32 @@ namespace Desktop_Client
 {
     public partial class ChartSettingsForm : Form
     {
+        private ClientChart chart;
         public string chartName;
-        private ChartManager chartManager;
 
-        public ChartSettingsForm(ChartManager chartManager)
+        public ChartSettingsForm(ClientChart chart)
         {
             InitializeComponent();
-            this.chartManager = chartManager;
+            this.chart = chart;
         }
 
-        public void Init(string name)
+        public void Init()
         {
-            chartName = name;
-            InitLabel();
+            chartName = chart.Name;
+            InitLabels();
             InitButtons();
+            InitTextBoxes();
         }
 
-        private void InitLabel()
+        private void InitLabels()
         {
-            label1.Text = "График #" + (chartManager.allCharts.Count + 1).ToString();
+            label1.Text = chartName;
             label1.Top = 5;
+        }
+
+        private void InitTextBoxes()
+        {
+            textBox1.Width = label1.Width;
         }
 
         private void InitButtons()
@@ -45,7 +51,7 @@ namespace Desktop_Client
 
             buttonAcceptEdit.Text = "";
             buttonAcceptEdit.Size = new System.Drawing.Size(30, 30);
-                buttonAcceptEdit.Image = Image.FromFile(@"..\..\Res\IconAccept.png");
+            buttonAcceptEdit.Image = Image.FromFile(@"..\..\Res\IconAccept.png");
             buttonAcceptEdit.Visible = false;
             buttonAcceptEdit.Top = 5;
             buttonAcceptEdit.Left = label1.Width + 15;
@@ -57,8 +63,13 @@ namespace Desktop_Client
             buttonEdit.Visible = true;
             buttonAcceptEdit.Visible = false;
             label1.Text = textBox1.Text;
+            chartName = label1.Text;
             textBox1.Visible = false;
             label1.Visible = true;
+            chart.Title = chartName;
+            buttonAcceptEdit.Left = label1.Width + 15;
+            buttonEdit.Left = label1.Width + 15;
+            textBox1.Width = label1.Width;
         }
 
         private void ButtonEdit_Click(object sender, EventArgs e)

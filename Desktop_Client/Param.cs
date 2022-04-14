@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Desktop_Client
 {
-    internal class Param
+    public class Param
     {
         public string name;
         private double value;

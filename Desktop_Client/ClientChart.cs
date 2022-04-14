@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Desktop_Client
 {
-    class ClientChart : Control
+    public class ClientChart : Control
     {
         public const int BORDER_THICKNESS = 5;
         private static readonly Color BACKGROUND_COLOR = Color.FromArgb(255, 220, 220, 220);
@@ -18,9 +18,16 @@ namespace Desktop_Client
         private static readonly Color TEXT_COLOR = Color.FromArgb(255, 60, 60, 60);
         private static readonly string TEXT_FONT_FAMILY = "Arial";
 
-        private Label label;
+        private Label titleLabel;
+
+        public string Title
+        {
+            get { return titleLabel.Text; }
+            set { titleLabel.Text = value; }
+        }
+
         private eChartOrientation type;
-        private ChartManager chartManager;
+        public ChartManager chartManager;
         private List<ChartSerie> series;
         private Button buttonSettings;
         private Button buttonClose;
@@ -120,23 +127,23 @@ namespace Desktop_Client
 
         private void InitMainLabel()
         {
-            label = new Label();
-            label.Parent = this;
-            label.Text = "График #" + (chartManager.allCharts.Count+1).ToString();
-            label.Location = new Point(10, 13);
-            label.Font = new Font(TEXT_FONT_FAMILY, 16);
-            label.ForeColor = TEXT_COLOR;
-            label.AutoSize = true;
-            label.BackColor = ChartInfoPanel.BACKGROUND_COLOR;
-            Controls.Add(label);
-            label.Show();
+            titleLabel = new Label();
+            titleLabel.Parent = this;
+            titleLabel.Text = "График #" + (chartManager.allCharts.Count+1).ToString();
+            titleLabel.Location = new Point(10, 13);
+            titleLabel.Font = new Font(TEXT_FONT_FAMILY, 16);
+            titleLabel.ForeColor = TEXT_COLOR;
+            titleLabel.AutoSize = true;
+            titleLabel.BackColor = ChartInfoPanel.BACKGROUND_COLOR;
+            Controls.Add(titleLabel);
+            titleLabel.Show();
         }
 
         private void OpenSettingsForm()
         {
-            settingsForm = new ChartSettingsForm(chartManager);
+            settingsForm = new ChartSettingsForm(this);
             settingsForm.StartPosition = FormStartPosition.CenterScreen;
-            settingsForm.Init("Тест график");
+            settingsForm.Init();
             settingsForm.Show();
         }
     }

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Desktop_Client
 {
-    class ChartManager : Control
+    public class ChartManager : Control
     {
         private MainForm mainForm;
         public List<ClientChart> allCharts;
