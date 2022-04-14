@@ -24,5 +24,10 @@ namespace Desktop_Client
         {
             allPoints.Add(new Point(x, y));
         }
+
+        public void UpdateValue()
+        {
+            //Нужно ли?
+        }
     }
 }

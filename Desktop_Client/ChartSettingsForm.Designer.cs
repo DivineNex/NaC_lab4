@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.buttonAddSerie = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxEditTitle = new System.Windows.Forms.TextBox();
             this.buttonAcceptEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // labelTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Название";
+            this.labelTitle.AutoSize = true;
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTitle.Location = new System.Drawing.Point(12, 9);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(97, 24);
+            this.labelTitle.TabIndex = 0;
+            this.labelTitle.Text = "Название";
             // 
             // buttonAddSerie
             // 
@@ -55,6 +55,7 @@
             this.buttonAddSerie.TabIndex = 1;
             this.buttonAddSerie.Text = "Добавить";
             this.buttonAddSerie.UseVisualStyleBackColor = true;
+            this.buttonAddSerie.Click += new System.EventHandler(this.buttonAddSerie_Click);
             // 
             // label2
             // 
@@ -82,14 +83,14 @@
             this.buttonEdit.Text = "EditButton";
             this.buttonEdit.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // textBoxEditTitle
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(16, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(109, 29);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Visible = false;
+            this.textBoxEditTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxEditTitle.Location = new System.Drawing.Point(16, 6);
+            this.textBoxEditTitle.Name = "textBoxEditTitle";
+            this.textBoxEditTitle.Size = new System.Drawing.Size(109, 29);
+            this.textBoxEditTitle.TabIndex = 6;
+            this.textBoxEditTitle.Visible = false;
             // 
             // buttonAcceptEdit
             // 
@@ -106,12 +107,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 379);
             this.Controls.Add(this.buttonAcceptEdit);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxEditTitle);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonAddSerie);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelTitle);
             this.Name = "ChartSettingsForm";
             this.Text = "Настройки графика";
             this.ResumeLayout(false);
@@ -121,12 +122,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Button buttonAddSerie;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonEdit;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxEditTitle;
         private System.Windows.Forms.Button buttonAcceptEdit;
     }
 }

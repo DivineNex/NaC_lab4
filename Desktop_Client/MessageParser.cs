@@ -24,10 +24,10 @@ namespace Desktop_Client
                     mainForm.SetParamValue(parsedParamMessage[0], Convert.ToDouble(parsedParamMessage[1]));
                     break;
                 case "init_params":
-                    mainForm.allGettingParamsNames.Clear();
+                    MainForm.allGettingParamsNames.Clear();
                     for (int i = 1; i < parsedMessage.Length; i++)
                     {
-                        mainForm.allGettingParamsNames.Add(parsedMessage[i]);
+                        MainForm.allGettingParamsNames.Add(parsedMessage[i]);
                     }
                     mainForm.InitializeParamsArray();
                     break;

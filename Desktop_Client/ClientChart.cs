@@ -38,8 +38,6 @@ namespace Desktop_Client
         {
             this.chartManager = chartManager;
             Init();
-
-            Paint += ClientChart_Paint;
         }
 
         private void ClientChart_Paint(object sender, PaintEventArgs e)
@@ -60,6 +58,8 @@ namespace Desktop_Client
             series = new List<ChartSerie>();
 
             OpenSettingsForm();
+
+            Paint += ClientChart_Paint;
         }
 
         public void Close()
@@ -71,11 +71,6 @@ namespace Desktop_Client
         public void Draw()
         {
         
-        }
-
-        public void UpdateValue()
-        {
-
         }
 
         public void DrawBorders(PaintEventArgs e)
@@ -145,6 +140,14 @@ namespace Desktop_Client
             settingsForm.StartPosition = FormStartPosition.CenterScreen;
             settingsForm.Init();
             settingsForm.Show();
+        }
+
+        public void CreateSerie(string paramName)
+        {
+            //Получить параметр по имени и передать в создание серии
+                Param param = new Param();
+            ChartSerie newSerie = new ChartSerie(param);
+            series.Add(newSerie);
         }
     }
 }
