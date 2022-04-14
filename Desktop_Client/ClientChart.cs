@@ -21,10 +21,11 @@ namespace Desktop_Client
         private Label label;
         private eChartOrientation type;
         private ChartManager chartManager;
-        private List<Point> allPoints;
+        private List<ChartSerie> series;
         private Button buttonSettings;
         private Button buttonClose;
         private ChartInfoPanel infoPanel;
+        private ChartSettingsForm settingsForm;
 
         public ClientChart(ChartManager chartManager, eChartOrientation orientation)
         {
@@ -49,7 +50,9 @@ namespace Desktop_Client
             InitMainLabel();
 
             infoPanel = new ChartInfoPanel(this);
-            allPoints = new List<Point>();
+            series = new List<ChartSerie>();
+
+            OpenSettingsForm();
         }
 
         public void Close()
@@ -66,11 +69,6 @@ namespace Desktop_Client
         public void UpdateValue()
         {
 
-        }
-
-        public void AddPoint(int x, int y)
-        {
-            allPoints.Add(new Point(x, y));
         }
 
         public void DrawBorders(PaintEventArgs e)
@@ -112,7 +110,7 @@ namespace Desktop_Client
 
         private void ButtonSettings_Click(object sender, EventArgs e)
         {
-            //Появляется форма настройки графика
+            OpenSettingsForm();
         }
 
         private void ButtonClose_Click(object sender, EventArgs e)
@@ -132,6 +130,14 @@ namespace Desktop_Client
             label.BackColor = ChartInfoPanel.BACKGROUND_COLOR;
             Controls.Add(label);
             label.Show();
+        }
+
+        private void OpenSettingsForm()
+        {
+            settingsForm = new ChartSettingsForm(chartManager);
+            settingsForm.StartPosition = FormStartPosition.CenterScreen;
+            settingsForm.Init("Тест график");
+            settingsForm.Show();
         }
     }
 }
