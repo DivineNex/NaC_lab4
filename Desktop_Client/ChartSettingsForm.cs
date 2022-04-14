@@ -30,7 +30,7 @@ namespace Desktop_Client
             InitLabels();
             InitButtons();
             InitTextBoxes();
-            //InitSeries();
+            InitSeriesPanels();
         }
 
         private void InitLabels()
@@ -62,6 +62,14 @@ namespace Desktop_Client
             buttonAcceptEdit.Click += ButtonAcceptEdit_Click;
 
             UpdateEditLabelButtonsPosition();
+        }
+
+        private void InitSeriesPanels()
+        {
+            foreach (ChartSerie serie in chart.Series)
+            {
+                serie.InitSerieSettingsPanel();
+            }
         }
 
         private void ButtonAcceptEdit_Click(object sender, EventArgs e)
@@ -108,9 +116,12 @@ namespace Desktop_Client
             seriesCreationForm.ShowDialog();
         }
 
-        public void UpdateSeriesPanels()
+        public void UpdateSeriesPanelsPosition()
         {
-            //
+            for (int i = 0; i < panel1.Controls.Count; i++)
+            {
+                panel1.Controls[i].Top = i * 30;
+            }
         }
     }
 }

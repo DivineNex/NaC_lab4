@@ -8,28 +8,35 @@ using System.Windows.Forms;
 
 namespace Desktop_Client
 {
-    internal class ChartSettingsSeriePanel : Control
+    public class ChartSettingsSeriePanel : Control
     {
         private Label label;
         private Button buttonSettings;
         private Button buttonClose;
         private ClientChart chart;
-        private ChartSettingsForm settingsForm;
         private ChartSerie serie;
 
-        public ChartSettingsSeriePanel(ClientChart chart, ChartSettingsForm settingsForm, ChartSerie serie)
+        public ChartSettingsSeriePanel(ClientChart chart, ChartSerie serie)
         {
             this.chart = chart;
-            this.settingsForm = settingsForm;
             this.serie = serie;
-
-            Width = settingsForm.SeriesPanel.Width;
             Height = 30;
+            Width = chart.SettingsForm.SeriesPanel.Width;
+            Top = chart.SettingsForm.SeriesPanel.Controls.Count * Height;
             BackColor = Color.Thistle;
-            Parent = settingsForm.SeriesPanel;
-            settingsForm.SeriesPanel.Controls.Add(this);
+            Parent = chart.SettingsForm.SeriesPanel;
+            chart.SettingsForm.SeriesPanel.Controls.Add(this);
+
+            Paint += ChartSettingsSeriePanel_Paint;
+
             InitLabel();
             InitButtons();
+        }
+
+        private void ChartSettingsSeriePanel_Paint(object sender, PaintEventArgs e)
+        {
+            DrawColorCircle(e);
+            DrawBorders(e);
         }
 
         private void InitLabel()
@@ -66,6 +73,19 @@ namespace Desktop_Client
             Controls.Add(buttonSettings);
         }
 
+        private void DrawColorCircle(PaintEventArgs e)
+        {
+            Brush brush = new SolidBrush(serie.color);
+            e.Graphics.FillEllipse(brush, Width - 90, 4, 20, 20);
+        }
+
+        private void DrawBorders(PaintEventArgs e)
+        {
+            Pen blackPen = new Pen(Color.DarkGray);
+            Rectangle rect = new Rectangle(0, 0, Width, Height);
+            e.Graphics.DrawRectangle(blackPen, rect);
+        }
+
         private void ButtonSettings_Click(object sender, EventArgs e)
         {
             //
@@ -73,6 +93,9 @@ namespace Desktop_Client
 
         private void ButtonClose_Click(object sender, EventArgs e)
         {
+            chart.Series.Remove(serie);
+            chart.SettingsForm.SeriesPanel.Controls.Remove(this);
+            chart.SettingsForm.UpdateSeriesPanelsPosition();
             Dispose();
         }
     }

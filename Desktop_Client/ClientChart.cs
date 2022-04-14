@@ -28,11 +28,23 @@ namespace Desktop_Client
 
         private eChartOrientation type;
         public ChartManager chartManager;
-        private List<ChartSerie> series;
         private Button buttonSettings;
         private Button buttonClose;
         private ChartInfoPanel infoPanel;
         private ChartSettingsForm settingsForm;
+        private List<ChartSerie> series;
+
+        public List<ChartSerie> Series
+        {
+            get { return series; }
+        }
+
+
+        public ChartSettingsForm SettingsForm
+        {
+            get { return settingsForm; }
+        }
+
 
         public ClientChart(ChartManager chartManager, eChartOrientation orientation)
         {
@@ -91,8 +103,8 @@ namespace Desktop_Client
             buttonSettings.Size = new Size(30, 30);
             buttonClose.Size = new Size(30, 30);
 
-            buttonSettings.Location = new Point(Width - 65, 5);
-            buttonClose.Location = new Point(Width - 35, 5);
+            buttonSettings.Location = new Point(Width - 66, 6);
+            buttonClose.Location = new Point(Width - 36, 6);
 
             buttonSettings.BackColor = BUTTON_BACK_COLOR;
             buttonClose.BackColor = BUTTON_BACK_COLOR;
@@ -148,7 +160,7 @@ namespace Desktop_Client
             {
                 if (prm.name == paramName)
                 {
-                    ChartSerie newSerie = new ChartSerie(prm, this, settingsForm);
+                    ChartSerie newSerie = new ChartSerie(prm, this);
                     series.Add(newSerie);
                     return;
                 }

@@ -49,11 +49,11 @@
             // 
             // buttonAddSerie
             // 
-            this.buttonAddSerie.Location = new System.Drawing.Point(16, 86);
+            this.buttonAddSerie.Image = global::Desktop_Client.Properties.Resources.IconAdd;
+            this.buttonAddSerie.Location = new System.Drawing.Point(85, 58);
             this.buttonAddSerie.Name = "buttonAddSerie";
-            this.buttonAddSerie.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddSerie.Size = new System.Drawing.Size(30, 30);
             this.buttonAddSerie.TabIndex = 1;
-            this.buttonAddSerie.Text = "Добавить";
             this.buttonAddSerie.UseVisualStyleBackColor = true;
             this.buttonAddSerie.Click += new System.EventHandler(this.buttonAddSerie_Click);
             // 
@@ -69,14 +69,14 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(16, 115);
+            this.panel1.Location = new System.Drawing.Point(16, 94);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(401, 252);
+            this.panel1.Size = new System.Drawing.Size(401, 273);
             this.panel1.TabIndex = 4;
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(222, 12);
+            this.buttonEdit.Location = new System.Drawing.Point(342, 6);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(75, 23);
             this.buttonEdit.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             // buttonAcceptEdit
             // 
-            this.buttonAcceptEdit.Location = new System.Drawing.Point(222, 41);
+            this.buttonAcceptEdit.Location = new System.Drawing.Point(342, 35);
             this.buttonAcceptEdit.Name = "buttonAcceptEdit";
             this.buttonAcceptEdit.Size = new System.Drawing.Size(75, 23);
             this.buttonAcceptEdit.TabIndex = 7;
