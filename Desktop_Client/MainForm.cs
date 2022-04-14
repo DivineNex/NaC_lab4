@@ -176,5 +176,11 @@ namespace Desktop_Client
         {
             chartManager.CreateChart(null, eChartOrientation.vertical);
         }
+
+        private void logsRichTextBox_TextChanged(object sender, EventArgs e)
+        {
+            logsRichTextBox.SelectionStart = logsRichTextBox.Text.Length;
+            logsRichTextBox.ScrollToCaret();
+        }
     }
 }

@@ -23,3 +23,5 @@ C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client
 C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.MainForm.resources
 C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ChartSettingsForm.resources
 C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.SeriesCreationForm.resources
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ChartSettingsForm.resources
+C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.SeriesCreationForm.resources
