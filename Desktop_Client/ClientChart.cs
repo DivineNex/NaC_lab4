@@ -124,7 +124,7 @@ namespace Desktop_Client
         {
             titleLabel = new Label();
             titleLabel.Parent = this;
-            titleLabel.Text = "График #" + (chartManager.allCharts.Count+1).ToString();
+            titleLabel.Text = "График #" + (chartManager.allCharts.Count + 1).ToString();
             titleLabel.Location = new Point(10, 13);
             titleLabel.Font = new Font(TEXT_FONT_FAMILY, 16);
             titleLabel.ForeColor = TEXT_COLOR;
@@ -145,6 +145,7 @@ namespace Desktop_Client
         public void CreateSerie(string paramName)
         {
             //Получить параметр по имени и передать в создание серии
+                //Временная заглушка
                 Param param = new Param();
             ChartSerie newSerie = new ChartSerie(param);
             series.Add(newSerie);

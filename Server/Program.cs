@@ -136,10 +136,13 @@ namespace Server
                     break;
                 case eMessageType.initMessage:
                     clients.Add(client);
+
                     if (client.Type != eClientType.Reg_module)
                     {
-                        SendMessageToClient(allGeneratingParams, client);
+                        if (allGeneratingParams != null)
+                            SendMessageToClient(allGeneratingParams, client);
                     }
+
                     break;
                 case eMessageType.initParamsMessage:
                     for (int j = 0; j < allMessage.Length; j++)
@@ -149,6 +152,14 @@ namespace Server
                             allGeneratingParams += allMessage[j];
                         }
                     }
+                    foreach (var clnt in clients)
+                    {
+                        if (clnt.Type != eClientType.Reg_module)
+                        {
+                            SendMessageToClient(allGeneratingParams, clnt);
+                        }
+                    }
+
                     break;
                 case eMessageType.paramsMessage:
                     for (int j = 0; j < clients.Count; j++)
