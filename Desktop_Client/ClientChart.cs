@@ -39,12 +39,10 @@ namespace Desktop_Client
             get { return series; }
         }
 
-
         public ChartSettingsForm SettingsForm
         {
             get { return settingsForm; }
         }
-
 
         public ClientChart(ChartManager chartManager, eChartOrientation orientation)
         {
@@ -82,7 +80,7 @@ namespace Desktop_Client
 
         public void Draw()
         {
-        
+            
         }
 
         public void DrawBorders(PaintEventArgs e)
