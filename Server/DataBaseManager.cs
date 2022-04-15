@@ -19,10 +19,19 @@ namespace Server
         public void Connect()
         {
             dbCon = new SQLiteConnection();
+            
         }
         public void Cmd()
         {
             dbCom = new SQLiteCommand();
+        }
+
+        public void AddParam()
+        {
+            if ()
+            {
+
+            }
         }
 
    }

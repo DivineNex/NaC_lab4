@@ -31,6 +31,7 @@ namespace Server
             clients = new List<Client>();
             parser = new MessageParser();
             dbManager = new DataBaseManager();
+            dbManager.Connect();
 
         }
 
