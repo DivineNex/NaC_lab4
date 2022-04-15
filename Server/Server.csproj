@@ -36,6 +36,7 @@
     <ApplicationIcon>ProjectServerIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,6 +50,7 @@
     <Compile Include="eClientType.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="eMessageType.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="MessageParser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
