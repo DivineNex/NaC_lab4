@@ -25,3 +25,17 @@ C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ChartSettingsForm.res
 C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.SeriesCreationForm.resources
 C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ChartSettingsForm.resources
 C:\Users\79135\Documents\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.SeriesCreationForm.resources
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\bin\Debug\Desktop_Client.exe.config
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\bin\Debug\Desktop_Client.exe
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\bin\Debug\Desktop_Client.pdb
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.AssemblyReference.cache
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.SuggestedBindingRedirects.cache
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ChartSettingsForm.resources
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ConnectionForm.resources
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.MainForm.resources
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.Properties.Resources.resources
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.SeriesCreationForm.resources
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.GenerateResource.cache
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.CoreCompileInputs.cache
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.exe
+I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.pdb
