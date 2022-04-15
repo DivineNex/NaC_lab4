@@ -16,6 +16,7 @@ namespace Server
         private static DataBaseManager dbManager;
         static int port = 55555;
         private static MessageParser parser;
+        private static Logger logger;
         private static string allGeneratingParams;
 
         static void Main(string[] args)
@@ -31,7 +32,7 @@ namespace Server
             clients = new List<Client>();
             parser = new MessageParser();
             dbManager = new DataBaseManager();
-
+            logger = new Logger();
         }
 
         private static void Start()
@@ -60,6 +61,10 @@ namespace Server
                     Console.WriteLine($"Клиент {handler.RemoteEndPoint} подключен");
                     Console.BackgroundColor = ConsoleColor.Black;
 
+                    if (!logger.active)
+                        logger.StartSession();
+                    logger.AddLog($"{DateTime.Now.ToString("HH:mm:ss")} Клиент {handler.RemoteEndPoint} подключен");
+
                     Client newClient = new Client();
                     newClient.ip_port = handler.RemoteEndPoint.ToString();
                     newClient.socket = handler;
@@ -72,6 +77,7 @@ namespace Server
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    logger.AddLog(ex.Message);
                 }
             }
         }
@@ -118,8 +124,12 @@ namespace Server
                     Console.BackgroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine($"Клиент {client.ip_port} отключен");
                     Console.BackgroundColor = ConsoleColor.Black;
+
+                    logger.AddLog($"{DateTime.Now.ToString("HH:mm:ss")} Клиент {client.ip_port} отключен");
                     handler.Close();
                     clients.Remove(client);
+                    if (clients.Count == 0)
+                        logger.StopSession();
                     break;
                 }
             }
@@ -172,6 +182,7 @@ namespace Server
                             SendMessageToClient("&" + messagePart, clients[j]);
                         }
                     }
+                    logger.AddLog($"{DateTime.Now.ToString("HH:mm:ss")} {messagePart}");
                     break;
                 default:
                     break;

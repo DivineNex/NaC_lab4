@@ -13,3 +13,12 @@ C:\Users\79135\Documents\GitHub\NaC_lab4\Server\obj\Debug\Server.csproj.Assembly
 C:\Users\79135\Documents\GitHub\NaC_lab4\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
 C:\Users\79135\Documents\GitHub\NaC_lab4\Server\obj\Debug\Server.exe
 C:\Users\79135\Documents\GitHub\NaC_lab4\Server\obj\Debug\Server.pdb
+C:\GitHub\NaC_lab4\Server\bin\Debug\EntityFramework.dll
+C:\GitHub\NaC_lab4\Server\bin\Debug\EntityFramework.SqlServer.dll
+C:\GitHub\NaC_lab4\Server\bin\Debug\System.Data.SQLite.dll
+C:\GitHub\NaC_lab4\Server\bin\Debug\System.Data.SQLite.EF6.dll
+C:\GitHub\NaC_lab4\Server\bin\Debug\System.Data.SQLite.Linq.dll
+C:\GitHub\NaC_lab4\Server\bin\Debug\EntityFramework.xml
+C:\GitHub\NaC_lab4\Server\bin\Debug\EntityFramework.SqlServer.xml
+C:\GitHub\NaC_lab4\Server\bin\Debug\System.Data.SQLite.xml
+C:\GitHub\NaC_lab4\Server\obj\Debug\Server.csproj.CopyComplete
