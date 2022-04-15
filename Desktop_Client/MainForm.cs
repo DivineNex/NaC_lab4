@@ -195,10 +195,32 @@ namespace Desktop_Client
             if ((logsRichTextBox.Visible) == true)
             {
                 logsRichTextBox.Visible = false;
+                tabControl1.Width = 1121;
+                tabControl1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                chartManager.Width = 1121;
+                chartManager.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             }
             else
+                if ((logsRichTextBox.Visible) == false)
+            {
                 logsRichTextBox.Visible = true;
+                tabControl1.Width = 824;
+                chartManager.Width = 824;
+            }
+                
+
+            if ((label1.Visible) == true)
+            {
+                label1.Visible = false;
+            }
+            else label1.Visible = true;
+            
+            
         }
-        
+
+        private void tabControl1_Resize(object sender, EventArgs e)
+        {        
+            
+        }
     }
 }
