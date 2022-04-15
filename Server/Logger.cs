@@ -12,7 +12,7 @@ namespace Server
     internal class Logger
     {
         public bool active = false;
-        private const string LOGS_DIR_PATH = @"..\..\Logs";
+        private const string LOGS_DIR_PATH = "..\\..\\Logs";
         StreamWriter streamWriter;
         private string currentLogSessionFilePath;
         private string startingDateTime;
@@ -20,9 +20,10 @@ namespace Server
         public void StartSession()
         {
             active = true;
-            startingDateTime = DateTime.Now.ToString();
-            File.Create(LOGS_DIR_PATH + $@"\{startingDateTime}-....txt");
-            currentLogSessionFilePath = $@"{LOGS_DIR_PATH}\{startingDateTime}-....txt";
+            startingDateTime = DateTime.Now.Date.ToString("dd.MM.yy") + "_" + DateTime.Now.ToString("HH.mm.ss");
+            FileStream fileStream = File.Create(LOGS_DIR_PATH + $"\\{startingDateTime}-....txt");
+            fileStream.Close();
+            currentLogSessionFilePath = $"{LOGS_DIR_PATH}\\{startingDateTime}-....txt";
             streamWriter = new StreamWriter(currentLogSessionFilePath);
         }
 
@@ -30,14 +31,14 @@ namespace Server
         {
             active = false;
             streamWriter.Close();
-            FileSystem.RenameFile(currentLogSessionFilePath, $@"{startingDateTime}-{DateTime.Now}.txt");
+            FileSystem.RenameFile(currentLogSessionFilePath, $@"{startingDateTime}-{DateTime.Now.Date.ToString("dd.MM.yy")}_{DateTime.Now.ToString("HH.mm.ss")}.txt");
             currentLogSessionFilePath = "";
             startingDateTime = null;
         }
 
-        public void AddLog()
+        public void AddLog(string str)
         {
-
+            streamWriter.WriteLine(str);
         }
     }
 }
