@@ -13,6 +13,7 @@ namespace Server
         private static List<Client> clients;
         private static IPEndPoint ipPoint;
         private static Socket listenSocket;
+        private static DataBaseManager dbManager;
         static int port = 55555;
         private static MessageParser parser;
         private static string allGeneratingParams;
@@ -29,6 +30,8 @@ namespace Server
             listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             clients = new List<Client>();
             parser = new MessageParser();
+            dbManager = new DataBaseManager();
+
         }
 
         private static void Start()

@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataBaseManager.cs" />
     <Compile Include="eClientType.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="eMessageType.cs" />
