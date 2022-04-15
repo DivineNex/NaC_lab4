@@ -180,6 +180,7 @@ namespace Desktop_Client
 
         private void button2_Click(object sender, EventArgs e)
         {
+
             chartManager.CreateChart(null, eChartOrientation.vertical);
         }
 
@@ -188,5 +189,16 @@ namespace Desktop_Client
             logsRichTextBox.SelectionStart = logsRichTextBox.Text.Length;
             logsRichTextBox.ScrollToCaret();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if ((logsRichTextBox.Visible) == true)
+            {
+                logsRichTextBox.Visible = false;
+            }
+            else
+                logsRichTextBox.Visible = true;
+        }
+        
     }
 }
