@@ -41,7 +41,6 @@ namespace Desktop_Client
                     // подключаемся к удаленному хосту
                     serverSocket.Connect(ipPoint);
                     mainForm.AddLog($"Соединение с сервером {serverSocket.RemoteEndPoint} установлено");
-                    mainForm.BackColor = Color.LightGreen;
                     serverSocketThread = new Thread(() => SocketThread());
                     serverSocketThread.Start();
                     SendInitMessage();
@@ -64,7 +63,6 @@ namespace Desktop_Client
         public void DisconnectFromServer()
         {
                 mainForm.AddLog($"Соединение с сервером {serverSocket.RemoteEndPoint} разорвано");
-                mainForm.BackColor = Color.Yellow;
                 serverSocket.Shutdown(SocketShutdown.Both);
                 serverSocket.Close();
 

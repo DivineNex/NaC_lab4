@@ -5,7 +5,12 @@
       "ProjectGuid": "725e3b2f-4ad4-49ea-a322-202abc995073",
       "DisplayName": "Modules",
       "ColorIndex": 0
+    },
+    "a4c0d0a9-5f97-44e5-ac95-1cf2dd098cdb": {
+      "ProjectGuid": "a4c0d0a9-5f97-44e5-ac95-1cf2dd098cdb",
+      "DisplayName": "Desktop_Client",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
