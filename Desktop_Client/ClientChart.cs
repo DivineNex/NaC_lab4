@@ -53,8 +53,8 @@ namespace Desktop_Client
 
         private void ClientChart_Paint(object sender, PaintEventArgs e)
         {
-            DrawBorders(e);
             DrawSeries(e);
+            DrawBorders(e);
         }
 
         private void Init()
@@ -70,7 +70,7 @@ namespace Desktop_Client
             series = new List<ChartSerie>();
 
             OpenSettingsForm();
-
+            DoubleBuffered = true;
             Paint += ClientChart_Paint;
         }
 
@@ -84,10 +84,20 @@ namespace Desktop_Client
         {
             foreach (ChartSerie serie in series)
             {
-                for (int i = 0; i < serie.Points.Count; i++)
+                if (serie.Points.Count != 0)
                 {
                     Brush brush = new SolidBrush(serie.color);
-                    e.Graphics.FillEllipse(brush, serie.Points[i].X, serie.Points[i].Y, 10, 10);
+                    Pen pen = new Pen(serie.color);
+                    pen.Width = 3;
+
+                    if (serie.Points.Count == 1)
+                    {
+                        e.Graphics.FillEllipse(brush, serie.Points[0].X, serie.Points[0].Y, 3, 3);
+                    }
+                    else
+                    {
+                        e.Graphics.DrawLines(pen, serie.Points.ToArray());
+                    }
                 }
             }
         }
