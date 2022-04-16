@@ -32,6 +32,7 @@ namespace Desktop_Client
         private Button buttonClose;
         private ChartInfoPanel infoPanel;
         private ChartSettingsForm settingsForm;
+
         private List<ChartSerie> series;
 
         public List<ChartSerie> Series
@@ -53,6 +54,7 @@ namespace Desktop_Client
         private void ClientChart_Paint(object sender, PaintEventArgs e)
         {
             DrawBorders(e);
+            DrawSeries(e);
         }
 
         private void Init()
@@ -78,9 +80,16 @@ namespace Desktop_Client
             this.Dispose();
         }
 
-        public void Draw()
+        public void DrawSeries(PaintEventArgs e)
         {
-            
+            foreach (ChartSerie serie in series)
+            {
+                for (int i = 0; i < serie.Points.Count; i++)
+                {
+                    Brush brush = new SolidBrush(serie.color);
+                    e.Graphics.FillEllipse(brush, serie.Points[i].X, serie.Points[i].Y, 10, 10);
+                }
+            }
         }
 
         public void DrawBorders(PaintEventArgs e)
@@ -159,7 +168,9 @@ namespace Desktop_Client
                 if (prm.name == paramName)
                 {
                     ChartSerie newSerie = new ChartSerie(prm, this);
+                    newSerie.Visible = true;
                     series.Add(newSerie);
+                    prm.assignedSeries.Add(newSerie);
                     return;
                 }
             }

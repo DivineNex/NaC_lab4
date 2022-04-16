@@ -13,13 +13,23 @@ namespace Desktop_Client
         private ClientChart chart;
         public readonly string name;
         private Param param;
-        private List<Point> allPoints;
+        private List<PointF> allPoints;
         public Color color;
         Random random = new Random();
 
+        public List<PointF> Points
+        {
+            get { return allPoints; }
+        }
+
+
         public ChartSerie(Param param, ClientChart chart)
         {
-            allPoints = new List<Point>();
+            Width = chart.Width - ClientChart.BORDER_THICKNESS * 2;
+            Height = chart.Height - ClientChart.BORDER_THICKNESS * 2;
+            Left = ClientChart.BORDER_THICKNESS;
+            Top = ClientChart.BORDER_THICKNESS;
+            allPoints = new List<PointF>();
             this.param = param;
             this.chart = chart;
             name = param.name;
@@ -27,14 +37,16 @@ namespace Desktop_Client
             InitSerieSettingsPanel();
         }
 
-        public void AddPoint(int x, int y)
+        public void AddPoint(float x, float y)
         {
-            allPoints.Add(new Point(x, y));
-        }
+            for (int i = 0; i < allPoints.Count; i++)
+            {
+                PointF interPoint = allPoints[i];
+                interPoint.Y -= 20;
+                allPoints[i] = interPoint;
+            }
 
-        public void UpdateValue()
-        {
-            //Нужно ли?
+            allPoints.Add(new PointF(x, y));
         }
 
         public void InitSerieSettingsPanel()

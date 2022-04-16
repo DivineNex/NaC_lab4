@@ -99,6 +99,9 @@ namespace Desktop_Client
             chart.Series.Remove(serie);
             chart.SettingsForm.SeriesPanel.Controls.Remove(this);
             chart.SettingsForm.UpdateSeriesPanelsPosition();
+
+            if (chart.Series.Count == 0)
+                chart.Refresh();
             Dispose();
         }
     }

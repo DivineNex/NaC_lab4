@@ -13,6 +13,8 @@ namespace Desktop_Client
     {
         public List<ClientChart> allCharts;
         private MainForm mainForm;
+        private Timer timer;
+        private const int MILLISECONDS_PER_UPDATE = 100;
 
         public MainForm MainForm
         {
@@ -28,6 +30,18 @@ namespace Desktop_Client
             BackColor = Color.DarkGray;
             UpdateSize();
             Paint += ChartManager_Paint;
+            timer = new Timer();
+            timer.Interval = MILLISECONDS_PER_UPDATE;
+            timer.Tick += Timer_Tick;
+            
+            //временно выключен на период тестирования
+            timer.Start();
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (allCharts.Count > 0)
+                UpdateCharts();
         }
 
         private void ChartManager_Paint(object sender, PaintEventArgs e)
@@ -49,9 +63,13 @@ namespace Desktop_Client
             allCharts.Remove(chart);
         }
 
-        public void UpdateChart()
+        public void UpdateCharts()
         {
-
+            foreach (ClientChart chart in allCharts)
+            {
+                if (chart.Series.Count > 0)
+                    chart.Refresh();
+            }
         }
 
         private void UpdateSize()

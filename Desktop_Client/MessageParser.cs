@@ -21,7 +21,7 @@ namespace Desktop_Client
                     mainForm.AddLog(DateTime.Now.ToString("HH:mm:ss") + " " + parsedMessage[1]);
                     string[] parsedParamMessage = parsedMessage[1].Split(new string[] { " = " }, StringSplitOptions.None);
 
-                    mainForm.SetParamValue(parsedParamMessage[0], Convert.ToDouble(parsedParamMessage[1]));
+                    mainForm.SetParamValue(parsedParamMessage[0], float.Parse(parsedParamMessage[1]));
                     break;
                 case "init_params":
                     MainForm.allGettingParamsNames.Clear();

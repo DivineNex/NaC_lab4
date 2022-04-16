@@ -32,6 +32,7 @@ namespace Desktop_Client
             if (listBoxAllParamsNames.Items.Count > 0)
             {
                 chart.CreateSerie(listBoxAllParamsNames.SelectedItem.ToString());
+
                 Dispose();
             }
             else

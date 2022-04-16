@@ -23,12 +23,10 @@ namespace Desktop_Client
             get { return allParams; }
         }
 
-
         public TabPage tabPage
         {
             get { return tabPage1; }
         }
-
 
         public ConnectionManager connectionManager;
 
@@ -143,14 +141,19 @@ namespace Desktop_Client
             }
         }
 
-        public void SetParamValue(string paramName, double value)
+        public void SetParamValue(string paramName, float value)
         {
             foreach (var par in allParams)
             {
                 if (par.name == paramName)
                 {
                     par.UpdateValue(value);
-                    //chartManager.UpdateChart(par.name);
+
+                    foreach (var serie in par.assignedSeries)
+                    {
+                        serie.AddPoint(value, serie.Height - 20);
+                    }
+
                     break;
                 }
             }
@@ -214,8 +217,6 @@ namespace Desktop_Client
                 label1.Visible = false;
             }
             else label1.Visible = true;
-            
-            
         }
 
         private void tabControl1_Resize(object sender, EventArgs e)

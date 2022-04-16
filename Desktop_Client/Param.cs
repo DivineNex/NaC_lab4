@@ -10,10 +10,16 @@ namespace Desktop_Client
     {
         public string name;
         private double value;
+        public List<ChartSerie> assignedSeries;
 
         public double Value
         {
             get { return value; }
+        }
+
+        public Param()
+        {
+            assignedSeries = new List<ChartSerie>();
         }
 
         public void UpdateValue (double newValue)
