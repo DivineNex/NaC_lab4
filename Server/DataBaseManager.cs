@@ -18,8 +18,8 @@ namespace Server
 
         public void Connect()
         {
-            dbCon = new SQLiteConnection();
-            
+            dbCon = new SQLiteConnection("Data Source=DataBase.db; Version=3");
+            dbCon.Open();
         }
         public void Cmd()
         {
@@ -33,6 +33,8 @@ namespace Server
 
             }
         }
+
+      
 
    }
 }
