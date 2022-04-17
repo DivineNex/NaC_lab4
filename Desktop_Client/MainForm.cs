@@ -16,6 +16,12 @@ namespace Desktop_Client
     {
         public static List<string> allGettingParamsNames;
         private ChartManager chartManager;
+
+        public ChartManager ChartManager
+        {
+            get { return chartManager; }
+        }
+
         private List<Param> allParams;
 
         public List<Param> AllParams

@@ -16,6 +16,9 @@ namespace Desktop_Client
         private List<PointF> allPoints;
         public Color color;
         Random random = new Random();
+        private double intervalCoeff;
+        private double maxValue;
+        private double minValue;
 
         public List<PointF> Points
         {
@@ -32,6 +35,8 @@ namespace Desktop_Client
             this.param = param;
             this.chart = chart;
             name = param.name;
+            intervalCoeff = param.interval / 1000;
+
             color = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
             InitSerieSettingsPanel();
         }
@@ -44,6 +49,10 @@ namespace Desktop_Client
                 interPoint.Y -= chart.axisYStep;
                 allPoints[i] = interPoint;
             }
+
+            //string time = DateTime.Now.ToString("HH:mm:ss");
+            //if (!chart.timeStamps.Contains(time))
+            //    chart.timeStamps.Add(time);
 
             allPoints.Add(new PointF(x, y));
         }

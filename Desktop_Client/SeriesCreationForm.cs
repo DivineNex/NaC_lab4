@@ -29,15 +29,15 @@ namespace Desktop_Client
 
         private void listBoxAllParamsNames_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (listBoxAllParamsNames.Items.Count > 0)
+            try
             {
                 chart.CreateSerie(listBoxAllParamsNames.SelectedItem.ToString());
 
                 Dispose();
             }
-            else
+            catch
             {
-                MessageBox.Show("Нет параметров, чтобы создать серию");
+
             }
         }
     }

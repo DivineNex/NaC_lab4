@@ -24,7 +24,7 @@ namespace Desktop_Client
             BackColor = BACKGROUND_COLOR;
 
             labelTitle = new Label();
-            labelTitle.Text = "График #" + (chart.chartManager.allCharts.Count + 1).ToString();
+            labelTitle.Text = "График #" + (chart.chartManager.AllCharts.Count + 1).ToString();
             labelTitle.Font = new Font(ClientChart.TEXT_FONT_FAMILY, 12);
             labelTitle.ForeColor = ClientChart.TEXT_COLOR;
             labelTitle.Location = new Point(20, 5);

@@ -24,6 +24,13 @@ namespace Desktop_Client
             BackColor = BACKGROUND_COLOR;
             DoubleBuffered = true;
 
+            VScrollBar vScroll = new VScrollBar();
+            vScroll.Show();
+            vScroll.Size = new Size(15, Height - ClientChart.BORDER_THICKNESS * 2);
+            vScroll.Top = ClientChart.BORDER_THICKNESS;
+            vScroll.Left = Width - vScroll.Width;
+            Controls.Add(vScroll);
+
             chart.Controls.Add(this);
             Show();
             Paint += ChartDrawArea_Paint;
@@ -76,13 +83,13 @@ namespace Desktop_Client
         {
             Pen pen = new Pen(Color.FromArgb(255, 210, 210, 210));
 
-            int horLinesCount = Width / chart.axisXStep + 1;
-            int vertLinesCount = Height / chart.axisYStep + 1;
+            int horLinesCount = Height / chart.axisXStep + 1;
+            int vertLinesCount = Width / chart.axisYStep + 1;
 
             for (int i = 0; i < horLinesCount; i++)
             {
-                e.Graphics.DrawLine(pen, new Point(0, i * chart.axisYStep),
-                                         new Point(Width, i * chart.axisYStep));
+                e.Graphics.DrawLine(pen, new Point(0, Height - (i * chart.axisYStep) - 15),
+                                         new Point(Width, Height - (i * chart.axisYStep) - 15));
             }
 
             for (int i = 0; i < vertLinesCount; i++)
