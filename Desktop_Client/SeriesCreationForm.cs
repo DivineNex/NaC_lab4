@@ -13,18 +13,20 @@ namespace Desktop_Client
     public partial class SeriesCreationForm : Form
     {
         private ClientChart chart;
+        private MainForm mainForm;
 
         public SeriesCreationForm(ClientChart chart)
         {
+            this.chart = chart;
+            mainForm = chart.chartManager.MainForm;
             InitializeComponent();
             InitParams();
-            this.chart = chart;
         }
 
         private void InitParams()
         {
-            foreach(var paramName in MainForm.allGettingParamsNames)
-                listBoxAllParamsNames.Items.Add(paramName);
+            foreach(Param param in mainForm.allParams)
+                listBoxAllParamsNames.Items.Add(param.Name);
         }
 
         private void listBoxAllParamsNames_MouseDoubleClick(object sender, MouseEventArgs e)

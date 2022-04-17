@@ -24,12 +24,18 @@ namespace Desktop_Client
                     mainForm.SetParamValue(parsedParamMessage[0], float.Parse(parsedParamMessage[1]));
                     break;
                 case "init_params":
-                    MainForm.allGettingParamsNames.Clear();
+                    mainForm.allParams.Clear();
                     for (int i = 1; i < parsedMessage.Length; i++)
                     {
-                        MainForm.allGettingParamsNames.Add(parsedMessage[i]);
+                        //"//{param.name}##{param.Interval}##{param.MinValue}##{param.MaxValue}";
+                        string[] splittedParamData = parsedMessage[i].Split(new string[] { "##" }, StringSplitOptions.None);
+                        Param newParam = new Param(splittedParamData[0], 
+                                                   Convert.ToDouble(splittedParamData[1]),
+                                                   Convert.ToDouble(splittedParamData[2]),
+                                                   Convert.ToDouble(splittedParamData[3]));
+                        newParam.UpdateValue(0);
+                        mainForm.allParams.Add(newParam);
                     }
-                    mainForm.InitializeParamsArray();
                     break;
             }
         }

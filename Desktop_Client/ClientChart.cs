@@ -172,9 +172,9 @@ namespace Desktop_Client
 
         public void CreateSerie(string paramName)
         {
-            foreach (Param prm in chartManager.MainForm.AllParams)
+            foreach (Param prm in chartManager.MainForm.allParams)
             {
-                if (prm.name == paramName)
+                if (prm.Name == paramName)
                 {
                     ChartSerie newSerie = new ChartSerie(prm, this);
                     newSerie.Visible = true;

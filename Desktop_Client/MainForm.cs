@@ -14,7 +14,6 @@ namespace Desktop_Client
 {
     public partial class MainForm : Form
     {
-        public static List<string> allGettingParamsNames;
         private ChartManager chartManager;
 
         public ChartManager ChartManager
@@ -22,12 +21,7 @@ namespace Desktop_Client
             get { return chartManager; }
         }
 
-        private List<Param> allParams;
-
-        public List<Param> AllParams
-        {
-            get { return allParams; }
-        }
+        public List<Param> allParams;
 
         public TabPage tabPage
         {
@@ -49,8 +43,8 @@ namespace Desktop_Client
         private void Init()
         {
             connectionManager = new ConnectionManager(this);
-            allGettingParamsNames = new List<string>();
             chartManager = new ChartManager(this);
+            allParams = new List<Param>();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -73,9 +67,6 @@ namespace Desktop_Client
 
         public void AddLog(string message)
         {
-            //При такой реализации изменение из другого потока ломало это
-            //logsRichTextBox.Text += message + "\r\n";
-
             Action action = () => logsRichTextBox.Text += message + "\r\n";
             if (logsRichTextBox.InvokeRequired)
             {
@@ -89,19 +80,6 @@ namespace Desktop_Client
 
         public void SetConnectionStatus(bool connected)
         {
-            //if (connected)
-            //{
-            //    button1.Text = "Disconnect";
-            //    toolStripStatusLabel2.Text = "установлено";
-            //    toolStripStatusLabel2.BackColor = Color.LimeGreen;
-            //}
-            //else
-            //{
-            //    button1.Text = "Connect";
-            //    toolStripStatusLabel2.Text = "не установлено";
-            //    toolStripStatusLabel2.BackColor = Color.Tomato;
-            //}
-
             Action action = () => {
                 if (connected)
                 {
@@ -135,23 +113,11 @@ namespace Desktop_Client
             }
         }
 
-        public void InitializeParamsArray()
-        {
-            allParams = new List<Param>();
-
-            foreach (var paramName in allGettingParamsNames)
-            {
-                Param newParam = new Param() { name = paramName };
-                newParam.UpdateValue(0);
-                allParams.Add(newParam);
-            }
-        }
-
         public void SetParamValue(string paramName, float value)
         {
             foreach (var par in allParams)
             {
-                if (par.name == paramName)
+                if (par.Name == paramName)
                 {
                     par.UpdateValue(value);
 
@@ -173,7 +139,7 @@ namespace Desktop_Client
                 textBox1.Clear();
                 foreach (var par in allParams)
                 {
-                    textBox1.Text += $"\r\n{par.name}\t{par.Value}";
+                    textBox1.Text += $"\r\n{par.Name}\t{par.Value}";
                 }
             };
 

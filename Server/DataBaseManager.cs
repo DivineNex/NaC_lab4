@@ -28,10 +28,10 @@ namespace Server
 
         public void AddParam()
         {
-            if ()
-            {
+            //if ()
+            //{
 
-            }
+            //}
         }
 
       

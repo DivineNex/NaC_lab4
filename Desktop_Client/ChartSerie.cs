@@ -34,8 +34,8 @@ namespace Desktop_Client
             allPoints = new List<PointF>();
             this.param = param;
             this.chart = chart;
-            name = param.name;
-            intervalCoeff = param.interval / 1000;
+            name = param.Name;
+            //intervalCoeff = param.interval / 1000;
 
             color = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
             InitSerieSettingsPanel();
