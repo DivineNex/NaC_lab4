@@ -30,6 +30,7 @@ namespace Desktop_Client
         private ChartSettingsForm settingsForm;
         public int axisYStep;
         public int axisXStep;
+        public List<string> timeStamps;
 
         private List<ChartSerie> series;
 
@@ -52,6 +53,7 @@ namespace Desktop_Client
         private void ClientChart_Paint(object sender, PaintEventArgs e)
         {
             drawArea.Refresh();
+            timeAxis.Refresh();
             DrawBorders(e);
         }
 
@@ -70,6 +72,7 @@ namespace Desktop_Client
             infoPanel = new ChartInfoPanel(this);
             timeAxis = new ChartTimeAxis(this);
             drawArea = new ChartDrawArea(this);
+            timeStamps = new List<string>();
 
             OpenSettingsForm();
             DoubleBuffered = true;

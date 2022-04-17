@@ -142,7 +142,7 @@ namespace Modules
             {
                 foreach (var param in gm.allParams)
                 {
-                    allGeneratingParams += "//" + param.name;
+                    allGeneratingParams += $"//{param.name}##{param.Interval}##{param.MinValue}##{param.MaxValue}";
                 }
             }
 

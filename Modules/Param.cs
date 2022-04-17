@@ -13,9 +13,28 @@ namespace Modules
         public readonly string name;
         Timer timer;
         Random random;
+        private int interval;
+
+        public double Interval
+        {
+            get { return interval; }
+        }
+
         private double minValue;
+
+        public double MinValue
+        {
+            get { return minValue; }
+        }
+
         private double maxValue;
-        bool isInteger;
+
+        public double MaxValue
+        {
+            get { return maxValue; }
+        }
+
+        private bool isInteger;
         public GenerationModule gm;
         public RegistrationModule rm;
 
@@ -35,6 +54,7 @@ namespace Modules
 
         public Param(string name, int interval, double minValue, double maxValue, bool isInteger)
         {
+            this.interval = interval;
             this.name = name;
             timer = new Timer(interval);
             random = new Random();

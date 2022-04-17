@@ -11,10 +11,16 @@ namespace Desktop_Client
 {
     public class ChartManager : Control
     {
-        public List<ClientChart> allCharts;
         private MainForm mainForm;
         private Timer timer;
         private const int MILLISECONDS_PER_UPDATE = 100;
+        private List<ClientChart> allCharts;
+
+        public List<ClientChart> AllCharts
+        {
+            get { return allCharts; }
+        }
+
 
         public MainForm MainForm
         {
