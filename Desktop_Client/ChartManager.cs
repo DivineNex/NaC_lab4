@@ -46,7 +46,7 @@ namespace Desktop_Client
 
         private void ChartManager_Paint(object sender, PaintEventArgs e)
         {
-            DrawBorders(e);
+            //DrawBorders(e);
         }
 
         public void CreateChart(Param param, eChartOrientation chartType)

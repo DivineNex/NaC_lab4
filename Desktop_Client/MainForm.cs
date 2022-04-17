@@ -151,7 +151,7 @@ namespace Desktop_Client
 
                     foreach (var serie in par.assignedSeries)
                     {
-                        serie.AddPoint(value, serie.Height - 20);
+                        serie.AddPoint(value, serie.Height - 10);
                     }
 
                     break;

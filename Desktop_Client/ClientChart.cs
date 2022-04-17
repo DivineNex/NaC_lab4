@@ -11,27 +11,25 @@ namespace Desktop_Client
 {
     public class ClientChart : Control
     {
-        public const int BORDER_THICKNESS = 5;
+        public const int BORDER_THICKNESS = 2;
         private static readonly Color BACKGROUND_COLOR = Color.FromArgb(255, 220, 220, 220);
         private static readonly Color BORDER_COLOR = Color.FromArgb(255, 80, 80, 80);
         private static readonly Color BUTTON_BACK_COLOR = Color.FromArgb(255, 220, 220, 220);
-        private static readonly Color TEXT_COLOR = Color.FromArgb(255, 60, 60, 60);
-        private static readonly string TEXT_FONT_FAMILY = "Arial";
+        public static readonly Color TEXT_COLOR = Color.FromArgb(255, 60, 60, 60);
+        public static readonly string TEXT_FONT_FAMILY = "Arial";
 
-        private Label titleLabel;
-
-        public string Title
-        {
-            get { return titleLabel.Text; }
-            set { titleLabel.Text = value; }
-        }
-
-        private eChartOrientation type;
+        //private eChartOrientation type;
         public ChartManager chartManager;
         private Button buttonSettings;
         private Button buttonClose;
-        private ChartInfoPanel infoPanel;
+        private Button buttonScreenshot;
+        private Button buttonWarnings;
+        public ChartInfoPanel infoPanel;
+        public ChartTimeAxis timeAxis;
+        public ChartDrawArea drawArea;
         private ChartSettingsForm settingsForm;
+        public int axisYStep;
+        public int axisXStep;
 
         private List<ChartSerie> series;
 
@@ -53,7 +51,7 @@ namespace Desktop_Client
 
         private void ClientChart_Paint(object sender, PaintEventArgs e)
         {
-            DrawSeries(e);
+            drawArea.Refresh();
             DrawBorders(e);
         }
 
@@ -62,16 +60,21 @@ namespace Desktop_Client
             Width = 500;
             Height = 500;
             BackColor = BACKGROUND_COLOR;
-            Show();
+            ResizeRedraw = true;
             InitButtons();
-            InitMainLabel();
 
-            infoPanel = new ChartInfoPanel(this);
+            axisYStep = 20;
+            axisXStep = 20;
+
             series = new List<ChartSerie>();
+            infoPanel = new ChartInfoPanel(this);
+            timeAxis = new ChartTimeAxis(this);
+            drawArea = new ChartDrawArea(this);
 
             OpenSettingsForm();
             DoubleBuffered = true;
             Paint += ClientChart_Paint;
+            Show();
         }
 
         public void Close()
@@ -80,32 +83,10 @@ namespace Desktop_Client
             this.Dispose();
         }
 
-        public void DrawSeries(PaintEventArgs e)
-        {
-            foreach (ChartSerie serie in series)
-            {
-                if (serie.Points.Count != 0)
-                {
-                    Brush brush = new SolidBrush(serie.color);
-                    Pen pen = new Pen(serie.color);
-                    pen.Width = 3;
-
-                    if (serie.Points.Count == 1)
-                    {
-                        e.Graphics.FillEllipse(brush, serie.Points[0].X, serie.Points[0].Y, 3, 3);
-                    }
-                    else
-                    {
-                        e.Graphics.DrawLines(pen, serie.Points.ToArray());
-                    }
-                }
-            }
-        }
-
         public void DrawBorders(PaintEventArgs e)
         {
             Pen blackPen = new Pen(BORDER_COLOR, BORDER_THICKNESS);
-            Rectangle rect = new Rectangle(0, 0, Width - 1, Height - 1);
+            Rectangle rect = new Rectangle(BORDER_THICKNESS/2, BORDER_THICKNESS/2, Width - BORDER_THICKNESS, Height - BORDER_THICKNESS);
             e.Graphics.DrawRectangle(blackPen, rect);
         }
 
@@ -113,30 +94,58 @@ namespace Desktop_Client
         {
             buttonSettings = new Button();
             buttonClose = new Button();
+            buttonScreenshot = new Button();
+            buttonWarnings = new Button();
 
             buttonSettings.Parent = this;
             buttonClose.Parent = this;
+            buttonScreenshot.Parent = this;
+            buttonWarnings.Parent = this;
 
             buttonSettings.Size = new Size(30, 30);
             buttonClose.Size = new Size(30, 30);
+            buttonScreenshot.Size = new Size(30, 30);
+            buttonWarnings.Size = new Size(30, 30);
 
-            buttonSettings.Location = new Point(Width - 66, 6);
-            buttonClose.Location = new Point(Width - 36, 6);
+            buttonSettings.Location = new Point(BORDER_THICKNESS, BORDER_THICKNESS);
+            buttonClose.Location = new Point(BORDER_THICKNESS, BORDER_THICKNESS+30);
+            buttonScreenshot.Location = new Point(BORDER_THICKNESS+30, BORDER_THICKNESS);
+            buttonWarnings.Location = new Point(BORDER_THICKNESS+30, BORDER_THICKNESS+30);
 
             buttonSettings.BackColor = BUTTON_BACK_COLOR;
             buttonClose.BackColor = BUTTON_BACK_COLOR;
+            buttonScreenshot.BackColor = BUTTON_BACK_COLOR;
+            buttonWarnings.BackColor = BUTTON_BACK_COLOR;
 
-            buttonSettings.Image = Image.FromFile(@"..\..\Res\IconChartSettingsButton.png");
-            buttonClose.Image = Image.FromFile(@"..\..\Res\IconChartCloseButton.png");
+            buttonSettings.Image = Image.FromFile(@"..\..\Res\IconSettings.png");
+            buttonClose.Image = Image.FromFile(@"..\..\Res\IconClose.png");
+            buttonScreenshot.Image = Image.FromFile(@"..\..\Res\IconScreenshot.png");
+            buttonWarnings.Image = Image.FromFile(@"..\..\Res\IconWarnings.png");
 
             buttonSettings.Click += ButtonSettings_Click;
             buttonClose.Click += ButtonClose_Click;
+            buttonScreenshot.Click += ButtonScreenshot_Click;
+            buttonWarnings.Click += ButtonWarnings_Click;
 
             Controls.Add(buttonSettings);
             Controls.Add(buttonClose);
+            Controls.Add(buttonScreenshot);
+            Controls.Add(buttonWarnings);
 
             buttonSettings.Show();
             buttonClose.Show();
+            buttonScreenshot.Show();
+            buttonWarnings.Show();
+        }
+
+        private void ButtonWarnings_Click(object sender, EventArgs e)
+        {
+            //
+        }
+
+        private void ButtonScreenshot_Click(object sender, EventArgs e)
+        {
+            //
         }
 
         private void ButtonSettings_Click(object sender, EventArgs e)
@@ -149,19 +158,6 @@ namespace Desktop_Client
             Close();
         }
 
-        private void InitMainLabel()
-        {
-            titleLabel = new Label();
-            titleLabel.Parent = this;
-            titleLabel.Text = "График #" + (chartManager.allCharts.Count + 1).ToString();
-            titleLabel.Location = new Point(10, 13);
-            titleLabel.Font = new Font(TEXT_FONT_FAMILY, 16);
-            titleLabel.ForeColor = TEXT_COLOR;
-            titleLabel.AutoSize = true;
-            titleLabel.BackColor = ChartInfoPanel.BACKGROUND_COLOR;
-            Controls.Add(titleLabel);
-            titleLabel.Show();
-        }
 
         private void OpenSettingsForm()
         {

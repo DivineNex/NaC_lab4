@@ -35,7 +35,7 @@ namespace Desktop_Client
 
         private void InitLabels()
         {
-            labelTitle.Text = chart.Title;
+            labelTitle.Text = chart.infoPanel.labelTitle.Text;
             labelTitle.Left = 10;
             labelTitle.Top = 5;
         }
@@ -44,7 +44,7 @@ namespace Desktop_Client
         {
             textBoxEditTitle.Width = labelTitle.Width - 5;
             textBoxEditTitle.Visible = false;
-            textBoxEditTitle.Text = chart.Title;
+            textBoxEditTitle.Text = chart.infoPanel.labelTitle.Text;
         }
 
         private void InitButtons()
@@ -76,8 +76,8 @@ namespace Desktop_Client
         {
             if (textBoxEditTitle.Text.Length > 0)
             {
-                chart.Title = textBoxEditTitle.Text;
-                labelTitle.Text = chart.Title;
+                chart.infoPanel.labelTitle.Text = textBoxEditTitle.Text;
+                labelTitle.Text = chart.infoPanel.labelTitle.Text;
             }
             else
             {

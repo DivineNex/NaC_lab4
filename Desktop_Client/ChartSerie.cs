@@ -22,11 +22,10 @@ namespace Desktop_Client
             get { return allPoints; }
         }
 
-
         public ChartSerie(Param param, ClientChart chart)
         {
             Width = chart.Width - ClientChart.BORDER_THICKNESS * 2;
-            Height = chart.Height - ClientChart.BORDER_THICKNESS * 2;
+            Height = chart.drawArea.Height - ClientChart.BORDER_THICKNESS * 2;
             Left = ClientChart.BORDER_THICKNESS;
             Top = ClientChart.BORDER_THICKNESS;
             allPoints = new List<PointF>();
@@ -42,7 +41,7 @@ namespace Desktop_Client
             for (int i = 0; i < allPoints.Count; i++)
             {
                 PointF interPoint = allPoints[i];
-                interPoint.Y -= 20;
+                interPoint.Y -= chart.axisYStep;
                 allPoints[i] = interPoint;
             }
 

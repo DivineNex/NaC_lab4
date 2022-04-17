@@ -59,7 +59,7 @@ namespace Desktop_Client
             buttonClose.Parent = this;
             buttonClose.Left = Width - 30;
             buttonClose.Top = 0;
-            buttonClose.Image = Image.FromFile(@"..\..\Res\IconChartCloseButton.png");
+            buttonClose.Image = Image.FromFile(@"..\..\Res\IconClose.png");
             buttonClose.Click += ButtonClose_Click;
             Controls.Add(buttonClose);
 
@@ -68,7 +68,7 @@ namespace Desktop_Client
             buttonSettings.Parent = this;
             buttonSettings.Left = Width - 60;
             buttonSettings.Top = 0;
-            buttonSettings.Image = Image.FromFile(@"..\..\Res\IconChartSettingsButton.png");
+            buttonSettings.Image = Image.FromFile(@"..\..\Res\IconSettings.png");
             buttonSettings.Click += ButtonSettings_Click;
             Controls.Add(buttonSettings);
         }
