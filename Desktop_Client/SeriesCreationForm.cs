@@ -14,9 +14,11 @@ namespace Desktop_Client
     {
         private ClientChart chart;
         private MainForm mainForm;
+        private ChartSettingsForm settingsForm;
 
-        public SeriesCreationForm(ClientChart chart)
+        public SeriesCreationForm(ClientChart chart, ChartSettingsForm settingsForm)
         {
+            this.settingsForm = settingsForm;
             this.chart = chart;
             mainForm = chart.chartManager.MainForm;
             InitializeComponent();
@@ -34,8 +36,7 @@ namespace Desktop_Client
             try
             {
                 chart.CreateSerie(listBoxAllParamsNames.SelectedItem.ToString());
-
-                Dispose();
+                Close();
             }
             catch
             {

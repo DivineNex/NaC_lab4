@@ -10,15 +10,16 @@ namespace Desktop_Client
 {
     public class ChartInfoPanel : Control
     {
-        private static readonly Color BACKGROUND_COLOR = Color.DarkGray;
+        public static readonly Color BACKGROUND_COLOR = Color.DarkGray;
 
         public Label labelTitle;
+        public List<ChartInfoPanelSerie> seriesPanels;
 
         public ChartInfoPanel(ClientChart chart)
         {
             Parent = chart;
             Width = chart.Width - 60 - ClientChart.BORDER_THICKNESS*2;
-            Height = 60;
+            Height = 20;
             Top = ClientChart.BORDER_THICKNESS;
             Left = ClientChart.BORDER_THICKNESS + 60;
             BackColor = BACKGROUND_COLOR;
@@ -27,9 +28,11 @@ namespace Desktop_Client
             labelTitle.Text = "График #" + (chart.chartManager.AllCharts.Count + 1).ToString();
             labelTitle.Font = new Font(ClientChart.TEXT_FONT_FAMILY, 12);
             labelTitle.ForeColor = ClientChart.TEXT_COLOR;
-            labelTitle.Location = new Point(20, 5);
             labelTitle.AutoSize = true;
+            labelTitle.Location = new Point(Width/2 - labelTitle.Width/2, 0);
             labelTitle.BackColor = BACKGROUND_COLOR;
+
+            seriesPanels = new List<ChartInfoPanelSerie>();
 
             chart.Controls.Add(this);
             Show();

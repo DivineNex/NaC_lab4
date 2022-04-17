@@ -57,6 +57,9 @@
     <Compile Include="ChartInfoPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ChartInfoPanelSerie.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ChartManager.cs">
       <SubType>Component</SubType>
     </Compile>

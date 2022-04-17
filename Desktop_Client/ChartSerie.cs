@@ -16,8 +16,8 @@ namespace Desktop_Client
         private List<PointF> allPoints;
         public Color color;
         Random random = new Random();
-        private double maxValue;
-        private double minValue;
+        public float maxValue;
+        public float minValue;
 
         public List<PointF> Points
         {
@@ -26,10 +26,6 @@ namespace Desktop_Client
 
         public ChartSerie(Param param, ClientChart chart)
         {
-            //if (param.Interval < chart.timer.Interval)
-            //    chart.timer.Interval = param.Interval;
-            //if (!chart.timer.Enabled)
-            //    chart.timer.Enabled = true;
             if (param.Interval < chart.minInterval)
                 chart.minInterval = param.Interval;
 
@@ -41,24 +37,17 @@ namespace Desktop_Client
             this.param = param;
             this.chart = chart;
             name = param.Name;
-
+            minValue = param.MinValue;
+            maxValue = param.MaxValue;
             color = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
+
+            ChartInfoPanelSerie panelSerie = new ChartInfoPanelSerie(this, chart.infoPanel);
+
             InitSerieSettingsPanel();
         }
 
         public void AddPoint(float x, float y)
         {
-            //for (int i = 0; i < allPoints.Count; i++)
-            //{
-            //    PointF interPoint = allPoints[i];
-            //    interPoint.Y -= chart.axisYStep;
-            //    allPoints[i] = interPoint;
-            //}
-
-            ////string time = DateTime.Now.ToString("HH:mm:ss");
-            ////if (!chart.timeStamps.Contains(time))
-            ////    chart.timeStamps.Add(time);
-
             if (param.Interval == chart.minInterval)
             {
                 foreach (var serie in chart.Series)
@@ -76,7 +65,7 @@ namespace Desktop_Client
             if (!chart.timeStamps.Contains(time))
                 chart.timeStamps.Add(time);
 
-            float interpolatedX = InterpolateX(param.MinValue, 10, param.MaxValue, chart.drawArea.Width-20, x);
+            float interpolatedX = InterpolateX(param.MinValue, 20, param.MaxValue, chart.drawArea.Width - 35, x);
 
             allPoints.Add(new PointF(interpolatedX, y));
         }

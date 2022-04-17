@@ -112,7 +112,7 @@ namespace Desktop_Client
 
         private void buttonAddSerie_Click(object sender, EventArgs e)
         {
-            SeriesCreationForm seriesCreationForm = new SeriesCreationForm(chart);
+            SeriesCreationForm seriesCreationForm = new SeriesCreationForm(chart, this);
             seriesCreationForm.ShowDialog();
         }
 
