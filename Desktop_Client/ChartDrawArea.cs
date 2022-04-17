@@ -70,12 +70,14 @@ namespace Desktop_Client
         private void DrawSerieTriangle(ChartSerie serie, Brush brush, PaintEventArgs e)
         {
             PointF[] arrayForDrawingTriangles = new PointF[3];
+
             arrayForDrawingTriangles[0].X = serie.Points.Last().X;
-            arrayForDrawingTriangles[0].Y = serie.Points.Last().Y - 2;
+            arrayForDrawingTriangles[0].Y = Height - 15;
             arrayForDrawingTriangles[1].X = serie.Points.Last().X - 10;
-            arrayForDrawingTriangles[1].Y = serie.Points.Last().Y + 10;
+            arrayForDrawingTriangles[1].Y = Height;
             arrayForDrawingTriangles[2].X = serie.Points.Last().X + 10;
-            arrayForDrawingTriangles[2].Y = serie.Points.Last().Y + 10;
+            arrayForDrawingTriangles[2].Y = Height;
+
             e.Graphics.FillPolygon(brush, arrayForDrawingTriangles);
         }
 

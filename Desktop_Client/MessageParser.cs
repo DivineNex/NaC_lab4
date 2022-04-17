@@ -27,12 +27,12 @@ namespace Desktop_Client
                     mainForm.allParams.Clear();
                     for (int i = 1; i < parsedMessage.Length; i++)
                     {
-                        //"//{param.name}##{param.Interval}##{param.MinValue}##{param.MaxValue}";
+                        //"//{param.name}##{param.Interval}##{param.MinValue}##{param.MaxValue}"
                         string[] splittedParamData = parsedMessage[i].Split(new string[] { "##" }, StringSplitOptions.None);
                         Param newParam = new Param(splittedParamData[0], 
-                                                   Convert.ToDouble(splittedParamData[1]),
-                                                   Convert.ToDouble(splittedParamData[2]),
-                                                   Convert.ToDouble(splittedParamData[3]));
+                                                   Convert.ToInt32(splittedParamData[1]),
+                                                   float.Parse(splittedParamData[2]),
+                                                   float.Parse(splittedParamData[3]));
                         newParam.UpdateValue(0);
                         mainForm.allParams.Add(newParam);
                     }

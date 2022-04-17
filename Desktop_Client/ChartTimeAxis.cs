@@ -37,15 +37,18 @@ namespace Desktop_Client
 
         private void DrawTimeStamps(PaintEventArgs e)
         {
-            Brush brush = new SolidBrush(Color.Black);
-            Font font = new Font(ClientChart.TEXT_FONT_FAMILY, 10);
-            PointF stampPoint = new PointF();
-
-            for (int i = 0; i < chart.timeStamps.Count; i++)
+            if (chart.timeStamps.Count > 0)
             {
-                stampPoint.X = 2;
-                stampPoint.Y = Height - (chart.timeStamps.Count - i) * chart.axisYStep - 5;
-                e.Graphics.DrawString(chart.timeStamps[i], font, brush, stampPoint);
+                Brush brush = new SolidBrush(Color.Black);
+                Font font = new Font(ClientChart.TEXT_FONT_FAMILY, 10);
+                PointF stampPoint = new PointF();
+
+                for (int i = 0; i < chart.timeStamps.Count; i++)
+                {
+                    stampPoint.X = 2;
+                    stampPoint.Y = Height - (chart.timeStamps.Count - i) * chart.axisYStep - 5;
+                    e.Graphics.DrawString(chart.timeStamps[i], font, brush, stampPoint);
+                }
             }
         }
     }

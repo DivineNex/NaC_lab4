@@ -22,30 +22,30 @@ namespace Desktop_Client
             get { return value; }
         }
 
-        private double interval;
+        private int interval;
 
-        public double Interval
+        public int Interval
+        {
+            get { return interval; }
+        }
+
+        private float minValue;
+
+        public float MinValue
         {
             get { return minValue; }
         }
 
-        private double minValue;
+        private float maxValue;
 
-        public double MinValue
-        {
-            get { return minValue; }
-        }
-
-        private double maxValue;
-
-        public double MaxValue
+        public float MaxValue
         {
             get { return maxValue; }
         }
 
         public List<ChartSerie> assignedSeries;
 
-        public Param(string name, double interval, double minValue, double maxValue)
+        public Param(string name, int interval, float minValue, float maxValue)
         {
             this.name = name;
             this.interval = interval;
