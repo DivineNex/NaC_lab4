@@ -5,13 +5,14 @@ using System.Text;
 using System.Timers;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Modules
 {
     internal class Param
     {
         public readonly string name;
-        Timer timer;
+        System.Timers.Timer timer;
         Random random;
         private int interval;
 
@@ -56,12 +57,13 @@ namespace Modules
         {
             this.interval = interval;
             this.name = name;
-            timer = new Timer(interval);
-            random = new Random();
+            timer = new System.Timers.Timer(interval);
             timer.Elapsed += Timer_Elapsed;
             this.minValue = minValue;
             this.maxValue = maxValue;
             this.isInteger = isInteger;
+            random = new Random();
+            Thread.Sleep(10);
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -72,12 +74,13 @@ namespace Modules
         private void Generate()
         {
             if (isInteger)
+            {
                 value = random.Next(Convert.ToInt32(minValue), Convert.ToInt32(maxValue));
+            }
             else
+            {
                 value = Math.Round(random.NextDouble() * (maxValue - minValue) + minValue, 3);
-
-            //Улучшится при новой системе логирования
-            //Console.WriteLine("Сгенерирован: " + name + " = " + value);
+            }
 
             SendToServer($"{this.name} = {this.value}");
         }

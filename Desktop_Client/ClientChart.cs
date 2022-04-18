@@ -32,7 +32,7 @@ namespace Desktop_Client
         public int axisXStep;
         public List<string> timeStamps;
         public Timer timer;
-        public int minInterval = int.MaxValue;
+        public int minInterval = Int32.MaxValue;
 
         private List<ChartSerie> series;
 
@@ -75,27 +75,11 @@ namespace Desktop_Client
             timeAxis = new ChartTimeAxis(this);
             drawArea = new ChartDrawArea(this);
             timeStamps = new List<string>();
-            timer = new Timer();
-            timer.Tick += Timer_Tick;
-            timer.Interval = Int32.MaxValue;
 
             OpenSettingsForm();
             DoubleBuffered = true;
             Paint += ClientChart_Paint;
             Show();
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            foreach (var serie in series)
-            {
-                for (int i = 0; i < serie.Points.Count; i++)
-                {
-                    PointF interPoint = serie.Points[i];
-                    interPoint.Y -= axisYStep;
-                    serie.Points[i] = interPoint;
-                }
-            }
         }
 
         public void Close()

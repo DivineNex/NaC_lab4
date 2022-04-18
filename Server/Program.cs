@@ -116,6 +116,8 @@ namespace Server
                 }
                 catch
                 {
+                    if (client.Type == eClientType.Reg_module)
+                        allGeneratingParams = "";
                     Console.BackgroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine($"Клиент {client.ip_port} отключен");
                     Console.BackgroundColor = ConsoleColor.Black;

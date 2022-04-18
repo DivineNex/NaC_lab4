@@ -35,6 +35,14 @@ namespace Desktop_Client
         {
             try
             {
+                foreach (var serie in chart.Series)
+                {
+                    if (serie.name == listBoxAllParamsNames.SelectedItem.ToString())
+                    {
+                        MessageBox.Show("Для этого параметра уже существует серия");
+                        return;
+                    }
+                }
                 chart.CreateSerie(listBoxAllParamsNames.SelectedItem.ToString());
                 Close();
             }
