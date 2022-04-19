@@ -50,8 +50,7 @@ namespace Desktop_Client
                 if (serie.Points.Count != 0)
                 {
                     Brush brush = new SolidBrush(serie.color);
-                    Pen pen = new Pen(serie.color);
-                    pen.Width = 3;
+                    Pen pen = new Pen(serie.color, 2);
 
                     if (serie.Points.Count == 1)
                     {
@@ -63,11 +62,12 @@ namespace Desktop_Client
 
                         foreach (var point in serie.Points)
                         {
-                            PointF newPoint = new PointF(point.X, Height - 15 - (chart.lastAddedPointY - point.Y));
+                            PointF newPoint = new PointF(point.X, Height - 15 - (chart.lastAddedPointY - point.Y)*chart.zoomCoeff);
                             interpolatedPoints.Add(newPoint);
                         }
 
                         e.Graphics.DrawLines(pen, interpolatedPoints.ToArray());
+                        //e.Graphics.DrawCurve(pen, interpolatedPoints.ToArray());
                     }
 
                     DrawSerieTriangle(serie, brush, e);

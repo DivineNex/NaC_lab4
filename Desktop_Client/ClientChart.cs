@@ -26,6 +26,8 @@ namespace Desktop_Client
         private Button buttonClose;
         private Button buttonScreenshot;
         private Button buttonWarnings;
+        private Button buttonZoomIn;
+        private Button buttonZoomOut;
         public ChartInfoPanel infoPanel;
         public ChartTimeAxis timeAxis;
         public ChartDrawArea drawArea;
@@ -33,7 +35,7 @@ namespace Desktop_Client
         public List<string> timeStamps;
         public Timer timer;
         public int minInterval = Int32.MaxValue;
-        public double zoomCoeff;
+        public float zoomCoeff;
         public float lastAddedPointY;
 
         private List<ChartSerie> series;
@@ -102,46 +104,74 @@ namespace Desktop_Client
             buttonClose = new Button();
             buttonScreenshot = new Button();
             buttonWarnings = new Button();
+            buttonZoomIn = new Button();
+            buttonZoomOut = new Button();
 
             buttonSettings.Parent = this;
             buttonClose.Parent = this;
             buttonScreenshot.Parent = this;
             buttonWarnings.Parent = this;
+            buttonZoomIn.Parent = this;
+            buttonZoomOut.Parent = this;
 
             buttonSettings.Size = new Size(30, 30);
             buttonClose.Size = new Size(30, 30);
             buttonScreenshot.Size = new Size(30, 30);
             buttonWarnings.Size = new Size(30, 30);
+            buttonZoomIn.Size = new Size(30, 30);
+            buttonZoomOut.Size = new Size(30, 30);
 
             buttonSettings.Location = new Point(BORDER_THICKNESS, BORDER_THICKNESS);
-            buttonClose.Location = new Point(BORDER_THICKNESS, BORDER_THICKNESS+30);
-            buttonScreenshot.Location = new Point(BORDER_THICKNESS+30, BORDER_THICKNESS);
-            buttonWarnings.Location = new Point(BORDER_THICKNESS+30, BORDER_THICKNESS+30);
+            buttonClose.Location = new Point(BORDER_THICKNESS, BORDER_THICKNESS + 30);
+            buttonScreenshot.Location = new Point(BORDER_THICKNESS + 30, BORDER_THICKNESS);
+            buttonWarnings.Location = new Point(BORDER_THICKNESS + 30, BORDER_THICKNESS + 30);
+            buttonZoomIn.Location = new Point(BORDER_THICKNESS, BORDER_THICKNESS + 60);
+            buttonZoomOut.Location = new Point(BORDER_THICKNESS + 30, BORDER_THICKNESS + 60);
 
             buttonSettings.BackColor = BUTTON_BACK_COLOR;
             buttonClose.BackColor = BUTTON_BACK_COLOR;
             buttonScreenshot.BackColor = BUTTON_BACK_COLOR;
             buttonWarnings.BackColor = BUTTON_BACK_COLOR;
+            buttonZoomIn.BackColor = BUTTON_BACK_COLOR;
+            buttonZoomOut.BackColor = BUTTON_BACK_COLOR;
 
             buttonSettings.Image = Image.FromFile(@"..\..\Res\IconSettings.png");
             buttonClose.Image = Image.FromFile(@"..\..\Res\IconClose.png");
             buttonScreenshot.Image = Image.FromFile(@"..\..\Res\IconScreenshot.png");
             buttonWarnings.Image = Image.FromFile(@"..\..\Res\IconWarnings.png");
+            buttonZoomIn.Image = Image.FromFile(@"..\..\Res\IconZoomIn.png");
+            buttonZoomOut.Image = Image.FromFile(@"..\..\Res\IconZoomOut.png");
 
             buttonSettings.Click += ButtonSettings_Click;
             buttonClose.Click += ButtonClose_Click;
             buttonScreenshot.Click += ButtonScreenshot_Click;
             buttonWarnings.Click += ButtonWarnings_Click;
+            buttonZoomIn.Click += ButtonZoomIn_Click;
+            buttonZoomOut.Click += ButtonZoomOut_Click;
 
             Controls.Add(buttonSettings);
             Controls.Add(buttonClose);
             Controls.Add(buttonScreenshot);
             Controls.Add(buttonWarnings);
+            Controls.Add(buttonZoomIn);
+            Controls.Add(buttonZoomOut);
 
             buttonSettings.Show();
             buttonClose.Show();
             buttonScreenshot.Show();
             buttonWarnings.Show();
+            buttonZoomIn.Show();
+            buttonZoomOut.Show();
+        }
+
+        private void ButtonZoomOut_Click(object sender, EventArgs e)
+        {
+            zoomCoeff *= 0.8f;
+        }
+
+        private void ButtonZoomIn_Click(object sender, EventArgs e)
+        {
+            zoomCoeff *= 1.2f;
         }
 
         private void ButtonWarnings_Click(object sender, EventArgs e)

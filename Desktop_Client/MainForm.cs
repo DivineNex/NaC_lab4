@@ -127,11 +127,13 @@ namespace Desktop_Client
                         {
                             float y = serie.Chart.lastAddedPointY;
                             serie.AddPoint(value, y);
+                            serie.Chart.lastAddedPointY = y;
                         }
                         else
                         {
                             float y = serie.Points.Last().Y + serie.intervalCoeff * ClientChart.AXIS_Y_DEFAULT_STEP;
                             serie.AddPoint(value, y);
+                            serie.Chart.lastAddedPointY = y;
                         }
                     }
 
