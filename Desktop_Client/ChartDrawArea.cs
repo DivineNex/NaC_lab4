@@ -59,7 +59,15 @@ namespace Desktop_Client
                     }
                     else
                     {
-                        e.Graphics.DrawLines(pen, serie.Points.ToArray());
+                        List<PointF> interpolatedPoints = new List<PointF>();
+
+                        foreach (var point in serie.Points)
+                        {
+                            PointF newPoint = new PointF(point.X, Height - 15 - (chart.lastAddedPointY - point.Y));
+                            interpolatedPoints.Add(newPoint);
+                        }
+
+                        e.Graphics.DrawLines(pen, interpolatedPoints.ToArray());
                     }
 
                     DrawSerieTriangle(serie, brush, e);
@@ -85,19 +93,19 @@ namespace Desktop_Client
         {
             Pen pen = new Pen(Color.FromArgb(255, 210, 210, 210));
 
-            int horLinesCount = Height / chart.axisXStep + 1;
-            int vertLinesCount = Width / chart.axisYStep + 1;
+            int horLinesCount = Height / ClientChart.AXIS_X_DEFAULT_STEP + 1;
+            int vertLinesCount = Width / ClientChart.AXIS_Y_DEFAULT_STEP + 1;
 
             for (int i = 0; i < horLinesCount; i++)
             {
-                e.Graphics.DrawLine(pen, new Point(0, Height - (i * chart.axisYStep) - 15),
-                                         new Point(Width, Height - (i * chart.axisYStep) - 15));
+                e.Graphics.DrawLine(pen, new Point(0, Height - (i * ClientChart.AXIS_Y_DEFAULT_STEP) - 15),
+                                         new Point(Width, Height - (i * ClientChart.AXIS_Y_DEFAULT_STEP) - 15));
             }
 
             for (int i = 0; i < vertLinesCount; i++)
             {
-                e.Graphics.DrawLine(pen, new Point(i * chart.axisXStep, 0),
-                                         new Point(i * chart.axisXStep, Height));
+                e.Graphics.DrawLine(pen, new Point(i * ClientChart.AXIS_X_DEFAULT_STEP, 0),
+                                         new Point(i * ClientChart.AXIS_X_DEFAULT_STEP, Height));
             }
         }
     }

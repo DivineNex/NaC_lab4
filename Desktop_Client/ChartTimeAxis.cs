@@ -46,7 +46,7 @@ namespace Desktop_Client
                 for (int i = 0; i < chart.timeStamps.Count; i++)
                 {
                     stampPoint.X = 2;
-                    stampPoint.Y = Height - (chart.timeStamps.Count - i) * chart.axisYStep * chart.minInterval/1000 - 5;
+                    stampPoint.Y = Height - (chart.timeStamps.Count - i) * ClientChart.AXIS_Y_DEFAULT_STEP * chart.minInterval/1000 - 5;
                     e.Graphics.DrawString(chart.timeStamps[i], font, brush, stampPoint);
                 }
             }

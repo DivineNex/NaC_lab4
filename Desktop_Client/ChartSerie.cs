@@ -11,6 +11,12 @@ namespace Desktop_Client
     public class ChartSerie : Control
     {
         private ClientChart chart;
+
+        public ClientChart Chart
+        {
+            get { return chart; }
+        }
+
         public readonly string name;
         private Param param;
         private List<PointF> allPoints;
@@ -18,6 +24,7 @@ namespace Desktop_Client
         Random random = new Random();
         public float maxValue;
         public float minValue;
+        public float intervalCoeff;
 
         public List<PointF> Points
         {
@@ -28,6 +35,8 @@ namespace Desktop_Client
         {
             if (param.Interval < chart.minInterval)
                 chart.minInterval = param.Interval;
+
+            intervalCoeff = param.Interval / 1000;
 
             Width = chart.Width - ClientChart.BORDER_THICKNESS * 2;
             Height = chart.drawArea.Height - ClientChart.BORDER_THICKNESS * 2;
@@ -48,25 +57,25 @@ namespace Desktop_Client
 
         public void AddPoint(float x, float y)
         {
-            if (param.Interval == chart.minInterval)
-            {
-                foreach (var serie in chart.Series)
-                {
-                    for (int i = 0; i < serie.Points.Count; i++)
-                    {
-                        PointF interPoint = serie.Points[i];
-                        interPoint.Y -= chart.axisYStep;
-                        serie.Points[i] = interPoint;
-                    }
-                }
-            }
+            //if (param.Interval == chart.minInterval)
+            //{
+            //    foreach (var serie in chart.Series)
+            //    {
+            //        for (int i = 0; i < serie.Points.Count; i++)
+            //        {
+            //            PointF interPoint = serie.Points[i];
+            //            interPoint.Y -= ClientChart.AXIS_Y_DEFAULT_STEP;
+            //            serie.Points[i] = interPoint;
+            //        }
+            //    }
+            //}
 
-            string time = DateTime.Now.ToString("HH:mm:ss");
-            if (!chart.timeStamps.Contains(time))
-                chart.timeStamps.Add(time);
+            //string time = DateTime.Now.ToString("HH:mm:ss");
+            //if (!chart.timeStamps.Contains(time))
+            //    chart.timeStamps.Add(time);
 
             float interpolatedX = InterpolateX(param.MinValue, 20, param.MaxValue, chart.drawArea.Width - 35, x);
-
+            chart.lastAddedPointY = y;
             allPoints.Add(new PointF(interpolatedX, y));
         }
 

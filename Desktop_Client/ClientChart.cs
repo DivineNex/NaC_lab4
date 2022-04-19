@@ -11,6 +11,8 @@ namespace Desktop_Client
 {
     public class ClientChart : Control
     {
+        public const int AXIS_X_DEFAULT_STEP = 10;
+        public const int AXIS_Y_DEFAULT_STEP = 10;
         public const int BORDER_THICKNESS = 2;
         private static readonly Color BACKGROUND_COLOR = Color.FromArgb(255, 220, 220, 220);
         private static readonly Color BORDER_COLOR = Color.FromArgb(255, 80, 80, 80);
@@ -28,11 +30,11 @@ namespace Desktop_Client
         public ChartTimeAxis timeAxis;
         public ChartDrawArea drawArea;
         private ChartSettingsForm settingsForm;
-        public int axisYStep;
-        public int axisXStep;
         public List<string> timeStamps;
         public Timer timer;
         public int minInterval = Int32.MaxValue;
+        public double zoomCoeff;
+        public float lastAddedPointY;
 
         private List<ChartSerie> series;
 
@@ -61,14 +63,13 @@ namespace Desktop_Client
 
         private void Init()
         {
+            zoomCoeff = 1;
+
             Width = 500;
             Height = 500;
             BackColor = BACKGROUND_COLOR;
             ResizeRedraw = true;
             InitButtons();
-
-            axisYStep = 20;
-            axisXStep = 20;
 
             series = new List<ChartSerie>();
             infoPanel = new ChartInfoPanel(this);

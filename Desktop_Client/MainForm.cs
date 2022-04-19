@@ -123,7 +123,16 @@ namespace Desktop_Client
 
                     foreach (var serie in par.assignedSeries)
                     {
-                        serie.AddPoint(value, serie.Height - 10);
+                        if (serie.Points.Count == 0)
+                        {
+                            float y = serie.Chart.lastAddedPointY;
+                            serie.AddPoint(value, y);
+                        }
+                        else
+                        {
+                            float y = serie.Points.Last().Y + serie.intervalCoeff * ClientChart.AXIS_Y_DEFAULT_STEP;
+                            serie.AddPoint(value, y);
+                        }
                     }
 
                     break;
