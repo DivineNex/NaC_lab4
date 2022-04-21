@@ -59,6 +59,7 @@ namespace Desktop_Client
         private void ClientChart_Paint(object sender, PaintEventArgs e)
         {
             drawArea.Refresh();
+            infoPanel.RefreshPanels();
             timeAxis.Refresh();
             DrawBorders(e);
         }

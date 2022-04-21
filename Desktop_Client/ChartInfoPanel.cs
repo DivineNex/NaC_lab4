@@ -39,5 +39,24 @@ namespace Desktop_Client
             Controls.Add(labelTitle);
             labelTitle.Show();
         }
+
+        public void UpdateSeriePanelsLocation()
+        {
+            //обновить размер infopanel
+            Height = seriesPanels.Count * 20 + 20;
+            //обновить положение всех плашек серий
+            for (int i = 0; i < seriesPanels.Count; i++)
+            {
+                seriesPanels[i].Top = (i + 1) * seriesPanels[i].Height;
+            }
+        }
+
+        public void RefreshPanels()
+        {
+            foreach (var panel in seriesPanels)
+            {
+                panel.Refresh();
+            }
+        }
     }
 }

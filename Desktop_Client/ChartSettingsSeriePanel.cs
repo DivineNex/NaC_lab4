@@ -91,12 +91,16 @@ namespace Desktop_Client
             ColorDialog colorDialog = new ColorDialog();
             colorDialog.ShowDialog();
             serie.color = colorDialog.Color;
+            serie.seriePanel.Refresh();
             Refresh();
         }
 
         private void ButtonClose_Click(object sender, EventArgs e)
         {
             chart.Series.Remove(serie);
+            chart.infoPanel.seriesPanels.Remove(serie.seriePanel);
+            serie.seriePanel.Dispose();
+            chart.infoPanel.UpdateSeriePanelsLocation();
             chart.SettingsForm.SeriesPanel.Controls.Remove(this);
             chart.SettingsForm.UpdateSeriesPanelsPosition();
 

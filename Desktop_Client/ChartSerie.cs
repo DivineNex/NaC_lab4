@@ -22,6 +22,7 @@ namespace Desktop_Client
         private List<PointF> allPoints;
         public Color color;
         Random random = new Random();
+        public ChartInfoPanelSerie seriePanel;
         public float maxValue;
         public float minValue;
         public float intervalCoeff;
@@ -50,8 +51,8 @@ namespace Desktop_Client
             maxValue = param.MaxValue;
             color = Color.FromArgb(random.Next(256), random.Next(256), random.Next(256));
 
-            ChartInfoPanelSerie panelSerie = new ChartInfoPanelSerie(this, chart.infoPanel);
-
+            seriePanel = new ChartInfoPanelSerie(this, chart.infoPanel);
+            
             InitSerieSettingsPanel();
         }
 
