@@ -181,17 +181,16 @@ namespace Desktop_Client
             if ((logsRichTextBox.Visible) == true)
             {
                 logsRichTextBox.Visible = false;
-                tabControl1.Width = 1121;
-                tabControl1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-                chartManager.Width = 1121;
-                chartManager.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                tabControl1.Width += textBox1.Width - 15;
+                //tabControl1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                //chartManager.Width = 1121;
+                //chartManager.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             }
-            else
-                if ((logsRichTextBox.Visible) == false)
+            else if ((logsRichTextBox.Visible) == false)
             {
+                tabControl1.Width -= textBox1.Width - 15;
                 logsRichTextBox.Visible = true;
-                tabControl1.Width = 824;
-                chartManager.Width = 824;
+                //chartManager.Width = 824;
             }
                 
 

@@ -39,7 +39,8 @@ namespace Desktop_Client
             timer = new Timer();
             timer.Interval = MILLISECONDS_PER_UPDATE;
             timer.Tick += Timer_Tick;
-            
+            Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+
             //временно выключен на период тестирования
             timer.Start();
         }
@@ -58,17 +59,6 @@ namespace Desktop_Client
         public void CreateChart(Param param, eChartOrientation chartType)
         {
             ClientChart newChart = new ClientChart(this, chartType);
-            newChart.Parent = this;
-            Controls.Add(newChart);
-            allCharts.Add(newChart);
-            Controls[Controls.Count-1].BringToFront();
-            newChart.Height = mainForm.tabPage.Height;
-
-            for (int i = 0; i < mainForm.ChartManager.allCharts.Count; i++)
-			{
-			    mainForm.ChartManager.allCharts[i].Width = mainForm.tabPage.Width / mainForm.ChartManager.allCharts.Count;
-                mainForm.ChartManager.allCharts[i].Left = i * mainForm.ChartManager.allCharts[i].Width;
-			}
         }
 
         public void DeleteChart(ClientChart chart)

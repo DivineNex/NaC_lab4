@@ -53,6 +53,9 @@ namespace Desktop_Client
         public ClientChart(ChartManager chartManager, eChartOrientation orientation)
         {
             this.chartManager = chartManager;
+            chartManager.AllCharts.Add(this);
+            chartManager.Controls.Add(this);
+            InitChartWidth();
             Init();
         }
 
@@ -66,8 +69,8 @@ namespace Desktop_Client
 
         private void Init()
         {
+            Parent = chartManager;
             zoomCoeff = 1;
-
             
             BackColor = BACKGROUND_COLOR;
             ResizeRedraw = true;
@@ -83,6 +86,18 @@ namespace Desktop_Client
             DoubleBuffered = true;
             Paint += ClientChart_Paint;
             Show();
+            chartManager.Controls[chartManager.Controls.Count - 1].BringToFront();
+            Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Top;
+        }
+
+        private void InitChartWidth()
+        {
+            for (int i = 0; i < chartManager.AllCharts.Count; i++)
+            {
+                chartManager.AllCharts[i].Width = chartManager.MainForm.tabPage.Width / chartManager.AllCharts.Count;
+                chartManager.AllCharts[i].Height = chartManager.MainForm.tabPage.Height;
+                chartManager.AllCharts[i].Left = i * chartManager.AllCharts[i].Width;
+            }
         }
 
         public void Close()
