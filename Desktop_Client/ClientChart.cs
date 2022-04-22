@@ -68,8 +68,7 @@ namespace Desktop_Client
         {
             zoomCoeff = 1;
 
-            Width = 500;
-            Height = 500;
+            
             BackColor = BACKGROUND_COLOR;
             ResizeRedraw = true;
             InitButtons();

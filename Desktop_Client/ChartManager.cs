@@ -62,6 +62,11 @@ namespace Desktop_Client
             Controls.Add(newChart);
             allCharts.Add(newChart);
             Controls[Controls.Count-1].BringToFront();
+            newChart.Height = mainForm.tabPage.Height;
+            foreach (var chart in mainForm.ChartManager.allCharts)
+            {
+                chart.Width = mainForm.tabPage.Width / mainForm.ChartManager.allCharts.Count;
+            }
         }
 
         public void DeleteChart(ClientChart chart)

@@ -45,3 +45,6 @@ I:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\Modules.exe.config
 I:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\Modules.exe
 I:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\Modules.pdb
 I:\Сети и теле\Лаба 4\NaC_lab4\Modules\obj\Debug\Modules.pdb
+E:\Сети и теле\Лаба 4\NaC_lab4\Modules\bin\Debug\Modules.exe.config
+E:\Сети и теле\Лаба 4\NaC_lab4\Modules\obj\Debug\Modules.exe
+E:\Сети и теле\Лаба 4\NaC_lab4\Modules\obj\Debug\Modules.pdb

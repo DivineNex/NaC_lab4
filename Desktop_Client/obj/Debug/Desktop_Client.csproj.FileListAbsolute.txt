@@ -39,3 +39,12 @@ I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Cli
 I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.CoreCompileInputs.cache
 I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.exe
 I:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.pdb
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\bin\Debug\Desktop_Client.exe.config
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.exe
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.pdb
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ChartSettingsForm.resources
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ConnectionForm.resources
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.MainForm.resources
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.Properties.Resources.resources
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.SeriesCreationForm.resources
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.GenerateResource.Cache
