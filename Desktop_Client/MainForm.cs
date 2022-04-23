@@ -113,13 +113,13 @@ namespace Desktop_Client
             }
         }
 
-        public void SetParamValue(string paramName, float value)
+        public void SetParamValue(string time, string paramName, float value)
         {
             foreach (var par in allParams)
             {
                 if (par.Name == paramName)
                 {
-                    par.UpdateValue(value);
+                    par.UpdateValue(time, value);
 
                     foreach (var serie in par.assignedSeries)
                     {

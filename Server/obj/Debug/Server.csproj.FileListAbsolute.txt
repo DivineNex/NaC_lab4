@@ -22,3 +22,12 @@ C:\GitHub\NaC_lab4\Server\bin\Debug\EntityFramework.xml
 C:\GitHub\NaC_lab4\Server\bin\Debug\EntityFramework.SqlServer.xml
 C:\GitHub\NaC_lab4\Server\bin\Debug\System.Data.SQLite.xml
 C:\GitHub\NaC_lab4\Server\obj\Debug\Server.csproj.CopyComplete
+C:\Users\79135\Documents\GitHub\NaC_lab4\Server\bin\Debug\EntityFramework.dll
+C:\Users\79135\Documents\GitHub\NaC_lab4\Server\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\79135\Documents\GitHub\NaC_lab4\Server\bin\Debug\System.Data.SQLite.dll
+C:\Users\79135\Documents\GitHub\NaC_lab4\Server\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\79135\Documents\GitHub\NaC_lab4\Server\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\79135\Documents\GitHub\NaC_lab4\Server\bin\Debug\EntityFramework.xml
+C:\Users\79135\Documents\GitHub\NaC_lab4\Server\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\79135\Documents\GitHub\NaC_lab4\Server\bin\Debug\System.Data.SQLite.xml
+C:\Users\79135\Documents\GitHub\NaC_lab4\Server\obj\Debug\Server.csproj.CopyComplete

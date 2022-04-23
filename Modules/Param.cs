@@ -82,7 +82,7 @@ namespace Modules
                 value = Math.Round(random.NextDouble() * (maxValue - minValue) + minValue, 3);
             }
 
-            SendToServer($"{this.name} = {this.value}");
+            SendToServer($"{DateTime.Now.ToString("yyyy:MM:dd:HH:mm:ss:fff")} = {name} = {value}");
         }
 
         private void SendToServer(string param)

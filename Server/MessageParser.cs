@@ -33,7 +33,7 @@ namespace Server
                     Console.BackgroundColor = ConsoleColor.Black;
                     break;
                 case "param":
-                    Console.WriteLine(DateTime.Now.ToString("HH:mm:ss") + " " + client.ip_port + " " + client.Type + " " + parsedMessage[1]);
+                    Console.WriteLine(client.ip_port + " " + client.Type + " " + parsedMessage[1]);
                     messageType = eMessageType.paramsMessage;
                     break;
                 case "init_params":

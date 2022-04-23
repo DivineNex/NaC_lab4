@@ -18,10 +18,10 @@ namespace Desktop_Client
             switch (parsedMessage[0])
             {
                 case "param":
-                    mainForm.AddLog(DateTime.Now.ToString("HH:mm:ss") + " " + parsedMessage[1]);
+                    mainForm.AddLog(parsedMessage[1]);
                     string[] parsedParamMessage = parsedMessage[1].Split(new string[] { " = " }, StringSplitOptions.None);
 
-                    mainForm.SetParamValue(parsedParamMessage[0], float.Parse(parsedParamMessage[1]));
+                    mainForm.SetParamValue(parsedParamMessage[0], parsedParamMessage[1], float.Parse(parsedParamMessage[2]));
                     break;
                 case "init_params":
                     mainForm.allParams.Clear();
@@ -33,7 +33,7 @@ namespace Desktop_Client
                                                    Convert.ToInt32(splittedParamData[1]),
                                                    float.Parse(splittedParamData[2]),
                                                    float.Parse(splittedParamData[3]));
-                        newParam.UpdateValue(0);
+                        newParam.UpdateValue(null, 0);
                         mainForm.allParams.Add(newParam);
                     }
                     break;

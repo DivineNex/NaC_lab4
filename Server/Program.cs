@@ -33,6 +33,9 @@ namespace Server
             dbManager = new DataBaseManager();
             dbManager.Connect();
 
+            //ТЕСТОВЫЙ БЛОК
+            //dbManager.AddParamValue("Ass", 100);
+
         }
 
         private static void Start()

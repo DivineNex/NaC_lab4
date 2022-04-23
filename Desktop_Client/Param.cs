@@ -8,6 +8,13 @@ namespace Desktop_Client
 {
     public class Param
     {
+        private string lastValueDateTime;
+
+        public string LastValueDateTime
+        {
+            get { return lastValueDateTime; }
+        }
+
         private string name;
 
         public string Name
@@ -54,8 +61,9 @@ namespace Desktop_Client
             assignedSeries = new List<ChartSerie>();
         }
 
-        public void UpdateValue (double newValue)
+        public void UpdateValue (string time, double newValue)
         {
+            lastValueDateTime = time;
             value = newValue;
         }
     }

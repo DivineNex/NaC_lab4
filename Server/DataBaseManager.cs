@@ -20,21 +20,32 @@ namespace Server
         {
             dbCon = new SQLiteConnection("Data Source=DataBase.db; Version=3");
             dbCon.Open();
+            dbCom = new SQLiteCommand(dbCon);
         }
         public void Cmd()
         {
-            dbCom = new SQLiteCommand();
+            //
         }
 
-        public void AddParam()
+        public void AddParamValue(DateTime time, string paramName, double value)
         {
-            //if ()
-            //{
-
-            //}
+            dbCom.CommandText = $"INSERT INTO Params (Time, Name, Value) VALUES (:Time, :Name, :Value)";
+            try
+            {
+                dbCom.Parameters.AddWithValue("Time", time);
+                dbCom.Parameters.AddWithValue("Name", paramName);
+                dbCom.Parameters.AddWithValue("Value", value);
+                dbCom.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                //transaction.Rollback();
+                throw;
+            }
+           
         }
 
-      
 
-   }
+
+    }
 }
