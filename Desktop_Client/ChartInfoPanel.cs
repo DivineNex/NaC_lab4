@@ -39,6 +39,13 @@ namespace Desktop_Client
             Show();
             Controls.Add(labelTitle);
             labelTitle.Show();
+
+            Resize += ChartInfoPanel_Resize;
+        }
+
+        private void ChartInfoPanel_Resize(object sender, EventArgs e)
+        {
+            labelTitle.Location = new Point(Width / 2 - labelTitle.Width / 2, 0);
         }
 
         public void UpdateSeriePanelsLocation()
