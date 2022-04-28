@@ -20,6 +20,7 @@ namespace Desktop_Client
             Parent = chart;
             Width = chart.Width - 60 - ClientChart.BORDER_THICKNESS*2;
             Height = 20;
+            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             Top = ClientChart.BORDER_THICKNESS;
             Left = ClientChart.BORDER_THICKNESS + 60;
             BackColor = BACKGROUND_COLOR;

@@ -18,6 +18,7 @@ namespace Desktop_Client
             this.chart = chart;
             Parent = chart;
             Width = 60;
+            Anchor = AnchorStyles.Bottom | AnchorStyles.Top | AnchorStyles.Left;
             Height = chart.Height - ClientChart.BORDER_THICKNESS * 2 - 90;
             Top = ClientChart.BORDER_THICKNESS + 90;
             Left = ClientChart.BORDER_THICKNESS;

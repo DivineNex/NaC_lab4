@@ -19,17 +19,17 @@ namespace Desktop_Client
             Parent = chart;
             Width = chart.Width - 60 - ClientChart.BORDER_THICKNESS * 2;
             Height = chart.Height - chart.infoPanel.Height - ClientChart.BORDER_THICKNESS * 2;
+            Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Top = ClientChart.BORDER_THICKNESS + chart.infoPanel.Height;
             Left = ClientChart.BORDER_THICKNESS + chart.timeAxis.Width;
             BackColor = BACKGROUND_COLOR;
             DoubleBuffered = true;
 
             VScrollBar vScroll = new VScrollBar();
-            vScroll.Show();
-            vScroll.Size = new Size(15, Height - ClientChart.BORDER_THICKNESS * 2);
-            vScroll.Top = ClientChart.BORDER_THICKNESS;
-            vScroll.Left = Width - vScroll.Width;
+            vScroll.Width = 15;
+            vScroll.Dock = DockStyle.Right;
             Controls.Add(vScroll);
+            vScroll.Show();
 
             chart.Controls.Add(this);
             Show();

@@ -22,6 +22,7 @@ namespace Desktop_Client
             //infoPanel.Height += 20;
             Width = infoPanel.Width - 20;
             Height = 20;    
+            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             //Top = infoPanel.seriesPanels.Count * Height + 20;
             Left = 10;
             BackColor = Color.FromArgb(255, 190, 190, 190);
