@@ -43,6 +43,17 @@ namespace Desktop_Client
 
             //временно выключен на период тестирования
             timer.Start();
+            Resize += ChartManager_Resize;
+        }
+
+        private void ChartManager_Resize(object sender, EventArgs e)
+        {
+            for (int i = 0; i < allCharts.Count; i++)
+            {
+                allCharts[i].Width = mainForm.tabPage.Width / allCharts.Count;
+                allCharts[i].Height = mainForm.tabPage.Height;
+                allCharts[i].Left = i * allCharts[i].Width;
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)

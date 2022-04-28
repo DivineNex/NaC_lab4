@@ -87,7 +87,8 @@ namespace Desktop_Client
             Paint += ClientChart_Paint;
             Show();
             chartManager.Controls[chartManager.Controls.Count - 1].BringToFront();
-            Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Top;
+            //Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Top;
+            Anchor = AnchorStyles.Bottom | AnchorStyles.Top;
         }
 
         private void InitChartWidth()
@@ -207,6 +208,12 @@ namespace Desktop_Client
         private void ButtonClose_Click(object sender, EventArgs e)
         {
             Close();
+            for (int i = 0; i < chartManager.AllCharts.Count; i++)
+            {
+                chartManager.AllCharts[i].Width = chartManager.MainForm.tabPage.Width / chartManager.AllCharts.Count;
+                chartManager.AllCharts[i].Height = chartManager.MainForm.tabPage.Height;
+                chartManager.AllCharts[i].Left = i * chartManager.AllCharts[i].Width;
+            }
         }
 
 
