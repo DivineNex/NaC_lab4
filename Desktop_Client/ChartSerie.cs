@@ -71,10 +71,6 @@ namespace Desktop_Client
             //    }
             //}
 
-            string time = DateTime.Now.ToString("HH:mm:ss");
-            if (!chart.timeStamps.Contains(time))
-                chart.timeStamps.Add(time);
-
             float interpolatedX = InterpolateX(param.MinValue, 20, param.MaxValue, chart.drawArea.Width - 35, x);
             allPoints.Add(new PointF(interpolatedX, y));
         }

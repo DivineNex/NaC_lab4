@@ -65,6 +65,14 @@ namespace Desktop_Client
         {
             lastValueDateTime = time;
             value = newValue;
+
+            foreach (ChartSerie serie in assignedSeries)
+            {
+                DateTime date = DateTime.ParseExact(time, "yyyy-MM-dd HH:mm:ss,fff", System.Globalization.CultureInfo.InvariantCulture);
+                string convertedTime = date.ToString("HH:mm:ss");
+                if (!serie.Chart.timeStamps.Contains(convertedTime))
+                    serie.Chart.timeStamps.Add(convertedTime);
+            }
         }
     }
 }

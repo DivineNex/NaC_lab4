@@ -43,33 +43,16 @@ namespace Desktop_Client
                 Font font = new Font(ClientChart.TEXT_FONT_FAMILY, 10);
                 List<PointF> stampPoints = new List<PointF>();
 
-                //for (int i = 0; i < chart.timeStamps.Count; i++)
-                //{
-                //    PointF tsPoint = new PointF();
-
-                //    if (stampPoints.Count == 0)
-                //    {
-                //        tsPoint.X = 2;
-                //        tsPoint.Y = Height - 22;
-                //    }
-                //    else
-                //    {
-                //        tsPoint.X = 2;
-                //        tsPoint.Y = stampPoints[i - 1].Y - ClientChart.AXIS_Y_DEFAULT_STEP * chart.zoomCoeff;
-                //    }
-                //    stampPoints.Add(tsPoint);
-                //}
-
                 PointF tsPoint = new PointF();
                 tsPoint.X = 2;
                 tsPoint.Y = Height - 22;
                 stampPoints.Add(tsPoint);
 
-                for (int i = chart.timeStamps.Count-1; i > 0; i--)
+                for (int i = chart.timeStamps.Count - 1; i > 0; i--)
                 {
                     tsPoint.X = 2;
-                    tsPoint.Y = stampPoints.Last().Y - ClientChart.AXIS_Y_DEFAULT_STEP * chart.zoomCoeff;
-                    stampPoints.Add(tsPoint);
+                    tsPoint.Y = stampPoints[0].Y - ClientChart.AXIS_Y_DEFAULT_STEP * chart.zoomCoeff;
+                    stampPoints.Insert(0, tsPoint);
                 }
 
                 for (int i = 0; i < chart.timeStamps.Count; i++)
