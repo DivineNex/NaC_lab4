@@ -38,6 +38,7 @@ namespace Desktop_Client
         private void Form1_Load(object sender, EventArgs e)
         {
             Init();
+            Login();
         }
 
         private void Init()
@@ -45,6 +46,17 @@ namespace Desktop_Client
             connectionManager = new ConnectionManager(this);
             chartManager = new ChartManager(this);
             allParams = new List<Param>();
+
+            //автоконнект при запуске
+            connectionManager.serverIP = "127.0.0.1";
+            connectionManager.serverPort = 55555;
+            connectionManager.ConnectToServer();
+        }
+
+        private void Login()
+        {
+            AuthAndRegForm authForm = new AuthAndRegForm();
+            authForm.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
