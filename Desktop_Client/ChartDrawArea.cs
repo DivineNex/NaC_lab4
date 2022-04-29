@@ -50,7 +50,7 @@ namespace Desktop_Client
                 if (serie.Points.Count != 0)
                 {
                     Brush brush = new SolidBrush(serie.color);
-                    Pen pen = new Pen(serie.color, 2);
+                    Pen pen = new Pen(serie.color, serie.lineThickness);
 
                     if (serie.Points.Count == 1)
                     {

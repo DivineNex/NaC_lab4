@@ -26,6 +26,7 @@ namespace Desktop_Client
         public float maxValue;
         public float minValue;
         public float intervalCoeff;
+        public int lineThickness = 1;
 
         public List<PointF> Points
         {

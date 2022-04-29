@@ -72,6 +72,12 @@
     <Compile Include="ChartSerie.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ChartSerieSettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChartSerieSettingsForm.Designer.cs">
+      <DependentUpon>ChartSerieSettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChartSettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </Compile>
     <EmbeddedResource Include="AuthAndRegForm.resx">
       <DependentUpon>AuthAndRegForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChartSerieSettingsForm.resx">
+      <DependentUpon>ChartSerieSettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChartSettingsForm.resx">
       <DependentUpon>ChartSettingsForm.cs</DependentUpon>

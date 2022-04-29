@@ -88,11 +88,8 @@ namespace Desktop_Client
 
         private void ButtonSettings_Click(object sender, EventArgs e)
         {
-            ColorDialog colorDialog = new ColorDialog();
-            colorDialog.ShowDialog();
-            serie.color = colorDialog.Color;
-            serie.seriePanel.Refresh();
-            Refresh();
+            ChartSerieSettingsForm serieSettingsForm = new ChartSerieSettingsForm(chart.chartManager, serie);
+            serieSettingsForm.ShowDialog();
         }
 
         private void ButtonClose_Click(object sender, EventArgs e)

@@ -49,3 +49,6 @@ E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Cli
 E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.SeriesCreationForm.resources
 E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csproj.GenerateResource.Cache
 C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.AuthAndRegForm.resources
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csprojResolveAssemblyReference.cache
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.AuthAndRegForm.resources
+E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ChartSerieSettingsForm.resources
