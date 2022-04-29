@@ -32,9 +32,8 @@ namespace Server
             parser = new MessageParser();
             dbManager = new DataBaseManager();
             dbManager.Connect();
-
             //ТЕСТОВЫЙ БЛОК
-            //dbManager.AddParamValue("Ass", 100);
+          //  dbManager.AddParamValue(DateTime.Now,"Ass", 100);
 
         }
 
