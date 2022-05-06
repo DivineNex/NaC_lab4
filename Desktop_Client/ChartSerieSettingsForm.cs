@@ -26,8 +26,7 @@ namespace Desktop_Client
             ColorDialog colorDialog = new ColorDialog();
             colorDialog.ShowDialog();
             serie.color = colorDialog.Color;
-            serie.seriePanel.Refresh();
-            Refresh();
+            serie.chartSettingsSeriePanel.Refresh();
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -38,6 +37,11 @@ namespace Desktop_Client
         private void ChartSerieSettingsForm_Load(object sender, EventArgs e)
         {
             numericUpDown1.Value = serie.lineThickness;
+        }
+
+        private void ChartSerieSettingsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            serie.chartSettingsSeriePanel.Refresh();
         }
     }
 }

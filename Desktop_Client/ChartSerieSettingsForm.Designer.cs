@@ -36,7 +36,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(33, 12);
+            this.button1.Location = new System.Drawing.Point(59, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(82, 41);
+            this.numericUpDown1.Location = new System.Drawing.Point(108, 41);
             this.numericUpDown1.Minimum = new decimal(new int[] {
             1,
             0,
@@ -65,7 +65,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 44);
+            this.label1.Location = new System.Drawing.Point(42, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 2;
@@ -75,12 +75,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(138, 69);
+            this.ClientSize = new System.Drawing.Size(199, 88);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button1);
             this.Name = "ChartSerieSettingsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChartSerieSettingsForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ChartSerieSettingsForm_FormClosed);
             this.Load += new System.EventHandler(this.ChartSerieSettingsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);

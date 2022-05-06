@@ -26,7 +26,7 @@ namespace Desktop_Client
             BackColor = Color.Thistle;
             Parent = chart.SettingsForm.SeriesPanel;
             chart.SettingsForm.SeriesPanel.Controls.Add(this);
-
+            serie.chartSettingsSeriePanel = this;
             Paint += ChartSettingsSeriePanel_Paint;
 
             InitLabel();
@@ -73,9 +73,10 @@ namespace Desktop_Client
             Controls.Add(buttonSettings);
         }
 
+
         private void DrawColorCircle(PaintEventArgs e)
         {
-            Brush brush = new SolidBrush(serie.color);
+            Brush brush = new SolidBrush(serie.color);          
             e.Graphics.FillEllipse(brush, Width - 90, 4, 20, 20);
         }
 

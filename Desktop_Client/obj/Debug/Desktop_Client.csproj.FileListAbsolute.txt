@@ -52,3 +52,4 @@ C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.AuthAndRegForm.resour
 E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.csprojResolveAssemblyReference.cache
 E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.AuthAndRegForm.resources
 E:\Сети и теле\Лаба 4\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ChartSerieSettingsForm.resources
+C:\GitHub\NaC_lab4\Desktop_Client\obj\Debug\Desktop_Client.ChartSerieSettingsForm.resources
