@@ -12,6 +12,7 @@ namespace Desktop_Client
     {
         private ClientChart chart;
         private static readonly Color BACKGROUND_COLOR = SystemColors.Control;
+        private Size size;
 
         public ChartDrawArea(ClientChart chart)
         {
@@ -34,6 +35,29 @@ namespace Desktop_Client
             chart.Controls.Add(this);
             Show();
             Paint += ChartDrawArea_Paint;
+            Resize += ChartDrawArea_Resize;
+            size = Size;
+            MinimumSize = new Size(50, 200);
+        }
+
+        private void ChartDrawArea_Resize(object sender, EventArgs e)
+        {
+            List<PointF> interpolatedPoints = new List<PointF>();
+            foreach (ChartSerie serie in chart.Series)
+            {
+                foreach (PointF point in serie.Points)
+                {
+                    float interpolatedX = (point.X * Width) / size.Width;
+
+                    interpolatedPoints.Add(new PointF(interpolatedX, point.Y));
+                }
+
+                serie.Points.Clear();
+                serie.Points.AddRange(interpolatedPoints);
+                interpolatedPoints.Clear();
+            }
+
+            size = Size;
         }
 
         private void ChartDrawArea_Paint(object sender, PaintEventArgs e)

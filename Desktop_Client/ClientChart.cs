@@ -37,6 +37,7 @@ namespace Desktop_Client
         public int minInterval = Int32.MaxValue;
         public float zoomCoeff;
         public float lastAddedPointY;
+        private Size drawAreaSize;
 
         private List<ChartSerie> series;
 

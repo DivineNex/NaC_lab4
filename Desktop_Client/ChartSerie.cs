@@ -18,7 +18,7 @@ namespace Desktop_Client
         }
 
         public readonly string name;
-        private Param param;
+        public Param param;
         private List<PointF> allPoints;
         public Color color;
         Random random = new Random();
@@ -73,7 +73,7 @@ namespace Desktop_Client
             //    }
             //}
 
-            float interpolatedX = InterpolateX(param.MinValue, 20, param.MaxValue, chart.drawArea.Width - 35, x);
+            float interpolatedX = InterpolatePointX(param.MinValue, 20, param.MaxValue, chart.drawArea.Width - 35, x);
             allPoints.Add(new PointF(interpolatedX, y));
         }
 
@@ -82,7 +82,7 @@ namespace Desktop_Client
             ChartSettingsSeriePanel seriePanel = new ChartSettingsSeriePanel(chart, this);
         }
 
-        private float InterpolateX(float x1, float y1, float x2, float y2, float x)
+        private float InterpolatePointX(float x1, float y1, float x2, float y2, float x)
         {
             return y1 + (y2 - y1) * (x - x1) / (x2 - x1);
         }
