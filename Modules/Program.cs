@@ -17,12 +17,12 @@ namespace Modules
         {
             /*
              * КОМАНДЫ УПРАВЛЕНИЯ:
+             * help - вывод доступных команд
              * connect - подключения модуля регистрации к серверу
              * disconnect - отключение модуля регистрации от сервера
              * start - запуск модулей
              * stop - остановка модулей
-             * start logging - начало сессии логирования
-             * stop loggin - конец сессии логирования
+
              */
 
             Init();
@@ -39,6 +39,8 @@ namespace Modules
                     StartModules();
                 else if (line == "stop")
                     StopModules();
+                else if (line == "help")
+                    PrintHelpMessage();
                 else
                 {
                     Console.BackgroundColor = ConsoleColor.DarkRed;
@@ -63,8 +65,16 @@ namespace Modules
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("Инициализация прошла успешно");
             Console.BackgroundColor = ConsoleColor.Black;
+            Console.WriteLine("Введите help для получения списка доступных команд");
         }
-
+        private static void PrintHelpMessage()
+        {
+            Console.WriteLine("\r\nДоступные команды: \r\nstart - запуск модулей" +
+                                                 "\r\nstop - остановка модулей" +
+                                                 "\r\nconnect - подключения модуля регистрации к серверу" +
+                                                 "\r\ndisconnect - отключение модуля регистрации от сервера\r\n");
+            
+        }
         private static void Connect()
         {
             registrationModule.ConnectToServer();
