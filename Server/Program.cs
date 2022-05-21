@@ -181,7 +181,7 @@ namespace Server
                     {
                         case "desktop":
                         case "web":
-                            dbManager.Authorization(parsedMessage[2], parsedMessage[3]);
+                            dbManager.Authorization(parsedMessage[1], parsedMessage[2], parsedMessage[3]);
                             break;
                         case "reg":
                             break;

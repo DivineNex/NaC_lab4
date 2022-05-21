@@ -52,9 +52,19 @@ namespace Server
             }
         }
 
-        public void Authorization(string login, string password)
+        public void Authorization(string type, string login, string password)
         {
-            //
+            //dbCom.CommandText = $"SELECT count(rowid) FROM Users WHERE login='{login}' and password='{password} and type='{type}";
+            //int countRows = (int)dbCom.ExecuteScalar();
+
+            dbCom.CommandText = $"SELECT rowid FROM 'Users' WHERE '@login'='@{login}' and '@password'='@{password}' and '@type'='@{type}'";
+            int cur = (int)dbCom.ExecuteScalar();
+
+            //if (countRows == 0)
+            //{
+            //    //cmd.CommandText = "INSERT INTO wordlist(word) VALUES ('word')";
+            //    //cmd.ExecuteNonQuery();
+            //}
         }
     }
 }
