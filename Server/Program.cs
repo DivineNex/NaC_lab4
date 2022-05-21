@@ -32,9 +32,6 @@ namespace Server
             parser = new MessageParser();
             dbManager = new DataBaseManager();
             dbManager.Connect();
-            //ТЕСТОВЫЙ БЛОК
-          //  dbManager.AddParamValue(DateTime.Now,"Ass", 100);
-
         }
 
         private static void Start()
@@ -176,6 +173,20 @@ namespace Server
                         {
                             SendMessageToClient("&" + messagePart, clients[j]);
                         }
+                    }
+                    break;
+                case eMessageType.auth_message:
+                    string[] parsedMessage = messagePart.Split(new string[] { "//" }, StringSplitOptions.None);
+                    switch (parsedMessage[1])
+                    {
+                        case "desktop":
+                        case "web":
+                            dbManager.Authorization(parsedMessage[2], parsedMessage[3]);
+                            break;
+                        case "reg":
+                            break;
+                        default:
+                            break;
                     }
                     break;
                 default:

@@ -32,6 +32,12 @@ namespace Server
                     Console.WriteLine($"Клиент {client.ip_port} является типом {client.Type}");
                     Console.BackgroundColor = ConsoleColor.Black;
                     break;
+                case "auth":
+                    messageType = eMessageType.auth_message;
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine($"Клиент {client.ip_port} пытается авторизоваться по {parsedMessage[2]} {parsedMessage[3]}");
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    break;
                 case "param":
                     Console.WriteLine(client.ip_port + " " + client.Type + " " + parsedMessage[1]);
                     messageType = eMessageType.paramsMessage;

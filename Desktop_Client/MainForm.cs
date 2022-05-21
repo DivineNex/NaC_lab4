@@ -55,7 +55,7 @@ namespace Desktop_Client
 
         private void Login()
         {
-            AuthAndRegForm authForm = new AuthAndRegForm();
+            AuthAndRegForm authForm = new AuthAndRegForm(this);
             authForm.ShowDialog();
         }
 

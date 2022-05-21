@@ -11,6 +11,8 @@ namespace Server
         not_assigned,
         initMessage,
         initParamsMessage,
-        paramsMessage
+        paramsMessage,
+        auth_message,
+        registration_message
     }
 }

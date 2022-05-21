@@ -22,6 +22,14 @@ namespace Desktop_Client
         private MessageParser messageParser;
         public bool manualDisconnection = false;
 
+        private bool logged;
+
+        public bool Logged
+        {
+            get { return logged; }
+        }
+
+
         public ConnectionManager(MainForm mainForm)
         {
             this.mainForm = mainForm;
@@ -76,6 +84,24 @@ namespace Desktop_Client
             string message = "&init//desktop";
             byte[] data = Encoding.Unicode.GetBytes(message);
             serverSocket.Send(data);
+        }
+
+        public void SendAuthMessage(string login, string password, out string result)
+        {
+            try
+            {
+                string message = $"&auth//desktop//{login}//{password}";
+                byte[] data = Encoding.Unicode.GetBytes(message);
+                serverSocket.Send(data);
+
+                while (!logged) {} //бесконечный цикл ожидания
+
+                result = "Авторизация выполнена успешно";
+            }
+            catch
+            {
+                result = "Сервер недоступен";
+            }
         }
 
         private void SocketThread()

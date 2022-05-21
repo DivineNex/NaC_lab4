@@ -51,5 +51,10 @@ namespace Server
                 throw;
             }
         }
+
+        public void Authorization(string login, string password)
+        {
+            //
+        }
     }
 }
