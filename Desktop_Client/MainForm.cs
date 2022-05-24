@@ -193,15 +193,11 @@ namespace Desktop_Client
             {
                 logsRichTextBox.Visible = false;
                 tabControl1.Width += textBox1.Width - 15;
-                //tabControl1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-                //chartManager.Width = 1121;
-                //chartManager.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             }
             else if ((logsRichTextBox.Visible) == false)
             {
                 tabControl1.Width -= textBox1.Width - 15;
                 logsRichTextBox.Visible = true;
-                //chartManager.Width = 824;
             }
                 
 

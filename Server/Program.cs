@@ -127,7 +127,7 @@ namespace Server
             }
         }
             
-        private static void SendMessageToClient(string message, Client client)
+        public static void SendMessageToClient(string message, Client client)
         {
             byte[] data = Encoding.Unicode.GetBytes(message);
             client.socket.Send(data);
@@ -176,12 +176,26 @@ namespace Server
                     }
                     break;
                 case eMessageType.auth_message:
-                    string[] parsedMessage = messagePart.Split(new string[] { "//" }, StringSplitOptions.None);
-                    switch (parsedMessage[1])
+                    string[] parsedAuthMessage = messagePart.Split(new string[] { "//" }, StringSplitOptions.None);
+                    switch (parsedAuthMessage[1])
                     {
                         case "desktop":
                         case "web":
-                            dbManager.Authorization(parsedMessage[1], parsedMessage[2], parsedMessage[3]);
+                            dbManager.Authorization(client, parsedAuthMessage[1], parsedAuthMessage[2], parsedAuthMessage[3]);
+                            break;
+                        case "reg":
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case eMessageType.registration_message:
+                    string[] parsedRegMessage = messagePart.Split(new string[] { "//" }, StringSplitOptions.None);
+                    switch (parsedRegMessage[1])
+                    {
+                        case "desktop":
+                        case "web":
+                            dbManager.Registration(client, parsedRegMessage[1], parsedRegMessage[2], parsedRegMessage[3]);
                             break;
                         case "reg":
                             break;

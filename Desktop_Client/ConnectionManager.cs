@@ -22,13 +22,8 @@ namespace Desktop_Client
         private MessageParser messageParser;
         public bool manualDisconnection = false;
 
-        private bool logged;
-
-        public bool Logged
-        {
-            get { return logged; }
-        }
-
+        public string loggedStatus = "none";
+        public string registrationStatus = "none";
 
         public ConnectionManager(MainForm mainForm)
         {
@@ -94,9 +89,51 @@ namespace Desktop_Client
                 byte[] data = Encoding.Unicode.GetBytes(message);
                 serverSocket.Send(data);
 
-                while (!logged) {} //бесконечный цикл ожидания
+                while (true)
+                {
+                    if (loggedStatus == "logged")
+                    {
+                        result = "Авторизация выполнена успешно";
+                        break;
+                    }
+                    else if (loggedStatus == "fail")
+                    {
+                        result = "Ошибка авторизации";
+                        loggedStatus = "none";
+                        break;
+                    }
+                }
 
-                result = "Авторизация выполнена успешно";
+            }
+            catch
+            {
+                result = "Сервер недоступен";
+            }
+        }
+
+        public void SendRegistrationMessage(string login, string password, out string result)
+        {
+            try
+            {
+                string message = $"&registration//desktop//{login}//{password}";
+                byte[] data = Encoding.Unicode.GetBytes(message);
+                serverSocket.Send(data);
+
+                while (true)
+                {
+                    if (registrationStatus == "registered")
+                    {
+                        result = "Регистрация прошла успешно";
+                        break;
+                    }
+                    else if (registrationStatus == "fail")
+                    {
+                        result = "Логин занят!";
+                        registrationStatus = "none";
+                        break;
+                    }
+                }
+
             }
             catch
             {

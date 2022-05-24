@@ -38,6 +38,12 @@ namespace Server
                     Console.WriteLine($"Клиент {client.ip_port} пытается авторизоваться по {parsedMessage[2]} {parsedMessage[3]}");
                     Console.BackgroundColor = ConsoleColor.Black;
                     break;
+                case "registration":
+                    messageType = eMessageType.registration_message;
+                    Console.BackgroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine($"Клиент {client.ip_port} пытается зарегистрироваться по {parsedMessage[2]} {parsedMessage[3]}");
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    break;
                 case "param":
                     Console.WriteLine(client.ip_port + " " + client.Type + " " + parsedMessage[1]);
                     messageType = eMessageType.paramsMessage;

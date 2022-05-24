@@ -33,5 +33,36 @@ namespace Desktop_Client
                 Close();
             }
         }
+
+        private void AuthAndRegForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (mainForm.connectionManager.loggedStatus != "logged")
+            {
+                mainForm.Close();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            mainForm.connectionManager.ConnectToServer();
+
+            string result;
+            mainForm.connectionManager.SendRegistrationMessage(textBox6.Text, textBox5.Text, out result);
+            textBox4.Text = result;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (textBox5.PasswordChar == '\0')
+            {
+                textBox5.PasswordChar = '*';
+                button3.Text = "Show";
+            }
+            else
+            {
+                textBox5.PasswordChar = '\0';
+                button3.Text = "Hide";
+            }
+        }
     }
 }

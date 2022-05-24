@@ -37,6 +37,18 @@ namespace Desktop_Client
                         mainForm.allParams.Add(newParam);
                     }
                     break;
+                case "auth":
+                    if (parsedMessage[1] == "success")
+                        mainForm.connectionManager.loggedStatus = "logged";
+                    else
+                        mainForm.connectionManager.loggedStatus = "fail";
+                    break;
+                case "registration":
+                    if (parsedMessage[1] == "success")
+                        mainForm.connectionManager.registrationStatus = "registered";
+                    else
+                        mainForm.connectionManager.registrationStatus = "fail";
+                    break;
             }
         }
     }
