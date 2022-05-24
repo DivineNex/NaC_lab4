@@ -21,7 +21,6 @@ namespace Desktop_Client
             get { return allCharts; }
         }
 
-
         public MainForm MainForm
         {
             get { return mainForm; }

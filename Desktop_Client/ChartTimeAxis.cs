@@ -10,7 +10,7 @@ namespace Desktop_Client
 {
     public class ChartTimeAxis : Control
     {
-        private static readonly Color BACKGROUND_COLOR = Color.PeachPuff;
+        private static readonly Color BACKGROUND_COLOR = Color.DarkGray;
         private ClientChart chart;
 
         public ChartTimeAxis(ClientChart chart)

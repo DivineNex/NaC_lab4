@@ -14,6 +14,16 @@ namespace Desktop_Client
         private static readonly Color BACKGROUND_COLOR = SystemColors.Control;
         private Size size;
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.Style |= 0x00200000;  // Turn on WS_SIZEBOX
+                return cp;
+            }
+        }
+
         public ChartDrawArea(ClientChart chart)
         {
             this.chart = chart;
@@ -26,11 +36,11 @@ namespace Desktop_Client
             BackColor = BACKGROUND_COLOR;
             DoubleBuffered = true;
 
-            VScrollBar vScroll = new VScrollBar();
-            vScroll.Width = 15;
-            vScroll.Dock = DockStyle.Right;
-            Controls.Add(vScroll);
-            vScroll.Show();
+            //VScrollBar vScroll = new VScrollBar();
+            //vScroll.Width = 15;
+            //vScroll.Dock = DockStyle.Right;
+            //Controls.Add(vScroll);
+            //vScroll.Show();
 
             chart.Controls.Add(this);
             Show();

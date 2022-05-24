@@ -36,8 +36,18 @@ namespace Desktop_Client
         public Timer timer;
         public int minInterval = Int32.MaxValue;
         public float zoomCoeff;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.Style |= 0x00040000;  // Turn on WS_SIZEBOX
+                return cp;
+            }
+        }
+
         public float lastAddedPointY;
-        private Size drawAreaSize;
 
         private List<ChartSerie> series;
 
@@ -88,7 +98,6 @@ namespace Desktop_Client
             Paint += ClientChart_Paint;
             Show();
             chartManager.Controls[chartManager.Controls.Count - 1].BringToFront();
-            //Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Top;
             Anchor = AnchorStyles.Bottom | AnchorStyles.Top;
         }
 
@@ -111,7 +120,7 @@ namespace Desktop_Client
         public void DrawBorders(PaintEventArgs e)
         {
             Pen blackPen = new Pen(BORDER_COLOR, BORDER_THICKNESS);
-            Rectangle rect = new Rectangle(BORDER_THICKNESS/2, BORDER_THICKNESS/2, Width - BORDER_THICKNESS, Height - BORDER_THICKNESS);
+            Rectangle rect = new Rectangle(BORDER_THICKNESS / 2, BORDER_THICKNESS / 2, Width - BORDER_THICKNESS, Height - BORDER_THICKNESS);
             e.Graphics.DrawRectangle(blackPen, rect);
         }
 
@@ -216,7 +225,6 @@ namespace Desktop_Client
                 chartManager.AllCharts[i].Left = i * chartManager.AllCharts[i].Width;
             }
         }
-
 
         private void OpenSettingsForm()
         {
