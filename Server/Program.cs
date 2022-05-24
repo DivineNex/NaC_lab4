@@ -126,7 +126,7 @@ namespace Server
                 }
             }
         }
-
+            
         private static void SendMessageToClient(string message, Client client)
         {
             byte[] data = Encoding.Unicode.GetBytes(message);

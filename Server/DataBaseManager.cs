@@ -54,17 +54,15 @@ namespace Server
 
         public void Authorization(string type, string login, string password)
         {
-            //dbCom.CommandText = $"SELECT count(rowid) FROM Users WHERE login='{login}' and password='{password} and type='{type}";
-            //int countRows = (int)dbCom.ExecuteScalar();
+            dbCom.CommandText = $"SELECT rowid FROM Users WHERE login like '%{login}%' and password like '%{password}%' and type like '%{type}%'" ;
 
-            dbCom.CommandText = $"SELECT rowid FROM 'Users' WHERE '@login'='@{login}' and '@password'='@{password}' and '@type'='@{type}'";
-            int cur = (int)dbCom.ExecuteScalar();
+            object count = dbCom.ExecuteScalar();
+            //Int32 Total_Records = System.Convert.ToInt32(count); //возвращает номер строки первой найденной записи
 
-            //if (countRows == 0)
-            //{
-            //    //cmd.CommandText = "INSERT INTO wordlist(word) VALUES ('word')";
-            //    //cmd.ExecuteNonQuery();
-            //}
+            if (count != null)
+            {
+                //
+            }
         }
     }
 }
