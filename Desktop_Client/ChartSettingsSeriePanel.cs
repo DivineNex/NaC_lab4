@@ -101,9 +101,14 @@ namespace Desktop_Client
             chart.infoPanel.UpdateSeriePanelsLocation();
             chart.SettingsForm.SeriesPanel.Controls.Remove(this);
             chart.SettingsForm.UpdateSeriesPanelsPosition();
+            serie.param.assignedSeries.Remove(serie);
 
             if (chart.Series.Count == 0)
+            {
                 chart.Refresh();
+                chart.timeStamps.Clear();
+            }
+                
             Dispose();
         }
     }

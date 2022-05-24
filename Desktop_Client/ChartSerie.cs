@@ -60,19 +60,6 @@ namespace Desktop_Client
 
         public void AddPoint(float x, float y)
         {
-            //if (param.Interval == chart.minInterval)
-            //{
-            //    foreach (var serie in chart.Series)
-            //    {
-            //        for (int i = 0; i < serie.Points.Count; i++)
-            //        {
-            //            PointF interPoint = serie.Points[i];
-            //            interPoint.Y -= ClientChart.AXIS_Y_DEFAULT_STEP;
-            //            serie.Points[i] = interPoint;
-            //        }
-            //    }
-            //}
-
             float interpolatedX = InterpolatePointX(param.MinValue, 20, param.MaxValue, chart.drawArea.Width - 35, x);
             allPoints.Add(new PointF(interpolatedX, y));
         }
