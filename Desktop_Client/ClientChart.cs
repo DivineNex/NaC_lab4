@@ -42,7 +42,7 @@ namespace Desktop_Client
             get
             {
                 var cp = base.CreateParams;
-                cp.Style |= 0x00040000;  // Turn on WS_SIZEBOX
+                //cp.Style |= 0x00040000 | 0x00C00000 | 0x00800000;  // Turn on WS_SIZEBOX
                 return cp;
             }
         }
@@ -98,7 +98,7 @@ namespace Desktop_Client
             Paint += ClientChart_Paint;
             Show();
             chartManager.Controls[chartManager.Controls.Count - 1].BringToFront();
-            Anchor = AnchorStyles.Bottom | AnchorStyles.Top;
+            //Anchor = AnchorStyles.Bottom | AnchorStyles.Top;
         }
 
         private void InitChartWidth()

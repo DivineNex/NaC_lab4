@@ -1,0 +1,16 @@
+C:\GitHub\NaC_lab4\NewModules\bin\Debug\Desktop_Client.exe.config
+C:\GitHub\NaC_lab4\NewModules\bin\Debug\Desktop_Client.exe
+C:\GitHub\NaC_lab4\NewModules\bin\Debug\Desktop_Client.pdb
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\NewModules.csproj.AssemblyReference.cache
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\NewModules.csproj.SuggestedBindingRedirects.cache
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\Desktop_Client.Properties.Resources.resources
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\NewModules.csproj.GenerateResource.cache
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\NewModules.csproj.CoreCompileInputs.cache
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\Desktop_Client.exe
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\Desktop_Client.pdb
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\NewModules.AuthAndRegForm.resources
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\NewModules.ChartSerieSettingsForm.resources
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\NewModules.ChartSettingsForm.resources
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\NewModules.ConnectionForm.resources
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\NewModules.MainForm.resources
+C:\GitHub\NaC_lab4\NewModules\obj\Debug\NewModules.SeriesCreationForm.resources
