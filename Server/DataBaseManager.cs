@@ -55,7 +55,8 @@ namespace Server
 
         public void Authorization(Client client, string type, string login, string password)
         {
-            dbCom.CommandText = $"SELECT rowid FROM Users WHERE login like '%{login}%' and password like '%{password}%' and type like '%{type}%'" ;
+            dbCom.CommandText = $"SELECT rowid FROM Users WHERE login like '%{login}%' and password " +
+                $"like '%{password}%' and type like '%{type}%'" ;
 
             object count = dbCom.ExecuteScalar();
             //Int32 Total_Records = System.Convert.ToInt32(count); //номер строки первой найденной записи
